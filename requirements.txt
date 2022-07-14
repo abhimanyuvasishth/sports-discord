@@ -1,0 +1,7 @@
+alembic
+discord
+flake8
+pysqlite3
+pytest
+python-dotenv
+sqlalchemy
