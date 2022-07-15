@@ -1,6 +1,8 @@
 alembic
 discord
 flake8
+gspread
+oauth2client
 pysqlite3
 pytest
 python-dotenv
