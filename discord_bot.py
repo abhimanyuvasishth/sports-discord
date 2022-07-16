@@ -3,15 +3,13 @@ import os
 from discord import Embed
 from discord.ext import commands
 from dotenv import load_dotenv
+from sqlalchemy import select
 
-from sports_discord.db import fetch_data
-from sports_discord.google_sheet import get_sheet
+from sports_discord.db import get_data
+from sports_discord.tournament import Tournament
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-
-
-tournaments = {}
 bot = commands.Bot(command_prefix='/auctionbot')
 
 
@@ -28,13 +26,11 @@ async def help(context):
 @bot.command(name='?sheetlink')
 async def sheet_link(context):
     try:
-        sheet = tournaments[context.channel.id]
-    except KeyError:
-        doc_name, sheet_name = fetch_data(context.channel.id)[0]
-        sheet = get_sheet(doc_name=doc_name, sheet_name=sheet_name)
-        tournaments[context.channel.id] = sheet
-
-    embed = Embed(title=sheet.spreadsheet.title, url=sheet.spreadsheet.url)
-    await context.reply(embed=embed)
+        statement = select(Tournament).where(Tournament.channel_id == context.channel.id)
+        tournament = get_data(statement)[0][0]
+        embed = Embed(title=tournament.doc_name, url=tournament.sheet_url)
+        await context.reply(embed=embed)
+    except (IndexError, TypeError):
+        await context.reply('bad request')
 
 bot.run(TOKEN)

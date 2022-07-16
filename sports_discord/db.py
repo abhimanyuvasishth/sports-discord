@@ -1,40 +1,25 @@
-import sqlite3
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-query = """
-    INSERT INTO tournament (
-        series_id,
-        discord_channel_id,
-        doc_name,
-        points_sheet_name,
-        bidding_sheet_name,
-        team_points_sheet_name
-    )
-    VALUES (
-        '1298423',
-        '996269799539757056',
-        'IPL 15 auction',
-        'Points Worksheet',
-        'Bidding Page',
-        'Team Points'
-    );
-"""
+from sports_discord.tournament import Tournament
+
+engine = create_engine('sqlite:///sports_discord.db')
 
 
 def insert_rows():
-    with sqlite3.connect('sports_discord.db') as conn:
-        conn.execute(query)
-        conn.commit()
+    tournament = {
+        'series_id': '1298423',
+        'channel_id': '996269799539757056',
+        'doc_name': 'IPL 15 auction',
+    }
+    with sessionmaker(engine, autocommit=True).begin() as session:
+        session.add(Tournament(**tournament))
 
 
-def fetch_data(discord_channel_id):
-    query = """
-        SELECT doc_name, team_points_sheet_name
-        FROM tournament
-        WHERE discord_channel_id = :discord_channel_id
-    """
-    with sqlite3.connect('sports_discord.db') as conn:
-        cursor = conn.execute(query, {'discord_channel_id': discord_channel_id})
-        return cursor.fetchall()
+def get_data(query):
+    with sessionmaker(engine)() as session:
+        result = session.execute(query)
+        return result.fetchall()
 
 
 if __name__ == '__main__':
