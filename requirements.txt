@@ -3,6 +3,7 @@ discord
 flake8
 gspread
 oauth2client
+pydantic
 pysqlite3
 pytest
 python-dotenv

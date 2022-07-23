@@ -1,14 +1,16 @@
+from functools import cache
+
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
+@cache
 def get_sheet(doc_name, sheet_name):
-    client = get_client()
+    client = authorize_client()
     return client.open(doc_name).worksheet(sheet_name)
 
 
-def get_client():
-    file_name = 'credentials.json'
+def authorize_client(file_name='credentials.json'):
     scopes = [
         'https://www.googleapis.com/auth/drive',
         'https://www.googleapis.com/auth/drive.file'

@@ -5,8 +5,9 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from sqlalchemy import select
 
-from sports_discord.db import get_data
-from sports_discord.tournament import Tournament
+from scripts.insert_data import get_data
+from sports_discord.google_sheet import get_sheet
+from sports_discord.models.tournament import Tournament
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -28,7 +29,8 @@ async def sheet_link(context):
     try:
         statement = select(Tournament).where(Tournament.channel_id == context.channel.id)
         tournament = get_data(statement)[0][0]
-        embed = Embed(title=tournament.doc_name, url=tournament.sheet_url)
+        sheet = get_sheet(tournament.doc_name, tournament.points_sheet_name)
+        embed = Embed(title=tournament.doc_name, url=sheet.spreadsheet.url)
         await context.reply(embed=embed)
     except (IndexError, TypeError):
         await context.reply('bad request')
