@@ -2,6 +2,7 @@ from logging.config import fileConfig
 
 from sports_discord.database import Base
 from sports_discord.models.auction_team import AuctionTeam
+from sports_discord.models.playing_team import PlayingTeam
 from sports_discord.models.tournament import Tournament
 from sqlalchemy import engine_from_config, pool
 

@@ -16,3 +16,4 @@ class Tournament(Base):
     active = Column(Boolean, default=True, nullable=False)
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     auction_teams = relationship('AuctionTeam', back_populates='tournament')
+    playing_teams = relationship('PlayingTeam', back_populates='tournament')

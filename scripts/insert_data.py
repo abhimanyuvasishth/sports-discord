@@ -1,4 +1,5 @@
 from sports_discord.models.auction_team import AuctionTeam
+from sports_discord.models.playing_team import PlayingTeam
 from sports_discord.models.tournament import Tournament
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -17,13 +18,22 @@ def insert_tournament():
 
 
 def insert_auction_teams():
-    tournament = {
+    auction_team = {
         'role_id': '998119025773133886',
-        'team_name': 'Sardarz',
+        'name': 'Sardarz',
         'tournament_id': 1,
     }
     with sessionmaker(engine, autocommit=True).begin() as session:
-        session.add(AuctionTeam(**tournament))
+        session.add(AuctionTeam(**auction_team))
+
+
+def insert_playing_teams():
+    playing_team = {
+        'name': 'Chennai Super Kings',
+        'tournament_id': 1,
+    }
+    with sessionmaker(engine, autocommit=True).begin() as session:
+        session.add(PlayingTeam(**playing_team))
 
 
 def get_data(query):
@@ -34,4 +44,5 @@ def get_data(query):
 
 if __name__ == '__main__':
     # insert_tournament()
-    insert_auction_teams()
+    # insert_auction_teams()
+    insert_playing_teams()
