@@ -1,10 +1,7 @@
 import pytest
-from sports_discord.models.player import Player
-from sports_discord.models.team import Team
-from sports_discord.models.tournament import Tournament
-from sports_discord.models.user_team import UserTeam
-from sports_discord.models.user_team_player import UserTeamPlayer
-from sqlalchemy import create_engine
+from sports_discord.models import (Match, Player, Team, Tournament, UserTeam,
+                                   UserTeamPlayer)
+from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
 CHANNEL_ID = '996269799539757056'
@@ -50,3 +47,9 @@ def test_user_team_players(engine, tournament):
         query = session.query(UserTeam).filter(UserTeam.id == user_team_player.user_team_id)
         user_team = query.first()
         assert user_team.tournament.id == tournament.id
+
+
+def test_match(engine):
+    with sessionmaker(engine)() as session:
+        team_counts = session.query(func.count(Match.id)).group_by(Match.external_id).all()
+        assert all([count == 2 for result in team_counts for count in result])
