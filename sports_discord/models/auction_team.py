@@ -1,20 +1,18 @@
 from sports_discord.database import Base
-from sqlalchemy import (TIMESTAMP, Column, ForeignKey, Integer, String,
-                        UniqueConstraint, func)
+from sports_discord.models.associations.tournament_auction_team import \
+    tournament_auction_team
+from sqlalchemy import TIMESTAMP, Column, Integer, String, func
 from sqlalchemy.orm import relationship
 
 
 class AuctionTeam(Base):
     __tablename__ = 'auction_team'
 
-    __table_args__ = (
-        UniqueConstraint('role_id', 'tournament_id'),
-        UniqueConstraint('name', 'tournament_id'),
-    )
-
     id = Column(Integer, primary_key=True, nullable=False)
-    role_id = Column(String, nullable=False)
-    name = Column(String, nullable=False)
+    name = Column(String, nullable=False, unique=True)
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
-    tournament_id = Column(Integer, ForeignKey('tournament.id'))
-    tournament = relationship('Tournament', back_populates='auction_teams')
+    tournaments = relationship(
+        'Tournament',
+        secondary=tournament_auction_team,
+        back_populates='auction_teams'
+    )
