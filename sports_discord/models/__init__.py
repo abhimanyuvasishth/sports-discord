@@ -1,9 +1,9 @@
-from sports_discord.models.auction_team import AuctionTeam
-from sports_discord.models.playing_team import PlayingTeam
+from sports_discord.models.team import Team
 from sports_discord.models.tournament import Tournament
+from sports_discord.models.user_team import UserTeam
 
 __all__ = [
-    AuctionTeam,
-    PlayingTeam,
+    Team,
     Tournament,
+    UserTeam,
 ]

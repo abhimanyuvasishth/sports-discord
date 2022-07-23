@@ -1,13 +1,9 @@
 from logging.config import fileConfig
 
 from sports_discord.database import Base
-from sports_discord.models.associations.tournament_auction_team import \
-    tournament_auction_team
-from sports_discord.models.associations.tournament_playing_team import \
-    tournament_playing_team
-from sports_discord.models.auction_team import AuctionTeam
-from sports_discord.models.playing_team import PlayingTeam
+from sports_discord.models.team import Team
 from sports_discord.models.tournament import Tournament
+from sports_discord.models.user_team import UserTeam
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context
