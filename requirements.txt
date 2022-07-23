@@ -6,5 +6,6 @@ oauth2client
 pydantic
 pysqlite3
 pytest
+python-dateutil
 python-dotenv
 sqlalchemy

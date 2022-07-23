@@ -1,14 +1,22 @@
-from sports_discord.models.player import Player
-from sports_discord.models.team import Team
-from sports_discord.models.tournament import Tournament
-from sports_discord.models.user_team import UserTeam
-from sports_discord.models.user_team_player import UserTeamPlayer
+from dateutil.parser import parse
+from sports_discord.models import (Match, Player, Team, Tournament, UserTeam,
+                                   UserTeamPlayer)
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 channel_id = '996269799539757056'
 engine = create_engine('sqlite:///sports_discord.db')
 
+MATCH_CONFIGS = [
+    {
+        'team_1': 'Gujarat Titans',
+        'team_1_num': 1,
+        'team_2': 'Rajasthan Royals',
+        'team_2_num': 2,
+        'start_timestamp': '2022-05-29T00:00:00.000Z',
+        'object_id': 1312200
+    },
+]
 PLAYER_CONFIGS = [
     {
         'name': 'Ambati Rayudu',
@@ -167,9 +175,28 @@ def insert_user_team_players():
             session.add(UserTeamPlayer(player_id=player_id, user_team_id=user_team.id))
 
 
+def insert_matches():
+    with sessionmaker(engine, autocommit=True).begin() as session:
+        for config in MATCH_CONFIGS:
+            match_1 = Match(
+                team_id=session.query(Team).filter(Team.name == config['team_1']).first().id,
+                external_id=config['object_id'],
+                match_num=config['team_1_num'],
+                start_timestamp=parse(config['start_timestamp'])
+            )
+            match_2 = Match(
+                team_id=session.query(Team).filter(Team.name == config['team_2']).first().id,
+                external_id=config['object_id'],
+                match_num=config['team_2_num'],
+                start_timestamp=parse(config['start_timestamp'])
+            )
+            session.bulk_save_objects([match_1, match_2])
+
+
 if __name__ == '__main__':
     insert_tournament()
     insert_user_teams()
     insert_teams()
     insert_players()
     insert_user_team_players()
+    insert_matches()
