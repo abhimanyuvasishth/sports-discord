@@ -1,6 +1,8 @@
 from sports_discord.database import Base
 from sports_discord.models.associations.tournament_auction_team import \
     tournament_auction_team
+from sports_discord.models.associations.tournament_playing_team import \
+    tournament_playing_team
 from sqlalchemy import TIMESTAMP, Boolean, Column, Integer, String, func
 from sqlalchemy.orm import relationship
 
@@ -21,5 +23,11 @@ class Tournament(Base):
     auction_teams = relationship(
         'AuctionTeam',
         secondary=tournament_auction_team,
+        back_populates='tournaments'
+    )
+
+    playing_teams = relationship(
+        'PlayingTeam',
+        secondary=tournament_playing_team,
         back_populates='tournaments'
     )

@@ -1,6 +1,9 @@
 from sports_discord.models.associations.tournament_auction_team import \
     tournament_auction_team
+from sports_discord.models.associations.tournament_playing_team import \
+    tournament_playing_team
 from sports_discord.models.auction_team import AuctionTeam
+from sports_discord.models.playing_team import PlayingTeam
 from sports_discord.models.tournament import Tournament
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -44,6 +47,33 @@ def insert_auction_teams():
             session.execute(tournament_auction_team.insert(), params=params)
 
 
+def insert_playing_teams():
+    playing_team_configs = [
+        {'name': 'Chennai Super Kings', 'abbrev': 'CSK'},
+        {'name': 'Delhi Capitals', 'abbrev': 'DC'},
+        {'name': 'Gujarat Titans', 'abbrev': 'GT'},
+        {'name': 'Kolkata Knight Riders', 'abbrev': 'KKR'},
+        {'name': 'Punjab Kings', 'abbrev': 'PK'},
+        {'name': 'Mumbai Indians', 'abbrev': 'MI'},
+        {'name': 'Sunrisers Hyderabad', 'abbrev': 'SRH'},
+        {'name': 'Rajasthan Royals', 'abbrev': 'RR'},
+        {'name': 'Lucknow Super Giants', 'abbrev': 'LSG'},
+        {'name': 'Royal Challengers Bangalore', 'abbrev': 'RCB'},
+    ]
+    with sessionmaker(engine, autocommit=True).begin() as session:
+        session.bulk_save_objects([PlayingTeam(**config) for config in playing_team_configs])
+
+    with sessionmaker(engine, autocommit=True).begin() as session:
+        tournament = session.query(Tournament).filter(Tournament.channel_id == channel_id).first()
+        for config in playing_team_configs:
+            team = session.query(PlayingTeam).filter(PlayingTeam.name == config['name']).first()
+            params = {
+                'tournament_id': tournament.id,
+                'playing_team_id': team.id,
+            }
+            session.execute(tournament_playing_team.insert(), params=params)
+
+
 def get_data(query):
     with sessionmaker(engine)() as session:
         result = session.execute(query)
@@ -53,3 +83,4 @@ def get_data(query):
 if __name__ == '__main__':
     insert_tournament()
     insert_auction_teams()
+    insert_playing_teams()

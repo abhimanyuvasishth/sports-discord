@@ -11,6 +11,7 @@ class AuctionTeam(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String, nullable=False, unique=True)
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
+
     tournaments = relationship(
         'Tournament',
         secondary=tournament_auction_team,
