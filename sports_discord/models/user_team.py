@@ -10,5 +10,6 @@ class UserTeam(Base):
     name = Column(String, nullable=False, unique=True)
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     discord_role_id = Column(String, nullable=False, unique=True)
+    team_points_row = Column(Integer, nullable=False, unique=True)
     tournament_id = Column(Integer, ForeignKey('tournament.id'))
     tournament = relationship('Tournament')

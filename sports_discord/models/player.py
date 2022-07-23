@@ -9,5 +9,7 @@ class Player(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String, nullable=False, unique=True)
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
+    points_row = Column(Integer, nullable=False, unique=True)
+    bidding_row = Column(Integer, nullable=False, unique=True)
     team_id = Column(Integer, ForeignKey('team.id'))
     team = relationship('Team')
