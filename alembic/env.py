@@ -5,6 +5,7 @@ from sports_discord.models.player import Player
 from sports_discord.models.team import Team
 from sports_discord.models.tournament import Tournament
 from sports_discord.models.user_team import UserTeam
+from sports_discord.models.user_team_player import UserTeamPlayer
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context

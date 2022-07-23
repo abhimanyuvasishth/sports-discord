@@ -3,6 +3,7 @@ from sports_discord.models.player import Player
 from sports_discord.models.team import Team
 from sports_discord.models.tournament import Tournament
 from sports_discord.models.user_team import UserTeam
+from sports_discord.models.user_team_player import UserTeamPlayer
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -41,3 +42,11 @@ def test_players(engine, tournament):
         player = session.query(Player).first()
         team = session.query(Team).filter(Team.id == player.team_id).first()
         assert team.tournament.id == tournament.id
+
+
+def test_user_team_players(engine, tournament):
+    with sessionmaker(engine)() as session:
+        user_team_player = session.query(UserTeamPlayer).first()
+        query = session.query(UserTeam).filter(UserTeam.id == user_team_player.user_team_id)
+        user_team = query.first()
+        assert user_team.tournament.id == tournament.id
