@@ -1,4 +1,5 @@
 import pytest
+from sports_discord.models.player import Player
 from sports_discord.models.team import Team
 from sports_discord.models.tournament import Tournament
 from sports_discord.models.user_team import UserTeam
@@ -33,3 +34,10 @@ def test_teams(engine, tournament):
         assert len(teams) == 10
         for team in teams:
             assert team.tournament.id == tournament.id
+
+
+def test_players(engine, tournament):
+    with sessionmaker(engine)() as session:
+        player = session.query(Player).first()
+        team = session.query(Team).filter(Team.id == player.team_id).first()
+        assert team.tournament.id == tournament.id

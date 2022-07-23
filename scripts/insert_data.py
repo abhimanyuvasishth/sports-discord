@@ -1,3 +1,4 @@
+from sports_discord.models.player import Player
 from sports_discord.models.team import Team
 from sports_discord.models.tournament import Tournament
 from sports_discord.models.user_team import UserTeam
@@ -49,6 +50,19 @@ def insert_teams():
         session.bulk_save_objects([Team(**config, tournament_id=1) for config in configs])
 
 
+def insert_players():
+    configs = [
+        {'name': 'Ambati Rayudu', 'team_name': 'Chennai Super Kings'},
+        {'name': 'Robin Uthappa', 'team_name': 'Chennai Super Kings'},
+        {'name': 'Anrich Nortje', 'team_name': 'Delhi Capitals'},
+        {'name': 'Vicky Ostwal', 'team_name': 'Delhi Capitals'},
+    ]
+    with sessionmaker(engine, autocommit=True).begin() as session:
+        for config in configs:
+            team_id = session.query(Team).filter(Team.name == config['team_name']).first().id
+            session.add(Player(name=config['name'], team_id=team_id))
+
+
 def get_data(query):
     with sessionmaker(engine)() as session:
         result = session.execute(query)
@@ -59,3 +73,4 @@ if __name__ == '__main__':
     insert_tournament()
     insert_user_teams()
     insert_teams()
+    insert_players()
