@@ -3,11 +3,9 @@ import os
 from discord import Embed
 from discord.ext import commands
 from dotenv import load_dotenv
-from sqlalchemy import select
 
-from scripts.insert_data import get_data
+from sports_discord.db_utils import get_tournament, get_user_team
 from sports_discord.google_sheet import get_sheet
-from sports_discord.models.tournament import Tournament
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -27,12 +25,23 @@ async def help(context):
 @bot.command(name='?sheetlink')
 async def sheet_link(context):
     try:
-        statement = select(Tournament).where(Tournament.channel_id == context.channel.id)
-        tournament = get_data(statement)[0][0]
+        tournament = get_tournament(context.channel.id)
         sheet = get_sheet(tournament.doc_name, tournament.points_sheet_name)
         embed = Embed(title=tournament.doc_name, url=sheet.spreadsheet.url)
         await context.reply(embed=embed)
     except (IndexError, TypeError):
         await context.reply('bad request')
+
+
+@bot.command(name='?info')
+async def info(context):
+    channel_name = context.channel.name
+    reply = f'Not a part of any roles for this tournament (e.g. {context.channel.name}-)'
+    for role in context.author.roles:
+        if role.name.startswith(channel_name):
+            user_team = get_user_team(role.id)
+            reply = user_team
+    await context.reply(reply)
+
 
 bot.run(TOKEN)

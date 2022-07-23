@@ -13,3 +13,6 @@ class UserTeam(Base):
     team_points_row = Column(Integer, nullable=False, unique=True)
     tournament_id = Column(Integer, ForeignKey('tournament.id'))
     tournament = relationship('Tournament')
+
+    def __repr__(self):
+        return f'UserTeam(name="{self.name}", team points row={self.team_points_row})'

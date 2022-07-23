@@ -167,12 +167,6 @@ def insert_user_team_players():
             session.add(UserTeamPlayer(player_id=player_id, user_team_id=user_team.id))
 
 
-def get_data(query):
-    with sessionmaker(engine)() as session:
-        result = session.execute(query)
-        return result.fetchall()
-
-
 if __name__ == '__main__':
     insert_tournament()
     insert_user_teams()
