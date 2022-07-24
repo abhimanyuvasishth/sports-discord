@@ -1,6 +1,6 @@
 from dateutil.parser import parse
-from sports_discord.models import (Match, Player, Team, Tournament, UserTeam,
-                                   UserTeamPlayer)
+from sports_discord.models import (Match, MatchPlayer, Player, Team,
+                                   Tournament, UserTeam, UserTeamPlayer)
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -9,11 +9,11 @@ engine = create_engine('sqlite:///sports_discord.db')
 
 MATCH_CONFIGS = [
     {
-        'team_1': 'Gujarat Titans',
+        'team_1': 'Chennai Super Kings',
         'team_1_num': 1,
-        'team_2': 'Rajasthan Royals',
+        'team_2': 'Delhi Capitals',
         'team_2_num': 2,
-        'start_timestamp': '2022-05-29T00:00:00.000Z',
+        'start_timestamp': '2022-08-29T00:00:00.000Z',
         'object_id': 1312200
     },
 ]
@@ -24,6 +24,13 @@ PLAYER_CONFIGS = [
         'user_team_name': 'Namit',
         'points_row': 6,
         'bidding_row': 47,
+    },
+    {
+        'name': 'Maheesh Theekshana',
+        'team_name': 'Chennai Super Kings',
+        'user_team_name': 'Shiv, Aryaman',
+        'points_row': 19,
+        'bidding_row': 144,
     },
     {
         'name': 'Robin Uthappa',
@@ -38,6 +45,13 @@ PLAYER_CONFIGS = [
         'user_team_name': 'Paro, Rahul, Taro',
         'points_row': 34,
         'bidding_row': 51,
+    },
+    {
+        'name': 'Rovman Powell',
+        'team_name': 'Delhi Capitals',
+        'user_team_name': 'Shiv, Aryaman',
+        'points_row': 38,
+        'bidding_row': 55,
     },
     {
         'name': 'Vicky Ostwal',
@@ -193,6 +207,27 @@ def insert_matches():
             session.bulk_save_objects([match_1, match_2])
 
 
+def insert_match_players():
+    with sessionmaker(engine, autocommit=True).begin() as session:
+        for match_config in MATCH_CONFIGS:
+            team = session.query(Team).filter(Team.name == match_config['team_1']).first()
+            match = session.query(Match).filter(Match.team_id == team.id).first()
+            for player_config in PLAYER_CONFIGS:
+                if team.name == player_config['team_name']:
+                    player = session.query(Player).filter(
+                        Player.name == player_config['name']
+                    ).first()
+                    user_team_player = session.query(UserTeamPlayer).filter(
+                        UserTeamPlayer.player_id == player.id
+                    ).first()
+                    match_player = MatchPlayer(
+                        match_id=match.id,
+                        player_id=player.id,
+                        user_team_player_id=user_team_player.id
+                    )
+                    session.add(match_player)
+
+
 if __name__ == '__main__':
     insert_tournament()
     insert_user_teams()
@@ -200,3 +235,4 @@ if __name__ == '__main__':
     insert_players()
     insert_user_team_players()
     insert_matches()
+    insert_match_players()

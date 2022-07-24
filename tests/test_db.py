@@ -1,6 +1,6 @@
 import pytest
-from sports_discord.models import (Match, Player, Team, Tournament, UserTeam,
-                                   UserTeamPlayer)
+from sports_discord.models import (Match, MatchPlayer, Player, Team,
+                                   Tournament, UserTeam, UserTeamPlayer)
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
@@ -53,3 +53,10 @@ def test_match(engine):
     with sessionmaker(engine)() as session:
         team_counts = session.query(func.count(Match.id)).group_by(Match.external_id).all()
         assert all([count == 2 for result in team_counts for count in result])
+
+
+def test_match_player(engine):
+    with sessionmaker(engine)() as session:
+        mt_query = session.query(Team.id).join(Match).join(MatchPlayer).filter(MatchPlayer.id == 1)
+        pt_query = session.query(Team.id).join(Player).join(MatchPlayer).filter(MatchPlayer.id == 1)
+        assert mt_query.first() == pt_query.first()
