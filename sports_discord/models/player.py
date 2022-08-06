@@ -1,6 +1,15 @@
+import enum
+
 from sports_discord.database import Base
-from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, String, func
+from sqlalchemy import (TIMESTAMP, Column, Enum, ForeignKey, Integer, String,
+                        func)
 from sqlalchemy.orm import relationship
+
+
+class PlayerPool(enum.Enum):
+    A = 1
+    B = 2
+    C = 3
 
 
 class Player(Base):
@@ -9,7 +18,6 @@ class Player(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String, nullable=False, unique=True)
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
-    points_row = Column(Integer, nullable=False, unique=True)
-    bidding_row = Column(Integer, nullable=False, unique=True)
+    pool = Column(Enum(PlayerPool), nullable=False)
     team_id = Column(Integer, ForeignKey('team.id'))
     team = relationship('Team')

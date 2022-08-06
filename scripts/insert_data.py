@@ -1,6 +1,7 @@
 from dateutil.parser import parse
 from sports_discord.models import (Match, MatchPlayer, Player, Team,
                                    Tournament, UserTeam, UserTeamPlayer)
+from sports_discord.models.player import PlayerPool
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -22,43 +23,37 @@ PLAYER_CONFIGS = [
         'name': 'Ambati Rayudu',
         'team_name': 'Chennai Super Kings',
         'user_team_name': 'Namit',
-        'points_row': 6,
-        'bidding_row': 47,
+        'pool': 'A'
     },
     {
         'name': 'Maheesh Theekshana',
         'team_name': 'Chennai Super Kings',
         'user_team_name': 'Shiv, Aryaman',
-        'points_row': 19,
-        'bidding_row': 144,
+        'pool': 'B'
     },
     {
         'name': 'Robin Uthappa',
         'team_name': 'Chennai Super Kings',
         'user_team_name': 'Desai, Kush, Naman',
-        'points_row': 24,
-        'bidding_row': 127,
+        'pool': 'C'
     },
     {
         'name': 'Anrich Nortje',
         'team_name': 'Delhi Capitals',
         'user_team_name': 'Paro, Rahul, Taro',
-        'points_row': 34,
-        'bidding_row': 51,
+        'pool': 'A'
     },
     {
         'name': 'Rovman Powell',
         'team_name': 'Delhi Capitals',
         'user_team_name': 'Shiv, Aryaman',
-        'points_row': 38,
-        'bidding_row': 55,
+        'pool': 'B'
     },
     {
         'name': 'Vicky Ostwal',
         'team_name': 'Delhi Capitals',
         'user_team_name': None,
-        'points_row': 53,
-        'bidding_row': 159,
+        'pool': 'B'
     },
 ]
 TEAM_CONFIGS = [
@@ -112,37 +107,30 @@ USER_TEAM_CONFIGS = [
     {
         'name': 'Sardarz',
         'discord_role_id': '998119025773133886',
-        'team_points_row': 2,
     },
     {
         'name': 'Neel, Shef, Shikhar',
         'discord_role_id': '1000258844053749812',
-        'team_points_row': 3,
     },
     {
         'name': 'Paro, Rahul, Taro',
         'discord_role_id': '1000257644545703987',
-        'team_points_row': 4,
     },
     {
         'name': 'Namit',
         'discord_role_id': '998121154969620490',
-        'team_points_row': 5,
     },
     {
         'name': 'Ishan, Gayu',
         'discord_role_id': '1000258730899820554',
-        'team_points_row': 6,
     },
     {
         'name': 'Desai, Kush, Naman',
         'discord_role_id': '1000258231874113556',
-        'team_points_row': 7,
     },
     {
         'name': 'Shiv, Aryaman',
         'discord_role_id': '1000258432890310677',
-        'team_points_row': 8,
     },
 ]
 
@@ -171,8 +159,7 @@ def insert_players():
             player = Player(
                 name=config['name'],
                 team_id=team_id,
-                points_row=config['points_row'],
-                bidding_row=config['bidding_row'],
+                pool=PlayerPool[config['pool']]
             )
             session.add(player)
 
