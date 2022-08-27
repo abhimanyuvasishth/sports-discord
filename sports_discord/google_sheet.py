@@ -22,5 +22,6 @@ def authorize_client():
         'https://www.googleapis.com/auth/drive.file'
     ]
     parsed_dict = json.loads(os.getenv('GOOGLE_SHEETS_CREDENTIALS'))
+    print(parsed_dict)
     creds = ServiceAccountCredentials.from_json_keyfile_dict(parsed_dict, scopes)
     return gspread.authorize(creds)
