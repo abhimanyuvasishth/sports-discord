@@ -10,7 +10,12 @@ from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-bot = commands.Bot(command_prefix='?', intents=Intents(messages=True, guilds=True))
+intents = Intents(
+    messages=True,
+    message_content=True,
+    guilds=True
+)
+bot = commands.Bot(command_prefix='?', intents=intents)
 
 
 @bot.command()
