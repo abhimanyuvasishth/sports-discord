@@ -19,13 +19,13 @@ bot = commands.Bot(command_prefix='?', intents=intents)
 
 
 @bot.command()
-async def shuffle(context, args):
+async def shuffle(context, *args):
     """
     Shuffles a list of comma separated values.
 
     For example: ?shuffle cat,dog,monkey,donkey
     """
-    items = args.split(',')
+    items = ''.join(args).split(',')
     random.shuffle(items)
     await context.reply(', '.join(items))
 
@@ -59,6 +59,16 @@ async def info(context):
             user_team = get_user_team(str(role.id))
             reply = user_team
     await context.reply(reply)
+
+
+@bot.command()
+async def kaptaan(context, *args):
+    """
+    Set a kaptaan
+
+    For example: ?kaptaan Kohli
+    """
+    await context.reply(f'Kaptaan set to {" ".join(args)}')
 
 
 bot.run(TOKEN)
