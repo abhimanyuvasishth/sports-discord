@@ -1,5 +1,5 @@
 alembic
-discord
+discord==1.7.3
 flake8
 gspread
 oauth2client
