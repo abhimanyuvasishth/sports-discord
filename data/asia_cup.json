@@ -1,0 +1,51 @@
+{
+    "tournament": {
+        "series_id": "1327237",
+        "channel_id": "1004577937837793330",
+        "doc_name": "Asia Cup 2022"
+    },
+    "teams": [
+        {
+            "name": "India",
+            "abbrev": "IND"
+        },
+        {
+            "name": "Pakistan",
+            "abbrev": "PAK"
+        },
+        {
+            "name": "Sri Lanka",
+            "abbrev": "SL"
+        },
+        {
+            "name": "Bangladesh",
+            "abbrev": "BD"
+        },
+        {
+            "name": "Hong Kong",
+            "abbrev": "HK"
+        },
+        {
+            "name": "Afghanistan",
+            "abbrev": "AFG"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "team-squid-and-bois",
+            "discord_role_id": "1011749877623029842"
+        },
+        {
+            "name": "team-suburb-sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "team-namo-naga",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "team-neel-shef",
+            "discord_role_id": "1011749363942424676"
+        }
+    ]
+}

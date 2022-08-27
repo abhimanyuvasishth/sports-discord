@@ -1,3 +1,4 @@
+import random
 import os
 
 from discord import Embed
@@ -9,21 +10,28 @@ from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-bot = commands.Bot(command_prefix='/auctionbot')
+bot = commands.Bot(command_prefix='?')
 
 
-@bot.command(name='?help')
-async def help(context):
-    command_examples = '\n'.join([
-        '?transfer {in} for {out}',
-        '?sheetlink',
-    ])
-    message = f"Here are examples of valid commands:\n>>> {command_examples}"
-    await context.reply(message)
+@bot.command()
+async def shuffle(context, args):
+    """
+    Shuffles a list of comma separated values. For example:
+
+    ?shuffle cat,dog,monkey,donkey
+    """
+    items = args.split(',')
+    random.shuffle(items)
+    await context.reply(', '.join(items))
 
 
-@bot.command(name='?sheetlink')
+@bot.command(name='sheet_link')
 async def sheet_link(context):
+    """
+    Returns the link of the google sheet for the tournament. For example:
+
+    ?sheet_link
+    """
     try:
         tournament = get_tournament(context.channel.id)
         sheet = get_sheet(tournament.doc_name, tournament.points_sheet_name)
@@ -33,13 +41,17 @@ async def sheet_link(context):
         await context.reply('bad request')
 
 
-@bot.command(name='?info')
+@bot.command()
 async def info(context):
-    channel_name = context.channel.name
-    reply = f'Not a part of any roles for this tournament (e.g. {context.channel.name}-)'
+    """
+    Get information about your team. For example:
+
+    ?info
+    """
+    reply = 'Not a part of any teams for this tournament'
     for role in context.author.roles:
-        if role.name.startswith(channel_name):
-            user_team = get_user_team(role.id)
+        if role.name.startswith('team-'):
+            user_team = get_user_team(str(role.id))
             reply = user_team
     await context.reply(reply)
 

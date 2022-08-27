@@ -1,13 +1,18 @@
+import json
+from os import getenv
+
 from dateutil.parser import parse
+from dotenv import load_dotenv
 from sports_discord.models import (Match, MatchPlayer, Player, Team,
                                    Tournament, UserTeam, UserTeamPlayer)
-from sports_discord.models.player import PlayerPool
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-channel_id = '996269799539757056'
-engine = create_engine('sqlite:///sports_discord.db')
+load_dotenv()
+engine = create_engine(getenv('POSTGRES_URI'))
 
+
+# From scorecard autopopulater scraper
 MATCH_CONFIGS = [
     {
         'team_1': 'Chennai Super Kings',
@@ -18,6 +23,8 @@ MATCH_CONFIGS = [
         'object_id': 1312200
     },
 ]
+
+# Post Auction scrape from sheet
 PLAYER_CONFIGS = [
     {
         'name': 'Ambati Rayudu',
@@ -56,100 +63,23 @@ PLAYER_CONFIGS = [
         'pool': 'B'
     },
 ]
-TEAM_CONFIGS = [
-    {
-        'name': 'Chennai Super Kings',
-        'abbrev': 'CSK'
-    },
-    {
-        'name': 'Delhi Capitals',
-        'abbrev': 'DC'
-    },
-    {
-        'name': 'Gujarat Titans',
-        'abbrev': 'GT'
-    },
-    {
-        'name': 'Kolkata Knight Riders',
-        'abbrev': 'KKR'
-    },
-    {
-        'name': 'Punjab Kings',
-        'abbrev': 'PK'
-    },
-    {
-        'name': 'Mumbai Indians',
-        'abbrev': 'MI'
-    },
-    {
-        'name': 'Sunrisers Hyderabad',
-        'abbrev': 'SRH'
-    },
-    {
-        'name': 'Rajasthan Royals',
-        'abbrev': 'RR'
-    },
-    {
-        'name': 'Lucknow Super Giants',
-        'abbrev': 'LSG'
-    },
-    {
-        'name': 'Royal Challengers Bangalore',
-        'abbrev': 'RCB'
-    },
-]
-TOURNAMENT_CONFIG = {
-    'series_id': '1298423',
-    'channel_id': '996269799539757056',
-    'doc_name': 'IPL 15 auction',
-}
-USER_TEAM_CONFIGS = [
-    {
-        'name': 'Sardarz',
-        'discord_role_id': '998119025773133886',
-    },
-    {
-        'name': 'Neel, Shef, Shikhar',
-        'discord_role_id': '1000258844053749812',
-    },
-    {
-        'name': 'Paro, Rahul, Taro',
-        'discord_role_id': '1000257644545703987',
-    },
-    {
-        'name': 'Namit',
-        'discord_role_id': '998121154969620490',
-    },
-    {
-        'name': 'Ishan, Gayu',
-        'discord_role_id': '1000258730899820554',
-    },
-    {
-        'name': 'Desai, Kush, Naman',
-        'discord_role_id': '1000258231874113556',
-    },
-    {
-        'name': 'Shiv, Aryaman',
-        'discord_role_id': '1000258432890310677',
-    },
-]
 
 
-def insert_tournament():
+def insert_tournament(tournament_config):
     with sessionmaker(engine, autocommit=True).begin() as session:
-        session.add(Tournament(**TOURNAMENT_CONFIG))
+        session.add(Tournament(**tournament_config))
 
 
-def insert_user_teams():
+def insert_user_teams(user_team_configs):
     with sessionmaker(engine, autocommit=True).begin() as session:
         session.bulk_save_objects(
-            [UserTeam(**config, tournament_id=1) for config in USER_TEAM_CONFIGS]
+            [UserTeam(**config, tournament_id=1) for config in user_team_configs]
         )
 
 
-def insert_teams():
+def insert_teams(team_configs):
     with sessionmaker(engine, autocommit=True).begin() as session:
-        session.bulk_save_objects([Team(**config, tournament_id=1) for config in TEAM_CONFIGS])
+        session.bulk_save_objects([Team(**config, tournament_id=1) for config in team_configs])
 
 
 def insert_players():
@@ -159,7 +89,7 @@ def insert_players():
             player = Player(
                 name=config['name'],
                 team_id=team_id,
-                pool=PlayerPool[config['pool']]
+                # pool=PlayerPool[config['pool']]
             )
             session.add(player)
 
@@ -216,10 +146,13 @@ def insert_match_players():
 
 
 if __name__ == '__main__':
-    insert_tournament()
-    insert_user_teams()
-    insert_teams()
-    insert_players()
-    insert_user_team_players()
-    insert_matches()
-    insert_match_players()
+    with open('data/asia_cup.json') as f:
+        configs = json.loads(f.read())
+
+    insert_tournament(configs['tournament'])
+    insert_user_teams(configs['user_teams'])
+    insert_teams(configs['teams'])
+    # insert_players()
+    # insert_user_team_players()
+    # insert_matches()
+    # insert_match_players()

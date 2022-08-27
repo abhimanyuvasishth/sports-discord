@@ -14,4 +14,4 @@ class UserTeam(Base):
     tournament = relationship('Tournament')
 
     def __repr__(self):
-        return f'UserTeam(name="{self.name}", team points row={self.team_points_row})'
+        return f'UserTeam(name="{self.name}")'

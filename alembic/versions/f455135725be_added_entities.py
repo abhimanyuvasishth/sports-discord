@@ -1,8 +1,8 @@
 """added entities
 
-Revision ID: a6c6897f50f5
+Revision ID: f455135725be
 Revises: 
-Create Date: 2022-08-05 18:55:03.803484
+Create Date: 2022-08-26 21:23:22.221164
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a6c6897f50f5'
+revision = 'f455135725be'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,7 +27,7 @@ def upgrade() -> None:
     sa.Column('bidding_sheet_name', sa.String(), nullable=False),
     sa.Column('team_points_name', sa.String(), nullable=False),
     sa.Column('active', sa.Boolean(), nullable=False),
-    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('now()'), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('channel_id'),
     sa.UniqueConstraint('doc_name')
@@ -36,7 +36,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('abbrev', sa.String(), nullable=False),
-    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('now()'), nullable=False),
     sa.Column('tournament_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['tournament_id'], ['tournament.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -46,7 +46,7 @@ def upgrade() -> None:
     op.create_table('user_team',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('now()'), nullable=False),
     sa.Column('discord_role_id', sa.String(), nullable=False),
     sa.Column('tournament_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['tournament_id'], ['tournament.id'], ),
@@ -67,8 +67,7 @@ def upgrade() -> None:
     op.create_table('player',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
-    sa.Column('pool', sa.Enum('A', 'B', 'C', name='playerpool'), nullable=False),
+    sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('now()'), nullable=False),
     sa.Column('team_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['team_id'], ['team.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -76,7 +75,7 @@ def upgrade() -> None:
     )
     op.create_table('user_team_player',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('transfer_timestamp', sa.TIMESTAMP(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('transfer_timestamp', sa.TIMESTAMP(), server_default=sa.text('now()'), nullable=False),
     sa.Column('player_id', sa.Integer(), nullable=True),
     sa.Column('user_team_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['player_id'], ['player.id'], ),
@@ -85,9 +84,9 @@ def upgrade() -> None:
     )
     op.create_table('match_player',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('match_id', sa.String(), nullable=True),
-    sa.Column('player_id', sa.String(), nullable=True),
-    sa.Column('user_team_player_id', sa.String(), nullable=True),
+    sa.Column('match_id', sa.Integer(), nullable=True),
+    sa.Column('player_id', sa.Integer(), nullable=True),
+    sa.Column('user_team_player_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['match_id'], ['match.id'], ),
     sa.ForeignKeyConstraint(['player_id'], ['player.id'], ),
     sa.ForeignKeyConstraint(['user_team_player_id'], ['user_team_player.id'], ),
