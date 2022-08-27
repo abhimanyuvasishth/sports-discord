@@ -16,9 +16,9 @@ bot = commands.Bot(command_prefix='?')
 @bot.command()
 async def shuffle(context, args):
     """
-    Shuffles a list of comma separated values. For example:
+    Shuffles a list of comma separated values.
 
-    ?shuffle cat,dog,monkey,donkey
+    For example: ?shuffle cat,dog,monkey,donkey
     """
     items = args.split(',')
     random.shuffle(items)
@@ -28,9 +28,9 @@ async def shuffle(context, args):
 @bot.command(name='sheet_link')
 async def sheet_link(context):
     """
-    Returns the link of the google sheet for the tournament. For example:
+    Returns the link of the google sheet for the tournament.
 
-    ?sheet_link
+    For example: ?sheet_link
     """
     try:
         tournament = get_tournament(context.channel.id)
@@ -44,9 +44,9 @@ async def sheet_link(context):
 @bot.command()
 async def info(context):
     """
-    Get information about your team. For example:
+    Get information about your team.
 
-    ?info
+    For example: ?info
     """
     reply = 'Not a part of any teams for this tournament'
     for role in context.author.roles:
