@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
-engine = create_engine(getenv('POSTGRES_URI'))
+engine = create_engine(getenv('DATABASE_URL'))
 
 
 # From scorecard autopopulater scraper

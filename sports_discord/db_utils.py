@@ -10,7 +10,7 @@ from sports_discord.models.tournament import Tournament
 from sports_discord.models.user_team import UserTeam
 
 load_dotenv()
-engine = create_engine(os.getenv('POSTGRES_URI'))
+engine = create_engine(os.getenv('DATABASE_URL'))
 
 
 @cache
