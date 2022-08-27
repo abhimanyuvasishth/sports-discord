@@ -1,8 +1,8 @@
 """added entities
 
-Revision ID: f455135725be
+Revision ID: a4d4e89d7bfe
 Revises: 
-Create Date: 2022-08-26 21:23:22.221164
+Create Date: 2022-08-27 13:05:48.421902
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f455135725be'
+revision = 'a4d4e89d7bfe'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -84,13 +84,15 @@ def upgrade() -> None:
     )
     op.create_table('match_player',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('captain', sa.Boolean(), nullable=False),
     sa.Column('match_id', sa.Integer(), nullable=True),
     sa.Column('player_id', sa.Integer(), nullable=True),
     sa.Column('user_team_player_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['match_id'], ['match.id'], ),
     sa.ForeignKeyConstraint(['player_id'], ['player.id'], ),
     sa.ForeignKeyConstraint(['user_team_player_id'], ['user_team_player.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('match_id', 'player_id', 'user_team_player_id')
     )
     # ### end Alembic commands ###
 

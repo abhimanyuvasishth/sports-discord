@@ -5,7 +5,7 @@ from discord import Embed, Intents
 from discord.ext import commands
 from dotenv import load_dotenv
 
-from sports_discord.db_utils import get_tournament, get_user_team
+from sports_discord import db_utils, sheet_utils
 from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
@@ -15,7 +15,7 @@ intents = Intents(
     message_content=True,
     guilds=True
 )
-bot = commands.Bot(command_prefix='?', intents=intents)
+bot = commands.Bot(command_prefix='?', intents=intents, case_insensitive=True)
 
 
 @bot.command()
@@ -38,12 +38,19 @@ async def sheet_link(context):
     For example: ?sheet_link
     """
     try:
-        tournament = get_tournament(context.channel.id)
+        tournament = db_utils.get_tournament(context.channel.id)
         sheet = get_sheet(tournament.doc_name, tournament.points_sheet_name)
         embed = Embed(title=tournament.doc_name, url=sheet.spreadsheet.url)
         await context.reply(embed=embed)
     except (IndexError, TypeError):
         await context.reply('bad request')
+
+
+def get_role_id(roles):
+    for role in roles:
+        if role.name.startswith('team-'):
+            role_id = str(role.id)
+            return role_id
 
 
 @bot.command()
@@ -54,10 +61,9 @@ async def info(context):
     For example: ?info
     """
     reply = 'Not a part of any teams for this tournament'
-    for role in context.author.roles:
-        if role.name.startswith('team-'):
-            user_team = get_user_team(str(role.id))
-            reply = user_team
+    role_id = get_role_id(context.author.roles)
+    if role_id:
+        reply = db_utils.get_user_team(role_id)
     await context.reply(reply)
 
 
@@ -68,7 +74,35 @@ async def kaptaan(context, *args):
 
     For example: ?kaptaan Kohli
     """
-    await context.reply(f'Kaptaan set to {" ".join(args)} (not yet implemented though)')
+    role_id = get_role_id(context.author.roles)
+    player_name = ' '.join(args)
+    new_captain = db_utils.get_new_captain(role_id, player_name)
+
+    if len(new_captain) == 0:
+        error_message = f"Error: Couldn't find a player on your team with name: '{player_name}'."
+        error_message += ' Please choose someone playing in the next match who is on your team.'
+        return await context.reply(f'{error_message} ')
+    if len(new_captain) > 1:
+        names = [candidate[2] for candidate in new_captain]
+        error_message = f"""
+            Error: Found multiple players with name: '{player_name}', {names}. Please choose one.
+        """
+        return await context.reply(error_message)
+
+    new_captain_match_player_id, new_captain_match_num, new_captain_name = new_captain[0]
+    message = f'Kaptaan set to {new_captain_name}'
+
+    old_captain = db_utils.get_old_captain(role_id)
+    if old_captain:
+        old_captain_match_player_id, old_captain_match_num, old_captain_name = old_captain
+        db_utils.update_captain(old_captain_match_player_id, False)
+        sheet_utils.update_captain(old_captain_name, old_captain_match_num, False)
+        message = f'Kaptaan changed from {old_captain_name} to {new_captain_name}'
+
+    db_utils.update_captain(new_captain_match_player_id, True)
+    sheet_utils.update_captain(new_captain_name, new_captain_match_num, True)
+
+    await context.reply(message)
 
 
 bot.run(TOKEN)

@@ -87,22 +87,26 @@ def insert_matches(match_configs):
 def insert_match_players(player_configs, match_configs):
     with sessionmaker(engine, autocommit=True).begin() as session:
         for match_config in match_configs:
-            team = session.query(Team).filter(Team.name == match_config['team_1']).first()
-            match = session.query(Match).filter(Match.team_id == team.id).first()
-            for player_config in player_configs:
-                if team.name == player_config['team_name']:
-                    player = session.query(Player).filter(
-                        Player.name == player_config['name']
-                    ).first()
-                    user_team_player = session.query(UserTeamPlayer).filter(
-                        UserTeamPlayer.player_id == player.id
-                    ).first()
-                    match_player = MatchPlayer(
-                        match_id=match.id,
-                        player_id=player.id,
-                        user_team_player_id=user_team_player.id
-                    )
-                    session.add(match_player)
+            for team_key in ['team_1', 'team_2']:
+                team = session.query(Team).filter(Team.name == match_config[team_key]).first()
+                match = session.query(Match) \
+                    .filter(Match.team_id == team.id) \
+                    .filter(Match.external_id == str(match_config['object_id'])) \
+                    .first()
+                for player_config in player_configs:
+                    if team.name == player_config['team_name']:
+                        player = session.query(Player).filter(
+                            Player.name == player_config['name']
+                        ).first()
+                        user_team_player = session.query(UserTeamPlayer).filter(
+                            UserTeamPlayer.player_id == player.id
+                        ).first()
+                        match_player = MatchPlayer(
+                            match_id=match.id,
+                            player_id=player.id,
+                            user_team_player_id=user_team_player.id
+                        )
+                        session.add(match_player)
 
 
 if __name__ == '__main__':
