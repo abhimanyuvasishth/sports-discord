@@ -68,7 +68,7 @@ async def kaptaan(context, *args):
 
     For example: ?kaptaan Kohli
     """
-    await context.reply(f'Kaptaan set to {" ".join(args)}')
+    await context.reply(f'Kaptaan set to {" ".join(args)} (not yet implemented though)')
 
 
 bot.run(TOKEN)
