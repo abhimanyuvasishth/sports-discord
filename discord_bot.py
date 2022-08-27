@@ -1,7 +1,7 @@
 import random
 import os
 
-from discord import Embed
+from discord import Embed, Intents
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -10,7 +10,7 @@ from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-bot = commands.Bot(command_prefix='?')
+bot = commands.Bot(command_prefix='?', intents=Intents(messages=True, guilds=True))
 
 
 @bot.command()
