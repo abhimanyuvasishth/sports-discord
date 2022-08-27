@@ -24,7 +24,7 @@ def authorize_client():
         "type": os.getenv('GOOGLE_SHEET_CREDENTIAL_TYPE'),
         "project_id": os.getenv('GOOGLE_SHEET_PROJECT_ID'),
         "private_key_id": os.getenv('GOOGLE_SHEET_PRIVATE_KEY_ID'),
-        "private_key": os.getenv('GOOGLE_SHEET_PRIVATE_KEY'),
+        "private_key": os.getenv('GOOGLE_SHEET_PRIVATE_KEY').replace('\\n', '\n'),
         "client_email": os.getenv('GOOGLE_SHEET_CLIENT_EMAIL'),
         "client_id": os.getenv('GOOGLE_SHEET_CLIENT_ID'),
         "auth_uri": os.getenv('GOOGLE_SHEET_AUTH_URI'),
