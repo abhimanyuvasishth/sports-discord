@@ -56,4 +56,4 @@ async def info(context):
     await context.reply(reply)
 
 
-# bot.run(TOKEN)
+bot.run(TOKEN)
