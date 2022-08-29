@@ -59,41 +59,41 @@
         },
         {
             "team_1": "India",
-            "team_1_num": 0,
+            "team_1_num": 1,
             "team_2": "Pakistan",
-            "team_2_num": 0,
+            "team_2_num": 1,
             "start_timestamp": "2022-08-28T14:00:00.000Z",
             "object_id": 1327270
         },
         {
             "team_1": "Afghanistan",
-            "team_1_num": 0,
+            "team_1_num": 2,
             "team_2": "Bangladesh",
-            "team_2_num": 0,
+            "team_2_num": 1,
             "start_timestamp": "2022-08-30T14:00:00.000Z",
             "object_id": 1327271
         },
         {
             "team_1": "India",
-            "team_1_num": 0,
+            "team_1_num": 2,
             "team_2": "Hong Kong",
-            "team_2_num": 0,
+            "team_2_num": 1,
             "start_timestamp": "2022-08-31T14:00:00.000Z",
             "object_id": 1327272
         },
         {
             "team_1": "Bangladesh",
-            "team_1_num": 0,
+            "team_1_num": 2,
             "team_2": "Sri Lanka",
-            "team_2_num": 0,
+            "team_2_num": 2,
             "start_timestamp": "2022-09-01T14:00:00.000Z",
             "object_id": 1327273
         },
         {
             "team_1": "Pakistan",
-            "team_1_num": 0,
+            "team_1_num": 2,
             "team_2": "Hong Kong",
-            "team_2_num": 0,
+            "team_2_num": 2,
             "start_timestamp": "2022-09-02T14:00:00.000Z",
             "object_id": 1327274
         }
