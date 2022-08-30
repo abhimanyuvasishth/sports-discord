@@ -56,7 +56,7 @@ def get_role_id(roles):
 @bot.command()
 async def info(context):
     """
-    Get information about your team.
+    Gets information about your team.
 
     For example: ?info
     """
@@ -70,7 +70,7 @@ async def info(context):
 @bot.command()
 async def kaptaan(context, *args):
     """
-    Set a kaptaan
+    Sets a kaptaan
 
     For example: ?kaptaan Kohli
     """
@@ -107,6 +107,11 @@ async def kaptaan(context, *args):
 
 @bot.command()
 async def team_points(context):
+    """
+    Displays team points & ranks
+
+    For example: ?team_points
+    """
     num_2_words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
     message_lines = ['**Team Points**']
     team_points = sheet_utils.get_team_points()
