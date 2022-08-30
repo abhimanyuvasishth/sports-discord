@@ -105,4 +105,15 @@ async def kaptaan(context, *args):
     await context.reply(message)
 
 
+@bot.command()
+async def team_points(context):
+    num_2_words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+    message_lines = ['**Team Points**']
+    team_points = sheet_utils.get_team_points()
+    for team in team_points:
+        rank = num_2_words[team['rank'] - 1]
+        message_lines.append(f':{rank}: - {team["name"]} with {team["points"]} points')
+    await context.reply('\n'.join(message_lines))
+
+
 bot.run(TOKEN)
