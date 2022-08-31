@@ -15,7 +15,7 @@ intents = Intents(
     message_content=True,
     guilds=True
 )
-bot = commands.Bot(command_prefix='?', intents=intents, case_insensitive=True)
+bot = commands.Bot(command_prefix='!', intents=intents, case_insensitive=True)
 
 
 @bot.command()
