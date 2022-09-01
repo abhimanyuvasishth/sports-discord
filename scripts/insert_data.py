@@ -34,7 +34,7 @@ def create_player_configs():
     player_configs = []
     sheet = get_sheet('Asia Cup 2022', 'Bidding Page')
     rows = sheet.get_all_values()
-    for row in rows[20:64]:
+    for row in rows[20:119]:
         player_configs.append({
             'name': row[1],
             'team_name': row[2],
@@ -60,10 +60,9 @@ def insert_user_team_players(player_configs):
             user_team = session.query(UserTeam).filter(
                 UserTeam.name == config['user_team_name']
             ).first()
-            if not user_team:
-                continue
+            user_team_id = user_team.id if user_team else None
             player_id = session.query(Player).filter(Player.name == config['name']).first().id
-            session.add(UserTeamPlayer(player_id=player_id, user_team_id=user_team.id))
+            session.add(UserTeamPlayer(player_id=player_id, user_team_id=user_team_id))
 
 
 def insert_matches(match_configs):

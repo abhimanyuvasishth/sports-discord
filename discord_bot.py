@@ -121,4 +121,26 @@ async def team_points(context):
     await context.reply('\n'.join(message_lines))
 
 
+@bot.command()
+async def transfer_in(context, *args):
+    """
+    Transfer player in for player out
+
+    For example: ?transfer wantthisperson for dontwantthisperson
+    """
+    """
+    STEPS:
+
+    1. Update transfer_out from user_team_player
+    2. Update transfer_in from user_team_player
+    3. Update bidding page team name for the player
+    4. Store points for player_out
+    5. Store points for player_in
+    6. Update net effect of transfers for that team
+    7. Update transfers for that team
+    """
+
+    await context.reply('Not implemented yet')
+
+
 bot.run(TOKEN)
