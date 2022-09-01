@@ -33,17 +33,13 @@ async def shuffle(context, *args):
 @bot.command(name='sheet_link')
 async def sheet_link(context):
     """
-    Returns the link of the google sheet for the tournament
+    Returns the link to the google sheet
 
     For example: ?sheet_link
     """
-    try:
-        tournament = db_utils.get_tournament(context.channel.id)
-        sheet = get_sheet(tournament.doc_name, tournament.points_sheet_name)
-        embed = Embed(title=tournament.doc_name, url=sheet.spreadsheet.url)
-        await context.reply(embed=embed)
-    except (IndexError, TypeError):
-        await context.reply('bad request')
+    sheet = get_sheet('Asia Cup 2022', 'Points Worksheet')
+    embed = Embed(title=sheet.doc_name, url=sheet.spreadsheet.url)
+    await context.reply(embed=embed)
 
 
 def get_role_id(roles):
@@ -60,7 +56,7 @@ async def info(context):
 
     For example: ?info
     """
-    reply = 'Not a part of any teams for this tournament'
+    reply = 'Not a part of any teams for this auction/draft'
     role_id = get_role_id(context.author.roles)
     if role_id:
         reply = db_utils.get_user_team(role_id)

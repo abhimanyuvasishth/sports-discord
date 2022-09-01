@@ -2,7 +2,6 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 from functools import cache
-from typing import Optional
 
 from sqlalchemy import create_engine, update
 from sqlalchemy.orm import sessionmaker
@@ -10,17 +9,10 @@ from sqlalchemy.orm import sessionmaker
 from sports_discord.models.match import Match
 from sports_discord.models.match_player import MatchPlayer
 from sports_discord.models.player import Player
-from sports_discord.models.tournament import Tournament
 from sports_discord.models.user_team import UserTeam
 
 load_dotenv()
 engine = create_engine(os.getenv('POSTGRES_URL'))
-
-
-@cache
-def get_tournament(channel_id: str) -> Optional[Tournament]:
-    with sessionmaker(engine)() as session:
-        return session.query(Tournament).filter(Tournament.channel_id == str(channel_id)).first()
 
 
 @cache

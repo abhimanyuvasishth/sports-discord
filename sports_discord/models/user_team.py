@@ -1,6 +1,5 @@
 from sports_discord.database import Base
-from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, String, func
-from sqlalchemy.orm import relationship
+from sqlalchemy import TIMESTAMP, Column, Integer, String, func
 
 
 class UserTeam(Base):
@@ -10,8 +9,6 @@ class UserTeam(Base):
     name = Column(String, nullable=False, unique=True)
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     discord_role_id = Column(String, nullable=False, unique=True)
-    tournament_id = Column(Integer, ForeignKey('tournament.id'))
-    tournament = relationship('Tournament')
 
     def __repr__(self):
         return f'UserTeam(name="{self.name}")'

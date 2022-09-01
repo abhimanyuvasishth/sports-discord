@@ -1,10 +1,7 @@
 import pytest
-from sports_discord.models import (Match, MatchPlayer, Player, Team,
-                                   Tournament, UserTeam)
+from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
-
-CHANNEL_ID = '996269799539757056'
 
 
 @pytest.fixture
@@ -12,33 +9,22 @@ def engine():
     return create_engine('sqlite:///sports_discord.db')
 
 
-@pytest.fixture
-def tournament(engine):
+def test_user_teams(engine):
     with sessionmaker(engine)() as session:
-        return session.query(Tournament).filter(Tournament.channel_id == CHANNEL_ID).first()
+        user_teams = session.query(UserTeam).all()
+        assert len(user_teams) == 4
 
 
-def test_user_teams(engine, tournament):
+def test_teams(engine):
     with sessionmaker(engine)() as session:
-        user_teams = session.query(UserTeam).filter(UserTeam.tournament_id == tournament.id).all()
-        assert len(user_teams) == 7
-        for user_team in user_teams:
-            assert user_team.tournament.id == tournament.id
+        teams = session.query(Team).all()
+        assert len(teams) == 6
 
 
-def test_teams(engine, tournament):
-    with sessionmaker(engine)() as session:
-        teams = session.query(Team).filter(Team.tournament_id == tournament.id).all()
-        assert len(teams) == 10
-        for team in teams:
-            assert team.tournament.id == tournament.id
-
-
-def test_players(engine, tournament):
+def test_players(engine):
     with sessionmaker(engine)() as session:
         player = session.query(Player).first()
-        team = session.query(Team).filter(Team.id == player.team_id).first()
-        assert team.tournament.id == tournament.id
+        _ = session.query(Team).filter(Team.id == player.team_id).first()
 
 
 def test_match(engine):

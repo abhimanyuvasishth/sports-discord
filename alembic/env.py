@@ -1,8 +1,7 @@
 from logging.config import fileConfig
 
 from sports_discord.database import Base
-from sports_discord.models import (Match, MatchPlayer, Player, Team,
-                                   Tournament, UserTeam)
+from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context

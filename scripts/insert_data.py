@@ -4,7 +4,7 @@ from os import getenv
 from dateutil.parser import parse
 from dotenv import load_dotenv
 from sports_discord.models import (Match, MatchPlayer, Player, Team,
-                                   Tournament, UserTeam)
+                                   UserTeam)
 from sports_discord.google_sheet import get_sheet
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -13,21 +13,16 @@ load_dotenv()
 engine = create_engine(getenv('POSTGRES_URL'))
 
 
-def insert_tournament(tournament_config):
-    with sessionmaker(engine, autocommit=True).begin() as session:
-        session.add(Tournament(**tournament_config))
-
-
 def insert_user_teams(user_team_configs):
     with sessionmaker(engine, autocommit=True).begin() as session:
         session.bulk_save_objects(
-            [UserTeam(**config, tournament_id=1) for config in user_team_configs]
+            [UserTeam(**config) for config in user_team_configs]
         )
 
 
 def insert_teams(team_configs):
     with sessionmaker(engine, autocommit=True).begin() as session:
-        session.bulk_save_objects([Team(**config, tournament_id=1) for config in team_configs])
+        session.bulk_save_objects([Team(**config) for config in team_configs])
 
 
 def create_player_configs():
@@ -102,7 +97,6 @@ if __name__ == '__main__':
     with open('data/asia_cup.json') as f:
         configs = json.loads(f.read())
 
-    insert_tournament(configs['tournament'])
     insert_user_teams(configs['user_teams'])
     insert_teams(configs['teams'])
 
