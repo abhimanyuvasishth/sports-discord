@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+
 import pytest
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
@@ -5,9 +8,12 @@ from sqlalchemy.orm import sessionmaker
 from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 
 
+load_dotenv()
+
+
 @pytest.fixture
 def engine():
-    return create_engine('sqlite:///sports_discord.db')
+    return create_engine(os.getenv('POSTGRES_URL'))
 
 
 def test_user_teams(engine):
