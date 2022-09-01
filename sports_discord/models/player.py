@@ -11,3 +11,5 @@ class Player(Base):
     creation_timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     team_id = Column(Integer, ForeignKey('team.id'))
     team = relationship('Team')
+    user_team_id = Column(Integer, ForeignKey('user_team.id'))
+    user_team = relationship('UserTeam')

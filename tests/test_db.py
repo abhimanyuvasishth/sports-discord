@@ -1,6 +1,6 @@
 import pytest
 from sports_discord.models import (Match, MatchPlayer, Player, Team,
-                                   Tournament, UserTeam, UserTeamPlayer)
+                                   Tournament, UserTeam)
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
@@ -39,14 +39,6 @@ def test_players(engine, tournament):
         player = session.query(Player).first()
         team = session.query(Team).filter(Team.id == player.team_id).first()
         assert team.tournament.id == tournament.id
-
-
-def test_user_team_players(engine, tournament):
-    with sessionmaker(engine)() as session:
-        user_team_player = session.query(UserTeamPlayer).first()
-        query = session.query(UserTeam).filter(UserTeam.id == user_team_player.user_team_id)
-        user_team = query.first()
-        assert user_team.tournament.id == tournament.id
 
 
 def test_match(engine):

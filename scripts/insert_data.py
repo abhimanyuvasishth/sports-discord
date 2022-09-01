@@ -4,7 +4,7 @@ from os import getenv
 from dateutil.parser import parse
 from dotenv import load_dotenv
 from sports_discord.models import (Match, MatchPlayer, Player, Team,
-                                   Tournament, UserTeam, UserTeamPlayer)
+                                   Tournament, UserTeam)
 from sports_discord.google_sheet import get_sheet
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -47,22 +47,16 @@ def insert_players(player_configs):
     with sessionmaker(engine, autocommit=True).begin() as session:
         for config in player_configs:
             team_id = session.query(Team).filter(Team.name == config['team_name']).first().id
-            player = Player(
-                name=config['name'],
-                team_id=team_id,
-            )
-            session.add(player)
-
-
-def insert_user_team_players(player_configs):
-    with sessionmaker(engine, autocommit=True).begin() as session:
-        for config in player_configs:
             user_team = session.query(UserTeam).filter(
                 UserTeam.name == config['user_team_name']
             ).first()
             user_team_id = user_team.id if user_team else None
-            player_id = session.query(Player).filter(Player.name == config['name']).first().id
-            session.add(UserTeamPlayer(player_id=player_id, user_team_id=user_team_id))
+            player = Player(
+                name=config['name'],
+                team_id=team_id,
+                user_team_id=user_team_id
+            )
+            session.add(player)
 
 
 def insert_matches(match_configs):
@@ -97,13 +91,9 @@ def insert_match_players(player_configs, match_configs):
                         player = session.query(Player).filter(
                             Player.name == player_config['name']
                         ).first()
-                        user_team_player = session.query(UserTeamPlayer).filter(
-                            UserTeamPlayer.player_id == player.id
-                        ).first()
                         match_player = MatchPlayer(
                             match_id=match.id,
-                            player_id=player.id,
-                            user_team_player_id=user_team_player.id
+                            player_id=player.id
                         )
                         session.add(match_player)
 
@@ -118,6 +108,5 @@ if __name__ == '__main__':
 
     player_configs = create_player_configs()
     insert_players(player_configs)
-    insert_user_team_players(player_configs)
     insert_matches(configs['matches'])
     insert_match_players(player_configs, configs['matches'])

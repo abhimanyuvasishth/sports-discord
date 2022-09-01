@@ -12,7 +12,6 @@ from sports_discord.models.match_player import MatchPlayer
 from sports_discord.models.player import Player
 from sports_discord.models.tournament import Tournament
 from sports_discord.models.user_team import UserTeam
-from sports_discord.models.user_team_player import UserTeamPlayer
 
 load_dotenv()
 engine = create_engine(os.getenv('POSTGRES_URL'))
@@ -41,7 +40,6 @@ def get_old_captain(role_id: str):
             .join(Match) \
             .filter(Match.external_id == match.external_id) \
             .join(Player) \
-            .join(UserTeamPlayer) \
             .join(UserTeam) \
             .filter(UserTeam.discord_role_id == str(role_id)) \
             .filter(MatchPlayer.captain) \
@@ -61,7 +59,6 @@ def get_new_captain(role_id: str, player_name: str):
             .filter(Match.external_id == match.external_id) \
             .join(Player) \
             .filter(Player.name.ilike(f'%{player_name}%')) \
-            .join(UserTeamPlayer) \
             .join(UserTeam) \
             .filter(UserTeam.discord_role_id == str(role_id)) \
             .all()

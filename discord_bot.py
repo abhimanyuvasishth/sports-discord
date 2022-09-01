@@ -131,8 +131,8 @@ async def transfer(context, *args):
     """
     STEPS:
 
-    1. Update transfer_out from user_team_player
-    2. Update transfer_in from user_team_player
+    1. Update transfer_out from player
+    2. Update transfer_in from player
     3. Update bidding page team name for the player
     4. Store points for player_out
     5. Store points for player_in
