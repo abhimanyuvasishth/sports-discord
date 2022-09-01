@@ -1,11 +1,12 @@
-import random
 import os
+import random
 
 from discord import Embed, Intents
 from discord.ext import commands
 from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils
+from sports_discord.constants import DOC_NAME, POINTS_SHEET_NAME
 from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
@@ -37,8 +38,8 @@ async def sheet_link(context):
 
     For example: ?sheet_link
     """
-    sheet = get_sheet('Asia Cup 2022', 'Points Worksheet')
-    embed = Embed(title=sheet.doc_name, url=sheet.spreadsheet.url)
+    sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
+    embed = Embed(title=DOC_NAME, url=sheet.spreadsheet.url)
     await context.reply(embed=embed)
 
 

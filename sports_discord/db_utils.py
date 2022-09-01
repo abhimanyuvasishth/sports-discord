@@ -1,8 +1,8 @@
 import os
 from datetime import datetime
-from dotenv import load_dotenv
 from functools import cache
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, update
 from sqlalchemy.orm import sessionmaker
 

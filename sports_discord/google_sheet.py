@@ -1,10 +1,9 @@
+import os
 from functools import cache
 
 import gspread
-import os
 from dotenv import load_dotenv
 from oauth2client.service_account import ServiceAccountCredentials
-
 
 load_dotenv()
 

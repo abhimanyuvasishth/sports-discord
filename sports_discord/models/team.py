@@ -1,5 +1,6 @@
-from sports_discord.database import Base
 from sqlalchemy import Column, Integer, String
+
+from sports_discord.database import Base
 
 
 class Team(Base):

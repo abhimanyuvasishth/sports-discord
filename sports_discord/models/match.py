@@ -1,7 +1,8 @@
-from sports_discord.database import Base
 from sqlalchemy import (TIMESTAMP, Column, ForeignKey, Integer, String,
                         UniqueConstraint)
 from sqlalchemy.orm import relationship
+
+from sports_discord.database import Base
 
 
 class Match(Base):

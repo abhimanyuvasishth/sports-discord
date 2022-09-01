@@ -1,6 +1,7 @@
-from sports_discord.database import Base
-from sqlalchemy import Column, ForeignKey, Integer, Boolean, UniqueConstraint
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, UniqueConstraint
 from sqlalchemy.orm import relationship
+
+from sports_discord.database import Base
 
 
 class MatchPlayer(Base):

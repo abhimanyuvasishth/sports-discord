@@ -3,11 +3,12 @@ from os import getenv
 
 from dateutil.parser import parse
 from dotenv import load_dotenv
-from sports_discord.models import (Match, MatchPlayer, Player, Team,
-                                   UserTeam)
-from sports_discord.google_sheet import get_sheet
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME
+from sports_discord.google_sheet import get_sheet
+from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 
 load_dotenv()
 engine = create_engine(getenv('POSTGRES_URL'))
@@ -27,7 +28,7 @@ def insert_teams(team_configs):
 
 def create_player_configs():
     player_configs = []
-    sheet = get_sheet('Asia Cup 2022', 'Bidding Page')
+    sheet = get_sheet(DOC_NAME, BIDDING_SHEET_NAME)
     rows = sheet.get_all_values()
     for row in rows[20:119]:
         player_configs.append({

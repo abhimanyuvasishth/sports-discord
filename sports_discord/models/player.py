@@ -1,6 +1,7 @@
-from sports_discord.database import Base
-from sqlalchemy import (TIMESTAMP, Column, ForeignKey, Integer, String, func)
+from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, String, func
 from sqlalchemy.orm import relationship
+
+from sports_discord.database import Base
 
 
 class Player(Base):

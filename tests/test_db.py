@@ -1,7 +1,8 @@
 import pytest
-from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
+
+from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 
 
 @pytest.fixture
