@@ -122,7 +122,7 @@ async def team_points(context):
 
 
 @bot.command()
-async def transfer_in(context, *args):
+async def transfer(context, *args):
     """
     Transfer player in for player out
 
