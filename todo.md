@@ -1,8 +1,12 @@
 # TODO
 
-- add in new games
-- enforce transfer order
-- add in rolled transfers
-- add in trades
-- figure out short term loans
-- hard code sheet links as constants
+- P0
+  - add in new games
+- P1
+  - add in transfers
+- P2
+  - add in rolled transfers
+  - enforce transfer order (programmatically)
+- P3
+  - add in trades
+  - figure out short term loans
