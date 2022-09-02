@@ -175,7 +175,7 @@ async def transfer(context, *args):
     # Store points
     sheet_utils.adjust_transfer_points(user_team.name, adjusted_points)
 
-    await context.reply(f'Transfer made, OUT={player_out.name}, IN={player_in.name}')
+    await context.reply(f'Transfer made, IN={player_in.name} for OUT={player_out.name}')
 
 
 bot.run(TOKEN)
