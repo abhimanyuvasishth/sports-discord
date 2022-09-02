@@ -58,6 +58,35 @@ def get_new_captain(role_id: str, player_name: str):
         return new_captain
 
 
+def get_player_out(player_name: str, role_id: str):
+    with sessionmaker(engine)() as session:
+        player = session.query(Player) \
+            .join(UserTeam) \
+            .filter(UserTeam.discord_role_id == str(role_id)) \
+            .filter(Player.name.ilike(f'%{player_name}%')) \
+            .all()
+        return player
+
+
+def get_player_in(player_name: str):
+    with sessionmaker(engine)() as session:
+        player = session.query(Player) \
+            .filter(Player.name.ilike(f'%{player_name}%')) \
+            .filter(Player.user_team_id == None) \
+            .all()
+        return player
+
+
+def update_player_user_team(player_id: str, user_team_id):
+    with sessionmaker(engine, autocommit=True)() as session:
+        update_stmt = (
+            update(Player).
+            where(Player.id == player_id).
+            values(user_team_id=user_team_id)
+        )
+        session.execute(update_stmt)
+
+
 def update_captain(match_player_id, flag):
     with sessionmaker(engine, autocommit=True)() as session:
         update_stmt = (

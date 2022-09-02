@@ -76,13 +76,13 @@ async def kaptaan(context, *args):
     new_captain = db_utils.get_new_captain(role_id, player_name)
 
     if len(new_captain) == 0:
-        error_message = f"Error: Couldn't find a player on your team with name: '{player_name}'."
-        error_message += ' Please choose someone playing in the next match who is on your team.'
+        error_message = f"Error: Couldn't find a player on your team with name: '{player_name}'"
+        error_message += ' Please pick someone playing in the next match who is on your team.'
         return await context.reply(f'{error_message} ')
     if len(new_captain) > 1:
         names = [candidate[2] for candidate in new_captain]
         error_message = f"""
-            Error: Found multiple players with name: '{player_name}', {names}. Please choose one.
+            Error: Found multiple players with name: '{player_name}', {names}, please pick one
         """
         return await context.reply(error_message)
 
@@ -125,19 +125,57 @@ async def transfer(context, *args):
 
     For example: ?transfer wantthisperson for dontwantthisperson
     """
-    """
-    STEPS:
+    role_id = get_role_id(context.author.roles)
+    all_args = ' '.join(args).lower()
+    user_team = db_utils.get_user_team(role_id)
 
-    1. Update transfer_out from player
-    2. Update transfer_in from player
-    3. Update bidding page team name for the player
-    4. Store points for player_out
-    5. Store points for player_in
-    6. Update net effect of transfers for that team
-    7. Update transfers for that team
-    """
+    if 'for' not in all_args:
+        return await context.reply('Error: could not understand command')
 
-    await context.reply('Not implemented yet')
+    player_name_in = all_args.split('for')[0].strip()
+    player_name_out = all_args.split('for')[1].strip()
+    players_out = db_utils.get_player_out(player_name_out, role_id)
+
+    if len(players_out) == 0:
+        error_message = f"Error: Couldn't find a player on your team with name: '{player_name_out}'"
+        return await context.reply(f'{error_message} ')
+    if len(players_out) > 1:
+        names = [candidate.name for candidate in players_out]
+        error_message = f"""
+            Error: Found multiple players with name: '{player_name_out}', {names}, please pick one
+        """
+        return await context.reply(error_message)
+    player_out = players_out[0]
+
+    players_in = db_utils.get_player_in(player_name_in)
+    if len(players_in) == 0:
+        error_message = f"Error: Couldn't find an available player with name: '{player_name_in}'"
+        return await context.reply(f'{error_message} ')
+    if len(players_in) > 1:
+        names = [candidate.name for candidate in players_in]
+        error_message = f"""
+            Error: Found multiple players with name: '{player_name_in}', {names}, please pick one
+        """
+        return await context.reply(error_message)
+    player_in = players_in[0]
+
+    # Get points
+    player_in_points = sheet_utils.get_points(player_in.name)
+    player_out_points = sheet_utils.get_points(player_out.name)
+    adjusted_points = player_out_points - player_in_points
+
+    # Update db
+    db_utils.update_player_user_team(player_in.id, user_team.id)
+    db_utils.update_player_user_team(player_out.id, None)
+
+    # Update bidding page
+    sheet_utils.update_owner(player_in.name, user_team.name)
+    sheet_utils.update_owner(player_out.name, '', 1)
+
+    # Store points
+    sheet_utils.adjust_transfer_points(user_team.name, adjusted_points)
+
+    await context.reply(f'Transfer made, OUT={player_out.name}, IN={player_in.name}')
 
 
 bot.run(TOKEN)
