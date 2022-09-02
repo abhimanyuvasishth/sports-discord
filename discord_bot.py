@@ -130,7 +130,7 @@ async def transfer(context, *args):
     user_team = db_utils.get_user_team(role_id)
 
     if 'for' not in all_args:
-        return await context.reply('Error: could not understand command')
+        return await context.reply('Error: Try !transfer player1 for player2')
 
     player_name_in = all_args.split('for')[0].strip()
     player_name_out = all_args.split('for')[1].strip()
