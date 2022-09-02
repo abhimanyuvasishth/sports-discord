@@ -53,18 +53,18 @@
             "object_id": 1327269
         },
         {
-            "team_1": "India",
+            "team_1": "Pakistan",
             "team_1_num": 1,
-            "team_2": "Pakistan",
+            "team_2": "India",
             "team_2_num": 1,
             "start_timestamp": "2022-08-28T14:00:00.000Z",
             "object_id": 1327270
         },
         {
-            "team_1": "Afghanistan",
-            "team_1_num": 2,
-            "team_2": "Bangladesh",
-            "team_2_num": 1,
+            "team_1": "Bangladesh",
+            "team_1_num": 1,
+            "team_2": "Afghanistan",
+            "team_2_num": 2,
             "start_timestamp": "2022-08-30T14:00:00.000Z",
             "object_id": 1327271
         },
@@ -91,6 +91,54 @@
             "team_2_num": 2,
             "start_timestamp": "2022-09-02T14:00:00.000Z",
             "object_id": 1327274
+        },
+        {
+            "team_1": "Sri Lanka",
+            "team_1_num": 3,
+            "team_2": "Afghanistan",
+            "team_2_num": 3,
+            "start_timestamp": "2022-09-03T14:00:00.000Z",
+            "object_id": 1327275
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 3,
+            "team_2": "Pakistan",
+            "team_2_num": 3,
+            "start_timestamp": "2022-09-04T14:00:00.000Z",
+            "object_id": 1327276
+        },
+        {
+            "team_1": "Sri Lanka",
+            "team_1_num": 4,
+            "team_2": "India",
+            "team_2_num": 4,
+            "start_timestamp": "2022-09-06T14:00:00.000Z",
+            "object_id": 1327277
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 4,
+            "team_2": "Pakistan",
+            "team_2_num": 4,
+            "start_timestamp": "2022-09-07T14:00:00.000Z",
+            "object_id": 1327278
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 5,
+            "team_2": "Afghanistan",
+            "team_2_num": 5,
+            "start_timestamp": "2022-09-08T14:00:00.000Z",
+            "object_id": 1327279
+        },
+        {
+            "team_1": "Sri Lanka",
+            "team_1_num": 5,
+            "team_2": "Pakistan",
+            "team_2_num": 5,
+            "start_timestamp": "2022-09-09T14:00:00.000Z",
+            "object_id": 1327280
         }
     ]
 }
