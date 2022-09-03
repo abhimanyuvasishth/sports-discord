@@ -30,7 +30,9 @@ def create_player_configs():
     player_configs = []
     sheet = get_sheet(DOC_NAME, BIDDING_SHEET_NAME)
     rows = sheet.get_all_values()
-    for row in rows[20:119]:
+    for row in rows[20:200]:
+        if not row[1]:
+            continue
         player_configs.append({
             'name': row[1],
             'team_name': row[2],
