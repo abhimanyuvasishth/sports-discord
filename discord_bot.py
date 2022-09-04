@@ -6,11 +6,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils
-<<<<<<< HEAD
 from sports_discord.constants import DOC_NAME, POINTS_SHEET_NAME, NOT_ON_A_TEAM
-=======
-from sports_discord.constants import DOC_NAME, POINTS_SHEET_NAME
->>>>>>> e8319c68e3bd7a79df71fa0af14a525f8f5297bb
 from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
@@ -61,18 +57,11 @@ async def info(context):
 
     For example: ?info
     """
-<<<<<<< HEAD
     role_id = get_role_id(context.author.roles)
     if role_id:
         reply = db_utils.get_user_team(role_id)
     else:
         reply = NOT_ON_A_TEAM
-=======
-    reply = 'Not a part of any teams for this auction/draft'
-    role_id = get_role_id(context.author.roles)
-    if role_id:
-        reply = db_utils.get_user_team(role_id)
->>>>>>> e8319c68e3bd7a79df71fa0af14a525f8f5297bb
     await context.reply(reply)
 
 
@@ -84,12 +73,9 @@ async def kaptaan(context, *args):
     For example: ?kaptaan Kohli
     """
     role_id = get_role_id(context.author.roles)
-<<<<<<< HEAD
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
 
-=======
->>>>>>> e8319c68e3bd7a79df71fa0af14a525f8f5297bb
     player_name = ' '.join(args)
     new_captain = db_utils.get_new_captain(role_id, player_name)
 
@@ -144,12 +130,9 @@ async def transfer(context, *args):
     For example: ?transfer wantthisperson for dontwantthisperson
     """
     role_id = get_role_id(context.author.roles)
-<<<<<<< HEAD
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
 
-=======
->>>>>>> e8319c68e3bd7a79df71fa0af14a525f8f5297bb
     all_args = ' '.join(args).lower()
     user_team = db_utils.get_user_team(role_id)
 
