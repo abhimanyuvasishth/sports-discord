@@ -6,7 +6,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils
-from sports_discord.constants import DOC_NAME, POINTS_SHEET_NAME, NOT_ON_A_TEAM
+from sports_discord.constants import DOC_NAME, NOT_ON_A_TEAM, POINTS_SHEET_NAME
 from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
