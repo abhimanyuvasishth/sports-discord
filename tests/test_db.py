@@ -1,12 +1,11 @@
 import os
-from dotenv import load_dotenv
 
 import pytest
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
 from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
-
 
 load_dotenv()
 

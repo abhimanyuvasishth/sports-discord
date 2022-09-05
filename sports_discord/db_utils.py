@@ -72,7 +72,7 @@ def get_player_in(player_name: str):
     with sessionmaker(engine)() as session:
         player = session.query(Player) \
             .filter(Player.name.ilike(f'%{player_name}%')) \
-            .filter(Player.user_team_id == None) \
+            .filter(Player.user_team_id.is_(None)) \
             .all()
         return player
 
