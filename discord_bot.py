@@ -58,10 +58,7 @@ async def info(context):
     For example: ?info
     """
     role_id = get_role_id(context.author.roles)
-    if role_id:
-        reply = db_utils.get_user_team(role_id)
-    else:
-        reply = NOT_ON_A_TEAM
+    reply = db_utils.get_user_team(role_id) if role_id else NOT_ON_A_TEAM
     await context.reply(reply)
 
 
