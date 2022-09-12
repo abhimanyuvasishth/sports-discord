@@ -139,6 +139,14 @@
             "team_2_num": 5,
             "start_timestamp": "2022-09-09T14:00:00.000Z",
             "object_id": 1327280
+        },
+        {
+            "team_1": "Sri Lanka",
+            "team_1_num": 6,
+            "team_2": "Pakistan",
+            "team_2_num": 6,
+            "start_timestamp": "2022-09-11T14:00:00.000Z",
+            "object_id": 1327281
         }
     ]
 }
