@@ -1,8 +1,8 @@
 """added entities
 
-Revision ID: 4a4a6aa274ed
+Revision ID: 1e7afd2ec593
 Revises: 
-Create Date: 2022-10-21 17:32:56.171841
+Create Date: 2022-10-21 18:26:06.477059
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4a4a6aa274ed'
+revision = '1e7afd2ec593'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,6 +51,7 @@ def upgrade() -> None:
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('now()'), nullable=False),
     sa.Column('team_id', sa.Integer(), nullable=True),
+    sa.Column('pool', sa.Integer(), nullable=False),
     sa.Column('user_team_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['team_id'], ['team.id'], ),
     sa.ForeignKeyConstraint(['user_team_id'], ['user_team.id'], ),

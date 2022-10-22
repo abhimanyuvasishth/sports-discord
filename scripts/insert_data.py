@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME
+from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME, Pool
 from sports_discord.google_sheet import get_sheet
 from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 
@@ -36,6 +36,7 @@ def create_player_configs():
         player_configs.append({
             'name': row[1],
             'team_name': row[2],
+            'pool': Pool[row[6]].value,
             'user_team_name': row[8]
         })
     return player_configs
@@ -52,7 +53,8 @@ def insert_players(player_configs):
             player = Player(
                 name=config['name'],
                 team_id=team_id,
-                user_team_id=user_team_id
+                user_team_id=user_team_id,
+                pool=config['pool'],
             )
             session.add(player)
 

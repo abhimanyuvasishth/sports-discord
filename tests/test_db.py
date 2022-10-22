@@ -30,6 +30,7 @@ def test_teams(engine):
 def test_players(engine):
     with sessionmaker(engine)() as session:
         player = session.query(Player).first()
+        assert player.pool > 0
         _ = session.query(Team).filter(Team.id == player.team_id).first()
 
 

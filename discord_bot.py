@@ -163,6 +163,8 @@ async def transfer(context, *args):
         return await context.reply(error_message)
     player_in = players_in[0]
 
+    # TODO: Check pool logistics
+
     # Get points
     player_in_points = sheet_utils.get_points(player_in.name)
     player_out_points = sheet_utils.get_points(player_out.name)
