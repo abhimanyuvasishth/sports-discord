@@ -1,0 +1,354 @@
+{
+    "teams": [
+        {
+            "name": "India",
+            "abbrev": "IND"
+        },
+        {
+            "name": "Pakistan",
+            "abbrev": "PAK"
+        },
+        {
+            "name": "Sri Lanka",
+            "abbrev": "SL"
+        },
+        {
+            "name": "Bangladesh",
+            "abbrev": "BD"
+        },
+        {
+            "name": "New Zealand",
+            "abbrev": "NZ"
+        },
+        {
+            "name": "Netherlands",
+            "abbrev": "NL"
+        },
+        {
+            "name": "Ireland",
+            "abbrev": "IRL"
+        },
+        {
+            "name": "Australia",
+            "abbrev": "AUS"
+        },
+        {
+            "name": "England",
+            "abbrev": "ENG"
+        },
+        {
+            "name": "Zimbabwe",
+            "abbrev": "ZIM"
+        },
+        {
+            "name": "South Africa",
+            "abbrev": "SA"
+        },
+        {
+            "name": "Afghanistan",
+            "abbrev": "AFG"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "Sardarz",
+            "discord_role_id": "1030006519380590592"
+        },
+        {
+            "name": "Chariots",
+            "discord_role_id": "1011749877623029842"
+        },
+        {
+            "name": "Dubai Scam",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "Vande Markram",
+            "discord_role_id": "1030006412266455113"
+        },
+        {
+            "name": "Suburb Sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "Neel Shef",
+            "discord_role_id": "1011749363942424676"
+        },
+        {
+            "name": "Manjul Aruba",
+            "discord_role_id": "1032331444992876574"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "Australia",
+            "team_1_num": 1,
+            "team_2": "New Zealand",
+            "team_2_num": 1,
+            "start_timestamp": "2022-10-22T07:00:00.000Z",
+            "object_id": 1298147,
+            "match_day": 1
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 1,
+            "team_2": "England",
+            "team_2_num": 1,
+            "start_timestamp": "2022-10-22T11:00:00.000Z",
+            "object_id": 1298148,
+            "match_day": 1
+        },
+        {
+            "team_1": "Ireland",
+            "team_1_num": 4,
+            "team_2": "Sri Lanka",
+            "team_2_num": 4,
+            "start_timestamp": "2022-10-23T04:00:00.000Z",
+            "object_id": 1298149,
+            "match_day": 2
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 1,
+            "team_2": "Pakistan",
+            "team_2_num": 1,
+            "start_timestamp": "2022-10-23T08:00:00.000Z",
+            "object_id": 1298150,
+            "match_day": 2
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 1,
+            "team_2": "Netherlands",
+            "team_2_num": 4,
+            "start_timestamp": "2022-10-24T04:00:00.000Z",
+            "object_id": 1298151,
+            "match_day": 3
+        },
+        {
+            "team_1": "South Africa",
+            "team_1_num": 1,
+            "team_2": "Zimbabwe",
+            "team_2_num": 4,
+            "start_timestamp": "2022-10-24T08:00:00.000Z",
+            "object_id": 1298152,
+            "match_day": 3
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 2,
+            "team_2": "Sri Lanka",
+            "team_2_num": 5,
+            "start_timestamp": "2022-10-25T11:00:00.000Z",
+            "object_id": 1298153,
+            "match_day": 4
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 2,
+            "team_2": "Ireland",
+            "team_2_num": 5,
+            "start_timestamp": "2022-10-26T04:00:00.000Z",
+            "object_id": 1298154,
+            "match_day": 5
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 2,
+            "team_2": "New Zealand",
+            "team_2_num": 2,
+            "start_timestamp": "2022-10-26T08:00:00.000Z",
+            "object_id": 1298155,
+            "match_day": 5
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 2,
+            "team_2": "South Africa",
+            "team_2_num": 2,
+            "start_timestamp": "2022-10-27T14:00:00.000Z",
+            "object_id": 1298156,
+            "match_day": 6
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 2,
+            "team_2": "Netherlands",
+            "team_2_num": 5,
+            "start_timestamp": "2022-10-27T07:00:00.000Z",
+            "object_id": 1298157,
+            "match_day": 6
+        },
+        {
+            "team_1": "Pakistan",
+            "team_1_num": 2,
+            "team_2": "Zimbabwe",
+            "team_2_num": 5,
+            "start_timestamp": "2022-10-27T11:00:00.000Z",
+            "object_id": 1298158,
+            "match_day": 6
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 3,
+            "team_2": "Ireland",
+            "team_2_num": 6,
+            "start_timestamp": "2022-10-28T04:00:00.000Z",
+            "object_id": 1298159,
+            "match_day": 7
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 3,
+            "team_2": "England",
+            "team_2_num": 3,
+            "start_timestamp": "2022-10-28T08:00:00.000Z",
+            "object_id": 1298160,
+            "match_day": 7
+        },
+        {
+            "team_1": "New Zealand",
+            "team_1_num": 3,
+            "team_2": "Sri Lanka",
+            "team_2_num": 6,
+            "start_timestamp": "2022-10-29T08:00:00.000Z",
+            "object_id": 1298161,
+            "match_day": 8
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 3,
+            "team_2": "Zimbabwe",
+            "team_2_num": 6,
+            "start_timestamp": "2022-10-30T03:00:00.000Z",
+            "object_id": 1298162,
+            "match_day": 9
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 6,
+            "team_2": "Pakistan",
+            "team_2_num": 3,
+            "start_timestamp": "2022-10-30T07:00:00.000Z",
+            "object_id": 1298163,
+            "match_day": 9
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 3,
+            "team_2": "South Africa",
+            "team_2_num": 3,
+            "start_timestamp": "2022-10-30T19:00:00.000Z",
+            "object_id": 1298164,
+            "match_day": 9
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 4,
+            "team_2": "Ireland",
+            "team_2_num": 7,
+            "start_timestamp": "2022-10-31T08:00:00.000Z",
+            "object_id": 1298165,
+            "match_day": 10
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 4,
+            "team_2": "Sri Lanka",
+            "team_2_num": 7,
+            "start_timestamp": "2022-11-01T04:00:00.000Z",
+            "object_id": 1298166,
+            "match_day": 11
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 4,
+            "team_2": "New Zealand",
+            "team_2_num": 4,
+            "start_timestamp": "2022-11-01T08:00:00.000Z",
+            "object_id": 1298167,
+            "match_day": 11
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 7,
+            "team_2": "Zimbabwe",
+            "team_2_num": 7,
+            "start_timestamp": "2022-11-02T04:00:00.000Z",
+            "object_id": 1298168,
+            "match_day": 12
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 4,
+            "team_2": "India",
+            "team_2_num": 4,
+            "start_timestamp": "2022-11-02T08:00:00.000Z",
+            "object_id": 1298169,
+            "match_day": 12
+        },
+        {
+            "team_1": "Pakistan",
+            "team_1_num": 4,
+            "team_2": "South Africa",
+            "team_2_num": 4,
+            "start_timestamp": "2022-11-03T08:00:00.000Z",
+            "object_id": 1298170,
+            "match_day": 13
+        },
+        {
+            "team_1": "Ireland",
+            "team_1_num": 8,
+            "team_2": "New Zealand",
+            "team_2_num": 5,
+            "start_timestamp": "2022-11-04T04:00:00.000Z",
+            "object_id": 1298171,
+            "match_day": 14
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 5,
+            "team_2": "Afghanistan",
+            "team_2_num": 5,
+            "start_timestamp": "2022-11-04T08:00:00.000Z",
+            "object_id": 1298172,
+            "match_day": 14
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 5,
+            "team_2": "Sri Lanka",
+            "team_2_num": 8,
+            "start_timestamp": "2022-11-05T08:00:00.000Z",
+            "object_id": 1298173,
+            "match_day": 15
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 8,
+            "team_2": "South Africa",
+            "team_2_num": 5,
+            "start_timestamp": "2022-11-06T00:00:00.000Z",
+            "object_id": 1298174,
+            "match_day": 16
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 5,
+            "team_2": "Pakistan",
+            "team_2_num": 5,
+            "start_timestamp": "2022-11-06T04:00:00.000Z",
+            "object_id": 1298175,
+            "match_day": 16
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 5,
+            "team_2": "Zimbabwe",
+            "team_2_num": 8,
+            "start_timestamp": "2022-11-06T08:00:00.000Z",
+            "object_id": 1298176,
+            "match_day": 16
+        }
+    ]
+}

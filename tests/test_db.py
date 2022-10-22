@@ -18,13 +18,13 @@ def engine():
 def test_user_teams(engine):
     with sessionmaker(engine)() as session:
         user_teams = session.query(UserTeam).all()
-        assert len(user_teams) == 4
+        assert len(user_teams) == 7
 
 
 def test_teams(engine):
     with sessionmaker(engine)() as session:
         teams = session.query(Team).all()
-        assert len(teams) == 6
+        assert len(teams) == 12
 
 
 def test_players(engine):

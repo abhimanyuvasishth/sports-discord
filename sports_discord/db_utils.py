@@ -30,7 +30,7 @@ def get_old_captain(role_id: str):
 
         old_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
             .join(Match) \
-            .filter(Match.external_id == match.external_id) \
+            .filter(Match.match_day == match.match_day) \
             .join(Player) \
             .join(UserTeam) \
             .filter(UserTeam.discord_role_id == str(role_id)) \
@@ -48,7 +48,7 @@ def get_new_captain(role_id: str, player_name: str):
 
         new_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
             .join(Match) \
-            .filter(Match.external_id == match.external_id) \
+            .filter(Match.match_day == match.match_day) \
             .join(Player) \
             .filter(Player.name.ilike(f'%{player_name}%')) \
             .join(UserTeam) \

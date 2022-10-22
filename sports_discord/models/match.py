@@ -15,5 +15,6 @@ class Match(Base):
     external_id = Column(String, nullable=False)
     start_timestamp = Column(TIMESTAMP, nullable=False)
     match_num = Column(Integer, nullable=False)
+    match_day = Column(Integer, nullable=False)
     team_id = Column(Integer, ForeignKey('team.id'))
     team = relationship('Team')

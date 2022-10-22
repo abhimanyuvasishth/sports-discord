@@ -78,7 +78,7 @@ async def kaptaan(context, *args):
 
     if len(new_captain) == 0:
         error_message = f"Error: Couldn't find a player on your team with name: '{player_name}'"
-        error_message += ' Please pick someone playing in the next match who is on your team.'
+        error_message += ' Please pick someone playing in the next matchday who is on your team.'
         return await context.reply(f'{error_message} ')
     if len(new_captain) > 1:
         names = [candidate[2] for candidate in new_captain]

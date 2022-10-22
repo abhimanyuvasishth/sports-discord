@@ -1,16 +1,16 @@
 """added entities
 
-Revision ID: 0740113b4f0b
+Revision ID: 4a4a6aa274ed
 Revises: 
-Create Date: 2022-09-01 11:31:51.768223
+Create Date: 2022-10-21 17:32:56.171841
 
 """
+from alembic import op
 import sqlalchemy as sa
 
-from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = '0740113b4f0b'
+revision = '4a4a6aa274ed'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,6 +40,7 @@ def upgrade() -> None:
     sa.Column('external_id', sa.String(), nullable=False),
     sa.Column('start_timestamp', sa.TIMESTAMP(), nullable=False),
     sa.Column('match_num', sa.Integer(), nullable=False),
+    sa.Column('match_day', sa.Integer(), nullable=False),
     sa.Column('team_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['team_id'], ['team.id'], ),
     sa.PrimaryKeyConstraint('id'),

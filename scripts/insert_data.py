@@ -64,13 +64,15 @@ def insert_matches(match_configs):
                 team_id=session.query(Team).filter(Team.name == config['team_1']).first().id,
                 external_id=config['object_id'],
                 match_num=config['team_1_num'],
-                start_timestamp=parse(config['start_timestamp'])
+                start_timestamp=parse(config['start_timestamp']),
+                match_day=config['match_day'],
             )
             match_2 = Match(
                 team_id=session.query(Team).filter(Team.name == config['team_2']).first().id,
                 external_id=config['object_id'],
                 match_num=config['team_2_num'],
-                start_timestamp=parse(config['start_timestamp'])
+                start_timestamp=parse(config['start_timestamp']),
+                match_day=config['match_day'],
             )
             session.bulk_save_objects([match_1, match_2])
 
@@ -97,7 +99,7 @@ def insert_match_players(player_configs, match_configs):
 
 
 if __name__ == '__main__':
-    with open('data/asia_cup.json') as f:
+    with open('config/world_cup_2022.json') as f:
         configs = json.loads(f.read())
 
     insert_user_teams(configs['user_teams'])
