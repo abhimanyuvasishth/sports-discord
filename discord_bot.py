@@ -104,6 +104,32 @@ async def kaptaan(context, *args):
 
 
 @bot.command()
+async def whohas(context, *args):
+    """
+    Checks who owns a player
+
+    For example: ?whohas Kohli
+    """
+    raw_player_name = ' '.join(args)
+    player_owned = db_utils.get_player_owner(raw_player_name)
+
+    if len(player_owned) == 0:
+        error_message = f"Error: Couldn't find a player with name: '{raw_player_name}'"
+        return await context.reply(f'{error_message} ')
+    if len(player_owned) > 1:
+        names = [candidate[1] for candidate in player_owned]
+        error_message = f"""
+            Error: Found multiple players with name: '{raw_player_name}', {names}, please pick one
+        """
+        return await context.reply(error_message)
+
+    team_name, player_name = player_owned[0]
+    owner = f'Team {team_name}' if team_name else 'No one'
+    message = f'{owner} has {player_name}'
+    await context.reply(message)
+
+
+@bot.command()
 async def team_points(context):
     """
     Displays team points & ranks
