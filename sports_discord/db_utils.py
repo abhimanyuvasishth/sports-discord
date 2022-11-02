@@ -16,7 +16,7 @@ engine = create_engine(os.getenv('POSTGRES_URL'))
 
 
 @cache
-def get_user_team(role_id: str) -> list[UserTeam]:
+def get_user_team_by_id(role_id: str) -> list[UserTeam]:
     with sessionmaker(engine)() as session:
         user_team = session.query(UserTeam).filter(UserTeam.discord_role_id == str(role_id)).first()
         return user_team
@@ -66,6 +66,24 @@ def get_player_owner(player_name: str):
             .all()
 
         return player_owner
+
+
+def get_squad(user_team_id: str):
+    with sessionmaker(engine)() as session:
+        squad = session.query(Player.name) \
+            .filter(Player.user_team_id == user_team_id) \
+            .all()
+
+        return squad
+
+
+def get_user_team_by_name(user_team_name: str):
+    with sessionmaker(engine)() as session:
+        user_team = session.query(UserTeam.id, UserTeam.name) \
+            .filter(UserTeam.name.ilike(f'%{user_team_name}%')) \
+            .all()
+
+        return user_team
 
 
 def get_player_out(player_name: str, role_id: str):

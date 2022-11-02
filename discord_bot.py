@@ -24,7 +24,7 @@ async def shuffle(context, *args):
     """
     Shuffles a list of comma separated values
 
-    For example: ?shuffle cat,dog,monkey,donkey
+    For example: !shuffle cat,dog,monkey,donkey
     """
     items = ''.join(args).split(',')
     random.shuffle(items)
@@ -36,7 +36,7 @@ async def sheet_link(context):
     """
     Returns the link to the google sheet
 
-    For example: ?sheet_link
+    For example: !sheet_link
     """
     sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
     embed = Embed(title=DOC_NAME, url=sheet.spreadsheet.url)
@@ -55,10 +55,10 @@ async def info(context):
     """
     Gets information about your team
 
-    For example: ?info
+    For example: !info
     """
     role_id = get_role_id(context.author.roles)
-    reply = db_utils.get_user_team(role_id) if role_id else NOT_ON_A_TEAM
+    reply = db_utils.get_user_team_by_id(role_id) if role_id else NOT_ON_A_TEAM
     await context.reply(reply)
 
 
@@ -67,7 +67,7 @@ async def kaptaan(context, *args):
     """
     Sets a kaptaan
 
-    For example: ?kaptaan Kohli
+    For example: !kaptaan Kohli
     """
     role_id = get_role_id(context.author.roles)
     if not role_id:
@@ -108,7 +108,7 @@ async def whohas(context, *args):
     """
     Checks who owns a player
 
-    For example: ?whohas Kohli
+    For example: !whohas Kohli
     """
     raw_player_name = ' '.join(args)
     player_owned = db_utils.get_player_owner(raw_player_name)
@@ -134,7 +134,7 @@ async def team_points(context):
     """
     Displays team points & ranks
 
-    For example: ?team_points
+    For example: !team_points
     """
     num_2_words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
     message_lines = ['**Team Points**']
@@ -146,18 +146,45 @@ async def team_points(context):
 
 
 @bot.command()
+async def squad(context, *args):
+    """
+    Displays the entire squad of a particular auction team
+
+    For example: !squad teamname
+    """
+    user_team_name = ' '.join(args)
+    user_team = db_utils.get_user_team_by_name(user_team_name)
+
+    if len(user_team) == 0:
+        error_message = f"Error: Couldn't find an auction team with name: '{user_team_name}'"
+        return await context.reply(f'{error_message} ')
+    if len(user_team) > 1:
+        names = [candidate[1] for candidate in user_team]
+        error_message = f"""
+            Error: Found multiple teams with name: '{user_team_name}', {names}, please pick one
+        """
+        return await context.reply(error_message)
+
+    user_team_id, user_team_name = user_team[0]
+    squad_rows = db_utils.get_squad(user_team_id)
+    squad = [squad_row[0] for squad_row in squad_rows]
+    message = f"Team {user_team_name}'s Squad: {squad}"
+    await context.reply(message)
+
+
+@bot.command()
 async def transfer(context, *args):
     """
     Transfer player in for player out
 
-    For example: ?transfer wantthisperson for dontwantthisperson
+    For example: !transfer wantthisperson for dontwantthisperson
     """
     role_id = get_role_id(context.author.roles)
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
 
     all_args = ' '.join(args).lower()
-    user_team = db_utils.get_user_team(role_id)
+    user_team = db_utils.get_user_team_by_id(role_id)
 
     if 'for' not in all_args:
         return await context.reply('Error: Try !transfer player1 for player2')
