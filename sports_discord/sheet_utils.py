@@ -1,6 +1,6 @@
 from sports_discord.constants import (BIDDING_SHEET_NAME, DOC_NAME,
                                       POINTS_SHEET_NAME,
-                                      TEAM_POINTS_SHEET_NAME, SheetCols)
+                                      TEAM_POINTS_SHEET_NAME, NUMBER_OF_FIELDS, SheetCols)
 from sports_discord.google_sheet import get_sheet
 
 
@@ -38,6 +38,13 @@ def get_points(player_name):
     sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
     player_row = sheet.find(player_name).row
     return int(sheet.cell(player_row, SheetCols.POINTS_COL.value).value or 0)
+
+
+def get_points_for_match_num(player_name, match_num):
+    sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
+    player_row = sheet.find(player_name).row
+    col = SheetCols.POINTS_COL.value + NUMBER_OF_FIELDS * match_num
+    return int(sheet.cell(player_row, col).value or 0)
 
 
 def adjust_transfer_points(team_name, adjusted_points):

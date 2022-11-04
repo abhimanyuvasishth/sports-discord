@@ -5,7 +5,7 @@ from discord import Embed, Intents
 from discord.ext import commands
 from dotenv import load_dotenv
 
-from sports_discord import db_utils, sheet_utils
+from sports_discord import db_utils, sheet_utils, utils
 from sports_discord.constants import DOC_NAME, NOT_ON_A_TEAM, POINTS_SHEET_NAME
 from sports_discord.google_sheet import get_sheet
 
@@ -43,13 +43,6 @@ async def sheet_link(context):
     await context.reply(embed=embed)
 
 
-def get_role_id(roles):
-    for role in roles:
-        if role.name.startswith('team-'):
-            role_id = str(role.id)
-            return role_id
-
-
 @bot.command()
 async def info(context):
     """
@@ -57,7 +50,7 @@ async def info(context):
 
     For example: !info
     """
-    role_id = get_role_id(context.author.roles)
+    role_id = utils.get_role_id(context.author.roles)
     reply = db_utils.get_user_team_by_id(role_id) if role_id else NOT_ON_A_TEAM
     await context.reply(reply)
 
@@ -69,7 +62,7 @@ async def kaptaan(context, *args):
 
     For example: !kaptaan Kohli
     """
-    role_id = get_role_id(context.author.roles)
+    role_id = utils.get_role_id(context.author.roles)
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
 
@@ -101,6 +94,37 @@ async def kaptaan(context, *args):
     sheet_utils.update_captain(new_captain_name, new_captain_match_num, True)
 
     await context.reply(message)
+
+
+@bot.command()
+async def points(context, *args):
+    """
+    Checks how many points a player has overall and in their most recent match
+
+    For example: !points Kohli
+    """
+    raw_player_name = ' '.join(args)
+    player = db_utils.get_player(raw_player_name)
+
+    if len(player) == 0:
+        error_message = f"Error: Couldn't find a player with name: '{raw_player_name}'"
+        return await context.reply(f'{error_message} ')
+    if len(player) > 1:
+        names = [candidate.name for candidate in player]
+        error_message = f"""
+            Error: Found multiple players with name: '{raw_player_name}', {names}, please pick one
+        """
+        return await context.reply(error_message)
+
+    match_num, player_name = db_utils.get_player_and_most_recent_match(player[0].id)
+    points = sheet_utils.get_points(player_name)
+    recent_points = sheet_utils.get_points_for_match_num(player_name, match_num)
+    message = [
+        player_name,
+        f'Total Points: {points}',
+        f'Points in Most Recent Match: {recent_points} (match {match_num})',
+    ]
+    await context.reply('\n'.join(message))
 
 
 @bot.command()
@@ -179,7 +203,7 @@ async def transfer(context, *args):
 
     For example: !transfer wantthisperson for dontwantthisperson
     """
-    role_id = get_role_id(context.author.roles)
+    role_id = utils.get_role_id(context.author.roles)
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
 

@@ -68,6 +68,27 @@ def get_player_owner(player_name: str):
         return player_owner
 
 
+def get_player(player_name: str):
+    with sessionmaker(engine)() as session:
+        player = session.query(Player) \
+            .filter(Player.name.ilike(f'%{player_name}%')) \
+            .all()
+        return player
+
+
+def get_player_and_most_recent_match(player_id: int):
+    with sessionmaker(engine)() as session:
+        player_and_match = session.query(Match.match_num, Player.name) \
+            .filter(Player.id == player_id) \
+            .join(MatchPlayer, Player.id == MatchPlayer.player_id) \
+            .join(Match, Match.id == MatchPlayer.match_id) \
+            .filter(Match.start_timestamp <= datetime.utcnow()) \
+            .order_by(Match.start_timestamp.desc()) \
+            .first()
+
+        return player_and_match
+
+
 def get_squad(user_team_id: str):
     with sessionmaker(engine)() as session:
         squad = session.query(Player.name) \
