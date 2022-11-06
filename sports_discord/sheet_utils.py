@@ -47,6 +47,19 @@ def get_points_for_match_num(player_name, match_num):
     return int(sheet.cell(player_row, col).value or 0)
 
 
+def get_rank(query_points):
+    sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
+    player_rows = sheet.get('A3:D300')
+    all_points = []
+    for player_row in player_rows:
+        name, _, _, points = player_row
+        if name:
+            all_points.append(int(points))
+    rank = sorted(all_points, reverse=True).index(query_points) + 1
+    total = len(all_points)
+    return rank, total
+
+
 def adjust_transfer_points(team_name, adjusted_points):
     sheet = get_sheet(DOC_NAME, TEAM_POINTS_SHEET_NAME)
     team_row = sheet.find(team_name).row

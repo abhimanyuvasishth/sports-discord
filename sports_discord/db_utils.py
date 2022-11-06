@@ -60,20 +60,12 @@ def get_new_captain(role_id: str, player_name: str):
 
 def get_player_owner(player_name: str):
     with sessionmaker(engine)() as session:
-        player_owner = session.query(UserTeam.name, Player.name) \
+        player_owner = session.query(UserTeam.name, Player.name, Player.id) \
             .filter(Player.name.ilike(f'%{player_name}%')) \
             .join(UserTeam, UserTeam.id == Player.user_team_id, isouter=True) \
             .all()
 
         return player_owner
-
-
-def get_player(player_name: str):
-    with sessionmaker(engine)() as session:
-        player = session.query(Player) \
-            .filter(Player.name.ilike(f'%{player_name}%')) \
-            .all()
-        return player
 
 
 def get_player_and_most_recent_match(player_id: int):

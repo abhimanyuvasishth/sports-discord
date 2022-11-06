@@ -15,8 +15,8 @@ class Pool(Enum):
 
 
 class SheetCols(Enum):
-    OWNER_COL = 9
     POINTS_COL = 4
+    OWNER_COL = 9
     ADJUSTED_POINTS_COL = 22
     UPGRADES_COL = 28
     ROLLED_TRANSFERS_COL = 29

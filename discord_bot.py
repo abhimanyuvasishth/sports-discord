@@ -74,9 +74,9 @@ async def kaptaan(context, *args):
         error_message += ' Please pick someone playing in the next matchday who is on your team.'
         return await context.reply(f'{error_message} ')
     if len(new_captain) > 1:
-        names = [candidate[2] for candidate in new_captain]
+        names = [candidate[2] for candidate in new_captain][:10]
         error_message = f"""
-            Error: Found multiple players with name: '{player_name}', {names}, please pick one
+            Error: Found multiple players with name: '{player_name}' such as {names}
         """
         return await context.reply(error_message)
 
@@ -104,25 +104,30 @@ async def points(context, *args):
     For example: !points Kohli
     """
     raw_player_name = ' '.join(args)
-    player = db_utils.get_player(raw_player_name)
+    player = db_utils.get_player_owner(raw_player_name)
 
     if len(player) == 0:
         error_message = f"Error: Couldn't find a player with name: '{raw_player_name}'"
         return await context.reply(f'{error_message} ')
     if len(player) > 1:
-        names = [candidate.name for candidate in player]
+        names = [candidate[1] for candidate in player][:10]
         error_message = f"""
-            Error: Found multiple players with name: '{raw_player_name}', {names}, please pick one
+            Error: Found multiple players with name: '{raw_player_name}' such as {names}
         """
         return await context.reply(error_message)
 
-    match_num, player_name = db_utils.get_player_and_most_recent_match(player[0].id)
+    team_name, player_name, player_id = player[0]
+    match_num, player_name = db_utils.get_player_and_most_recent_match(player_id)
     points = sheet_utils.get_points(player_name)
     recent_points = sheet_utils.get_points_for_match_num(player_name, match_num)
+    rank, total = sheet_utils.get_rank(points)
+    rating_emoji = utils.get_rating_emoji(rank, total)
     message = [
         player_name,
         f'Total Points: {points}',
         f'Points in Most Recent Match: {recent_points} (match {match_num})',
+        f'Rank: {rank} of {total}, overall rating: {rating_emoji}',
+        f'Owner: {team_name or "no one"}',
     ]
     await context.reply('\n'.join(message))
 
@@ -141,13 +146,13 @@ async def whohas(context, *args):
         error_message = f"Error: Couldn't find a player with name: '{raw_player_name}'"
         return await context.reply(f'{error_message} ')
     if len(player_owned) > 1:
-        names = [candidate[1] for candidate in player_owned]
+        names = [candidate[1] for candidate in player_owned][:10]
         error_message = f"""
-            Error: Found multiple players with name: '{raw_player_name}', {names}, please pick one
+            Error: Found multiple players with name: '{raw_player_name}' such as {names}
         """
         return await context.reply(error_message)
 
-    team_name, player_name = player_owned[0]
+    team_name, player_name, _ = player_owned[0]
     owner = f'Team {team_name}' if team_name else 'No one'
     message = f'{owner} has {player_name}'
     await context.reply(message)
@@ -185,7 +190,7 @@ async def squad(context, *args):
     if len(user_team) > 1:
         names = [candidate[1] for candidate in user_team]
         error_message = f"""
-            Error: Found multiple teams with name: '{user_team_name}', {names}, please pick one
+            Error: Found multiple teams with name: '{user_team_name}' such as {names}
         """
         return await context.reply(error_message)
 
@@ -221,9 +226,9 @@ async def transfer(context, *args):
         error_message = f"Error: Couldn't find a player on your team with name: '{player_name_out}'"
         return await context.reply(f'{error_message} ')
     if len(players_out) > 1:
-        names = [candidate.name for candidate in players_out]
+        names = [candidate.name for candidate in players_out][:10]
         error_message = f"""
-            Error: Found multiple players with name: '{player_name_out}', {names}, please pick one
+            Error: Found multiple players with name: '{player_name_out}' such as {names}
         """
         return await context.reply(error_message)
     player_out = players_out[0]
@@ -233,9 +238,9 @@ async def transfer(context, *args):
         error_message = f"Error: Couldn't find an available player with name: '{player_name_in}'"
         return await context.reply(f'{error_message} ')
     if len(players_in) > 1:
-        names = [candidate.name for candidate in players_in]
+        names = [candidate.name for candidate in players_in][:10]
         error_message = f"""
-            Error: Found multiple players with name: '{player_name_in}', {names}, please pick one
+            Error: Found multiple players with name: '{player_name_in}' such as {names}
         """
         return await context.reply(error_message)
     player_in = players_in[0]
