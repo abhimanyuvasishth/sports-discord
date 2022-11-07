@@ -165,12 +165,41 @@ async def team_points(context):
 
     For example: !team_points
     """
-    num_2_words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
     message_lines = ['**Team Points**']
     team_points = sheet_utils.get_team_points()
     for team in team_points:
-        rank = num_2_words[team['rank'] - 1]
-        message_lines.append(f':{rank}: - {team["name"]} with {team["points"]} points')
+        emoji = utils.get_emoji_from_number(team['rank'])
+        message_lines.append(f'{emoji} - {team["name"]} with {team["points"]} points')
+    await context.reply('\n'.join(message_lines))
+
+
+@bot.command()
+async def top(context):
+    """
+    Displays top 10 players and their points
+
+    For example: !top
+    """
+    message_lines = ['**:fire: Top 10 Players :fire: **']
+    for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=True)):
+        rank_emoji = utils.get_emoji_from_number(i + 1)
+        owner = row[2] or 'no one'
+        message_lines.append(f'{rank_emoji} - {row[0]} with {row[3]} points ({owner})')
+    await context.reply('\n'.join(message_lines))
+
+
+@bot.command()
+async def bottom(context):
+    """
+    Displays bottom 10 players and their points
+
+    For example: !bottom
+    """
+    message_lines = ['**:lemon: Bottom 10 Players :lemon:**']
+    for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=False)):
+        rank_emoji = utils.get_emoji_from_number(i + 1)
+        owner = row[2] or 'no one'
+        message_lines.append(f'{rank_emoji} - {row[0]} with {row[3]} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
 

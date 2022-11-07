@@ -5,6 +5,14 @@ def get_role_id(roles):
             return role_id
 
 
+def get_emoji_from_number(number):
+    words = 'zero one two three four five six seven eight nine'.split()
+    emojis = []
+    for letter in str(number):
+        emojis.append(f':{words[int(letter)]}:')
+    return ''.join(emojis)
+
+
 def get_rating_emoji(rank, total):
     percentile = 1 - rank / total
     if percentile <= 0.25:
