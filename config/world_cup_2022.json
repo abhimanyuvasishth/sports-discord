@@ -355,7 +355,7 @@
             "team_1_num": 6,
             "team_2": "Pakistan",
             "team_2_num": 6,
-            "start_timestamp": "2022-11-10T07:00:00.000Z",
+            "start_timestamp": "2022-11-09T07:00:00.000Z",
             "object_id": 1298177,
             "match_day": 17
         },
@@ -364,7 +364,7 @@
             "team_1_num": 6,
             "team_2": "England",
             "team_2_num": 6,
-            "start_timestamp": "2022-11-11T07:00:00.000Z",
+            "start_timestamp": "2022-11-10T07:00:00.000Z",
             "object_id": 1298178,
             "match_day": 18
         }
