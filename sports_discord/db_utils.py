@@ -60,7 +60,7 @@ def get_new_captain(role_id: str, player_name: str):
 
 def get_player_owner(player_name: str):
     with sessionmaker(engine)() as session:
-        player_owner = session.query(UserTeam.name, Player.name, Player.id) \
+        player_owner = session.query(UserTeam.name, Player) \
             .filter(Player.name.ilike(f'%{player_name}%')) \
             .join(UserTeam, UserTeam.id == Player.user_team_id, isouter=True) \
             .all()

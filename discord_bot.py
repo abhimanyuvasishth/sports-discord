@@ -117,20 +117,20 @@ async def points(context, *args):
         """
         return await context.reply(error_message)
 
-    team_name, player_name, player_id = player[0]
+    team_name, query_player = player[0]
 
     try:
-        match_num, player_name = db_utils.get_player_and_most_recent_match(player_id)
-        recent_points = sheet_utils.get_points_for_match_num(player_name, match_num)
+        match_num, player_name = db_utils.get_player_and_most_recent_match(query_player.id)
+        recent_points = sheet_utils.get_points_for_match_num(query_player.name, match_num)
         recent_message = f'Points in Most Recent Match: {recent_points} (match {match_num})'
     except TypeError:
-        recent_message = f'{player_name} has not played any games yet'
+        recent_message = f'{query_player.name} has not played any games yet'
 
-    points = sheet_utils.get_points(player_name)
+    points = sheet_utils.get_points(query_player.name)
     rank, total = sheet_utils.get_rank(points)
     rating_emoji = utils.get_rating_emoji(rank, total)
     message = [
-        player_name,
+        f'{query_player.name} ({Position(query_player.position).name})',
         f'Total Points: {points}',
         recent_message,
         f'Rank: {rank} of {total}, overall rating: {rating_emoji}',
@@ -159,9 +159,9 @@ async def whohas(context, *args):
         """
         return await context.reply(error_message)
 
-    team_name, player_name, _ = player_owned[0]
+    team_name, query_player = player_owned[0]
     owner = f'Team {team_name}' if team_name else 'No one'
-    message = f'{owner} has {player_name}'
+    message = f'{owner} has {query_player.name} ({Position(query_player.position).name})'
     await context.reply(message)
 
 
