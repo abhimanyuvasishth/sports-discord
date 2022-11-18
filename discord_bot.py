@@ -117,15 +117,21 @@ async def points(context, *args):
         return await context.reply(error_message)
 
     team_name, player_name, player_id = player[0]
-    match_num, player_name = db_utils.get_player_and_most_recent_match(player_id)
+
+    try:
+        match_num, player_name = db_utils.get_player_and_most_recent_match(player_id)
+        recent_points = sheet_utils.get_points_for_match_num(player_name, match_num)
+        recent_message = f'Points in Most Recent Match: {recent_points} (match {match_num})'
+    except TypeError:
+        recent_message = f'{player_name} has not played any games yet'
+
     points = sheet_utils.get_points(player_name)
-    recent_points = sheet_utils.get_points_for_match_num(player_name, match_num)
     rank, total = sheet_utils.get_rank(points)
     rating_emoji = utils.get_rating_emoji(rank, total)
     message = [
         player_name,
         f'Total Points: {points}',
-        f'Points in Most Recent Match: {recent_points} (match {match_num})',
+        recent_message,
         f'Rank: {rank} of {total}, overall rating: {rating_emoji}',
         f'Owner: {team_name or "no one"}',
     ]
