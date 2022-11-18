@@ -83,7 +83,7 @@ def get_player_and_most_recent_match(player_id: int):
 
 def get_squad(user_team_id: str):
     with sessionmaker(engine)() as session:
-        squad = session.query(Player.name) \
+        squad = session.query(Player) \
             .filter(Player.user_team_id == user_team_id) \
             .all()
 

@@ -6,7 +6,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils, utils
-from sports_discord.constants import DOC_NAME, NOT_ON_A_TEAM, POINTS_SHEET_NAME
+from sports_discord.constants import (DOC_NAME, NOT_ON_A_TEAM,
+                                      POINTS_SHEET_NAME, Position)
 from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
@@ -231,7 +232,7 @@ async def squad(context, *args):
 
     user_team_id, user_team_name = user_team[0]
     squad_rows = db_utils.get_squad(user_team_id)
-    squad = [squad_row[0] for squad_row in squad_rows]
+    squad = [f'{player.name} ({Position(player.position).name})' for player in squad_rows]
     message = f"Team {user_team_name}'s Squad: {squad}"
     await context.reply(message)
 
@@ -280,7 +281,7 @@ async def transfer(context, *args):
         return await context.reply(error_message)
     player_in = players_in[0]
 
-    # TODO: Check pool logistics
+    # TODO: Check pool/position logistics
 
     # Get points
     player_in_points = sheet_utils.get_points(player_in.name)

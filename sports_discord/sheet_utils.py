@@ -1,6 +1,6 @@
 from sports_discord.constants import (BIDDING_SHEET_NAME, DOC_NAME,
-                                      POINTS_SHEET_NAME,
-                                      TEAM_POINTS_SHEET_NAME, NUMBER_OF_FIELDS, SheetCols)
+                                      NUMBER_OF_FIELDS, POINTS_SHEET_NAME,
+                                      TEAM_POINTS_SHEET_NAME, SheetCols)
 from sports_discord.google_sheet import get_sheet
 
 
