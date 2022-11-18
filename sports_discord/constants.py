@@ -1,11 +1,11 @@
 from enum import Enum
 
-DOC_NAME = 'World Cup 2022'
+DOC_NAME = 'Fifa World Cup 2022'
 BIDDING_SHEET_NAME = 'Bidding Page'
 POINTS_SHEET_NAME = 'Points Worksheet'
 TEAM_POINTS_SHEET_NAME = 'Team Points'
 NOT_ON_A_TEAM = 'Not yet a part of any teams for this auction/draft. Please join a team first.'
-NUMBER_OF_FIELDS = 15
+NUMBER_OF_FIELDS = 3
 
 
 class Pool(Enum):
@@ -14,9 +14,16 @@ class Pool(Enum):
     C = 3
 
 
+class Position(Enum):
+    GK = 1
+    DF = 2
+    MF = 3
+    FW = 4
+
+
 class SheetCols(Enum):
     POINTS_COL = 4
     OWNER_COL = 9
-    ADJUSTED_POINTS_COL = 22
-    UPGRADES_COL = 28
-    ROLLED_TRANSFERS_COL = 29
+    ADJUSTED_POINTS_COL = 12
+    # UPGRADES_COL = 28
+    ROLLED_TRANSFERS_COL = 14

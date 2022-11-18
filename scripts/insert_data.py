@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME, Pool
+from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME, Position
 from sports_discord.google_sheet import get_sheet
 from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 
@@ -30,14 +30,15 @@ def create_player_configs():
     player_configs = []
     sheet = get_sheet(DOC_NAME, BIDDING_SHEET_NAME)
     rows = sheet.get_all_values()
-    for row in rows[20:200]:
+    for row in rows[21:250]:
         if not row[1]:
             continue
         player_configs.append({
             'name': row[1],
             'team_name': row[2],
-            'pool': Pool[row[6]].value,
-            'user_team_name': row[8]
+            'pool': 1,
+            'user_team_name': row[8],
+            'position': Position[row[5]].value
         })
     return player_configs
 
@@ -55,6 +56,7 @@ def insert_players(player_configs):
                 team_id=team_id,
                 user_team_id=user_team_id,
                 pool=config['pool'],
+                position=config['position'],
             )
             session.add(player)
 
@@ -101,13 +103,13 @@ def insert_match_players(player_configs, match_configs):
 
 
 if __name__ == '__main__':
-    with open('config/world_cup_2022.json') as f:
+    with open('config/fifa_world_cup_2022.json') as f:
         configs = json.loads(f.read())
 
+    player_configs = create_player_configs()
     insert_user_teams(configs['user_teams'])
     insert_teams(configs['teams'])
 
-    player_configs = create_player_configs()
     insert_players(player_configs)
     insert_matches(configs['matches'])
     insert_match_players(player_configs, configs['matches'])

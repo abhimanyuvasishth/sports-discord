@@ -1,0 +1,600 @@
+{
+    "teams": [
+        {
+            "name": "Netherlands",
+            "abbrev": "NED"
+        },
+        {
+            "name": "Senegal",
+            "abbrev": "SEN"
+        },
+        {
+            "name": "Ecuador",
+            "abbrev": "ECU"
+        },
+        {
+            "name": "Qatar",
+            "abbrev": "QAT"
+        },
+        {
+            "name": "England",
+            "abbrev": "ENG"
+        },
+        {
+            "name": "Iran",
+            "abbrev": "IRN"
+        },
+        {
+            "name": "Wales",
+            "abbrev": "WAL"
+        },
+        {
+            "name": "USA",
+            "abbrev": "USA"
+        },
+        {
+            "name": "Argentina",
+            "abbrev": "ARG"
+        },
+        {
+            "name": "Saudi Arabia",
+            "abbrev": "KSA"
+        },
+        {
+            "name": "Mexico",
+            "abbrev": "MEX"
+        },
+        {
+            "name": "Poland",
+            "abbrev": "POL"
+        },
+        {
+            "name": "France",
+            "abbrev": "FRA"
+        },
+        {
+            "name": "Denmark",
+            "abbrev": "DEN"
+        },
+        {
+            "name": "Tunisia",
+            "abbrev": "TUN"
+        },
+        {
+            "name": "Australia",
+            "abbrev": "AUS"
+        },
+        {
+            "name": "Germany",
+            "abbrev": "GER"
+        },
+        {
+            "name": "Spain",
+            "abbrev": "SPA"
+        },
+        {
+            "name": "Costa Rica",
+            "abbrev": "CRC"
+        },
+        {
+            "name": "Japan",
+            "abbrev": "JAP"
+        },
+        {
+            "name": "Morocco",
+            "abbrev": "MOR"
+        },
+        {
+            "name": "Croatia",
+            "abbrev": "CRO"
+        },
+        {
+            "name": "Belgium",
+            "abbrev": "BEL"
+        },
+        {
+            "name": "Canada",
+            "abbrev": "CAN"
+        },
+        {
+            "name": "Switzerland",
+            "abbrev": "SUI"
+        },
+        {
+            "name": "Cameroon",
+            "abbrev": "CMR"
+        },
+        {
+            "name": "Brazil",
+            "abbrev": "BRA"
+        },
+        {
+            "name": "Serbia",
+            "abbrev": "SRB"
+        },
+        {
+            "name": "Portugal",
+            "abbrev": "POR"
+        },
+        {
+            "name": "Uruguay",
+            "abbrev": "URU"
+        },
+        {
+            "name": "Ghana",
+            "abbrev": "GHA"
+        },
+        {
+            "name": "South Korea",
+            "abbrev": "KOR"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "Sobo Sardarz",
+            "discord_role_id": "1030006519380590592"
+        },
+        {
+            "name": "Chariots",
+            "discord_role_id": "1011749877623029842"
+        },
+        {
+            "name": "Namit Squid Shyam",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "Onana Whatsmyname",
+            "discord_role_id": "1030006412266455113"
+        },
+        {
+            "name": "Suburb Sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "Shix Aruba Neel Shef",
+            "discord_role_id": "1011749363942424676"
+        },
+        {
+            "name": "Fire on Zidance Floor",
+            "discord_role_id": "1032331444992876574"
+        },
+        {
+            "name": "Harit Bala",
+            "discord_role_id": "1043225108254294128"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "Qatar",
+            "team_1_num": 1,
+            "team_2": "Ecuador",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-20T16:00:00.000Z",
+            "object_id": 1,
+            "match_day": 1
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 1,
+            "team_2": "Iran",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-21T13:00:00.000Z",
+            "object_id": 2,
+            "match_day": 2
+        },
+        {
+            "team_1": "Senegal",
+            "team_1_num": 1,
+            "team_2": "Netherlands",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-21T16:00:00.000Z",
+            "object_id": 3,
+            "match_day": 2
+        },
+        {
+            "team_1": "USA",
+            "team_1_num": 1,
+            "team_2": "Wales",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-21T19:00:00.000Z",
+            "object_id": 4,
+            "match_day": 2
+        },
+        {
+            "team_1": "Argentina",
+            "team_1_num": 1,
+            "team_2": "Saudi Arabia",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-22T10:00:00.000Z",
+            "object_id": 5,
+            "match_day": 3
+        },
+        {
+            "team_1": "Denmark",
+            "team_1_num": 1,
+            "team_2": "Tunisia",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-22T13:00:00.000Z",
+            "object_id": 6,
+            "match_day": 3
+        },
+        {
+            "team_1": "Mexico",
+            "team_1_num": 1,
+            "team_2": "Poland",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-22T16:00:00.000Z",
+            "object_id": 7,
+            "match_day": 3
+        },
+        {
+            "team_1": "France",
+            "team_1_num": 1,
+            "team_2": "Australia",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-22T19:00:00.000Z",
+            "object_id": 8,
+            "match_day": 3
+        },
+        {
+            "team_1": "Morocco",
+            "team_1_num": 1,
+            "team_2": "Croatia",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-23T10:00:00.000Z",
+            "object_id": 9,
+            "match_day": 4
+        },
+        {
+            "team_1": "Germany",
+            "team_1_num": 1,
+            "team_2": "Japan",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-23T13:00:00.000Z",
+            "object_id": 10,
+            "match_day": 4
+        },
+        {
+            "team_1": "Spain",
+            "team_1_num": 1,
+            "team_2": "Costa Rica",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-23T16:00:00.000Z",
+            "object_id": 11,
+            "match_day": 4
+        },
+        {
+            "team_1": "Belgium",
+            "team_1_num": 1,
+            "team_2": "Canada",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-23T19:00:00.000Z",
+            "object_id": 12,
+            "match_day": 4
+        },
+        {
+            "team_1": "Switzerland",
+            "team_1_num": 1,
+            "team_2": "Cameroon",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-24T10:00:00.000Z",
+            "object_id": 13,
+            "match_day": 5
+        },
+        {
+            "team_1": "Uruguay",
+            "team_1_num": 1,
+            "team_2": "South Korea",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-24T13:00:00.000Z",
+            "object_id": 14,
+            "match_day": 5
+        },
+        {
+            "team_1": "Portugal",
+            "team_1_num": 1,
+            "team_2": "Ghana",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-24T16:00:00.000Z",
+            "object_id": 15,
+            "match_day": 5
+        },
+        {
+            "team_1": "Brazil",
+            "team_1_num": 1,
+            "team_2": "Serbia",
+            "team_2_num": 1,
+            "start_timestamp": "2022-11-24T19:00:00.000Z",
+            "object_id": 16,
+            "match_day": 5
+        },
+        {
+            "team_1": "Wales",
+            "team_1_num": 2,
+            "team_2": "Iran",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-25T10:00:00.000Z",
+            "object_id": 17,
+            "match_day": 6
+        },
+        {
+            "team_1": "Qatar",
+            "team_1_num": 2,
+            "team_2": "Senegal",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-25T13:00:00.000Z",
+            "object_id": 18,
+            "match_day": 6
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 2,
+            "team_2": "Ecuador",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-25T16:00:00.000Z",
+            "object_id": 19,
+            "match_day": 6
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 2,
+            "team_2": "USA",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-25T19:00:00.000Z",
+            "object_id": 20,
+            "match_day": 6
+        },
+        {
+            "team_1": "Tunisia",
+            "team_1_num": 2,
+            "team_2": "Australia",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-26T10:00:00.000Z",
+            "object_id": 21,
+            "match_day": 7
+        },
+        {
+            "team_1": "Poland",
+            "team_1_num": 2,
+            "team_2": "Saudi Arabia",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-26T13:00:00.000Z",
+            "object_id": 22,
+            "match_day": 7
+        },
+        {
+            "team_1": "France",
+            "team_1_num": 2,
+            "team_2": "Denmark",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-26T16:00:00.000Z",
+            "object_id": 23,
+            "match_day": 7
+        },
+        {
+            "team_1": "Argentina",
+            "team_1_num": 2,
+            "team_2": "Mexico",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-26T19:00:00.000Z",
+            "object_id": 24,
+            "match_day": 7
+        },
+        {
+            "team_1": "Japan",
+            "team_1_num": 2,
+            "team_2": "Costa Rica",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-27T10:00:00.000Z",
+            "object_id": 25,
+            "match_day": 8
+        },
+        {
+            "team_1": "Belgium",
+            "team_1_num": 2,
+            "team_2": "Morocco",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-27T13:00:00.000Z",
+            "object_id": 26,
+            "match_day": 8
+        },
+        {
+            "team_1": "Croatia",
+            "team_1_num": 2,
+            "team_2": "Canada",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-27T16:00:00.000Z",
+            "object_id": 27,
+            "match_day": 8
+        },
+        {
+            "team_1": "Spain",
+            "team_1_num": 2,
+            "team_2": "Germany",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-27T19:00:00.000Z",
+            "object_id": 28,
+            "match_day": 8
+        },
+        {
+            "team_1": "Cameroon",
+            "team_1_num": 2,
+            "team_2": "Serbia",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-28T10:00:00.000Z",
+            "object_id": 29,
+            "match_day": 9
+        },
+        {
+            "team_1": "South Korea",
+            "team_1_num": 2,
+            "team_2": "Ghana",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-28T13:00:00.000Z",
+            "object_id": 30,
+            "match_day": 9
+        },
+        {
+            "team_1": "Brazil",
+            "team_1_num": 2,
+            "team_2": "Switzerland",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-28T16:00:00.000Z",
+            "object_id": 31,
+            "match_day": 9
+        },
+        {
+            "team_1": "Portugal",
+            "team_1_num": 2,
+            "team_2": "Uruguay",
+            "team_2_num": 2,
+            "start_timestamp": "2022-11-28T19:00:00.000Z",
+            "object_id": 32,
+            "match_day": 9
+        },
+        {
+            "team_1": "Ecuador",
+            "team_1_num": 3,
+            "team_2": "Senegal",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-29T15:00:00.000Z",
+            "object_id": 33,
+            "match_day": 10
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 3,
+            "team_2": "Qatar",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-29T15:00:00.000Z",
+            "object_id": 34,
+            "match_day": 10
+        },
+        {
+            "team_1": "Wales",
+            "team_1_num": 3,
+            "team_2": "England",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-29T19:00:00.000Z",
+            "object_id": 35,
+            "match_day": 10
+        },
+        {
+            "team_1": "Iran",
+            "team_1_num": 3,
+            "team_2": "USA",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-29T19:00:00.000Z",
+            "object_id": 36,
+            "match_day": 10
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 3,
+            "team_2": "Denmark",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-30T15:00:00.000Z",
+            "object_id": 37,
+            "match_day": 11
+        },
+        {
+            "team_1": "Tunisia",
+            "team_1_num": 3,
+            "team_2": "France",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-30T15:00:00.000Z",
+            "object_id": 38,
+            "match_day": 11
+        },
+        {
+            "team_1": "Saudi Arabia",
+            "team_1_num": 3,
+            "team_2": "Mexico",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-30T19:00:00.000Z",
+            "object_id": 39,
+            "match_day": 11
+        },
+        {
+            "team_1": "Poland",
+            "team_1_num": 3,
+            "team_2": "Argentina",
+            "team_2_num": 3,
+            "start_timestamp": "2022-11-30T19:00:00.000Z",
+            "object_id": 40,
+            "match_day": 11
+        },
+        {
+            "team_1": "Canada",
+            "team_1_num": 3,
+            "team_2": "Morocco",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-01T15:00:00.000Z",
+            "object_id": 41,
+            "match_day": 12
+        },
+        {
+            "team_1": "Croatia",
+            "team_1_num": 3,
+            "team_2": "Belgium",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-01T15:00:00.000Z",
+            "object_id": 42,
+            "match_day": 12
+        },
+        {
+            "team_1": "Japan",
+            "team_1_num": 3,
+            "team_2": "Spain",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-01T19:00:00.000Z",
+            "object_id": 43,
+            "match_day": 12
+        },
+        {
+            "team_1": "Costa Rica",
+            "team_1_num": 3,
+            "team_2": "Germany",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-01T19:00:00.000Z",
+            "object_id": 44,
+            "match_day": 12
+        },
+        {
+            "team_1": "Ghana",
+            "team_1_num": 3,
+            "team_2": "Uruguay",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-02T15:00:00.000Z",
+            "object_id": 45,
+            "match_day": 13
+        },
+        {
+            "team_1": "South Korea",
+            "team_1_num": 3,
+            "team_2": "Portugal",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-02T15:00:00.000Z",
+            "object_id": 46,
+            "match_day": 13
+        },
+        {
+            "team_1": "Serbia",
+            "team_1_num": 3,
+            "team_2": "Switzerland",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-02T19:00:00.000Z",
+            "object_id": 47,
+            "match_day": 13
+        },
+        {
+            "team_1": "Cameroon",
+            "team_1_num": 3,
+            "team_2": "Brazil",
+            "team_2_num": 3,
+            "start_timestamp": "2022-12-02T19:00:00.000Z",
+            "object_id": 48,
+            "match_day": 13
+        }
+    ]
+}
