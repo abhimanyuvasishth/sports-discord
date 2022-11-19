@@ -120,7 +120,7 @@ async def points(context, *args):
     team_name, query_player = player[0]
 
     try:
-        match_num, player_name = db_utils.get_player_and_most_recent_match(query_player.id)
+        match_num, _ = db_utils.get_player_and_most_recent_match(query_player.id)
         recent_points = sheet_utils.get_points_for_match_num(query_player.name, match_num)
         recent_message = f'Points in Most Recent Match: {recent_points} (match {match_num})'
     except TypeError:

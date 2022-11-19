@@ -34,10 +34,10 @@ def create_player_configs():
         if not row[1]:
             continue
         player_configs.append({
-            'name': row[1],
-            'team_name': row[2],
+            'name': row[1].strip(),
+            'team_name': row[2].strip(),
             'pool': 1,
-            'user_team_name': row[8],
+            'user_team_name': row[8].strip(),
             'position': Position[row[5]].value
         })
     return player_configs
