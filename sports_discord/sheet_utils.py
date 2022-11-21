@@ -70,7 +70,8 @@ def get_sorted_players(num_players=10, reverse=False):
         if player_row[0]:
             filtered_player_rows.append(player_row)
 
-    return sorted(filtered_player_rows, key=lambda x: int(x[3]), reverse=reverse)[:num_players]
+    col = SheetCols.POINTS_COL.value - 1
+    return sorted(filtered_player_rows, key=lambda x: int(x[col]), reverse=reverse)[:num_players]
 
 
 def adjust_transfer_points(team_name, adjusted_points):
