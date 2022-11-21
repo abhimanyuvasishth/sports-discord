@@ -190,8 +190,8 @@ async def top(context):
     message_lines = ['**:fire: Top 10 Players :fire: **']
     for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=True)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
-        owner = row[2] or 'no one'
-        message_lines.append(f'{rank_emoji} - {row[0]} with {row[3]} points ({owner})')
+        owner = row[3] or 'no one'
+        message_lines.append(f'{rank_emoji} - {row[0]} with {row[4]} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
 
@@ -205,8 +205,8 @@ async def bottom(context):
     message_lines = ['**:lemon: Bottom 10 Players :lemon:**']
     for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=False)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
-        owner = row[2] or 'no one'
-        message_lines.append(f'{rank_emoji} - {row[0]} with {row[3]} points ({owner})')
+        owner = row[3] or 'no one'
+        message_lines.append(f'{rank_emoji} - {row[0]} with {row[4]} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
 
