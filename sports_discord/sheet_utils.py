@@ -50,7 +50,8 @@ def get_points_for_match_num(player_name, match_num):
 def get_rank(query_points):
     all_points = []
     for player_row in get_player_rows():
-        name, _, _, points = player_row
+        name = player_row[0]
+        points = player_row[SheetCols.POINTS_COL.value - 1]
         if name:
             all_points.append(int(points))
     rank = sorted(all_points, reverse=True).index(query_points) + 1
@@ -60,7 +61,7 @@ def get_rank(query_points):
 
 def get_player_rows():
     sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
-    return sheet.get('A3:D300')
+    return sheet.get('A3:E1000')
 
 
 def get_sorted_players(num_players=10, reverse=False):

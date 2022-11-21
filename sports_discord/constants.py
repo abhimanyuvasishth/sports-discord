@@ -22,7 +22,7 @@ class Position(Enum):
 
 
 class SheetCols(Enum):
-    POINTS_COL = 4
+    POINTS_COL = 5
     OWNER_COL = 9
     ADJUSTED_POINTS_COL = 12
     # UPGRADES_COL = 28
