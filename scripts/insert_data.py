@@ -30,7 +30,7 @@ def create_player_configs():
     player_configs = []
     sheet = get_sheet(DOC_NAME, BIDDING_SHEET_NAME)
     rows = sheet.get_all_values()
-    for row in rows[21:250]:
+    for row in rows[21:1000]:
         if not row[1]:
             continue
         player_configs.append({

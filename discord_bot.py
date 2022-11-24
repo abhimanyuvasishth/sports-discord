@@ -153,7 +153,7 @@ async def whohas(context, *args):
         error_message = f"Error: Couldn't find a player with name: '{raw_player_name}'"
         return await context.reply(f'{error_message} ')
     if len(player_owned) > 1:
-        names = [candidate[1] for candidate in player_owned][:10]
+        names = [candidate[1].name for candidate in player_owned][:10]
         error_message = f"""
             Error: Found multiple players with name: '{raw_player_name}' such as {names}
         """
