@@ -1,0 +1,612 @@
+{
+    "teams": [
+        {
+            "name": "Chennai Super Kings",
+            "abbrev": "CSK"
+        },
+        {
+            "name": "Delhi Capitals",
+            "abbrev": "DC"
+        },
+        {
+            "name": "Gujarat Titans",
+            "abbrev": "GT"
+        },
+        {
+            "name": "Kolkata Knight Riders",
+            "abbrev": "KKR"
+        },
+        {
+            "name": "Lucknow Super Giants",
+            "abbrev": "LSG"
+        },
+        {
+            "name": "Mumbai Indians",
+            "abbrev": "MI"
+        },
+        {
+            "name": "Punjab Kings",
+            "abbrev": "PK"
+        },
+        {
+            "name": "Rajasthan Royals",
+            "abbrev": "RR"
+        },
+        {
+            "name": "Royal Challengers Bangalore",
+            "abbrev": "RCB"
+        },
+        {
+            "name": "Sunrisers Hyderabad",
+            "abbrev": "SRH"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "The Bot_anists",
+            "discord_role_id": "1011749877623029842"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 1,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 1,
+            "start_timestamp": "2023-03-31T14:00:00.000Z",
+            "object_id": 1359475
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 1,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 1,
+            "start_timestamp": "2023-04-01T10:00:00.000Z",
+            "object_id": 1359476
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 1,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 1,
+            "start_timestamp": "2023-04-01T14:00:00.000Z",
+            "object_id": 1359477
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 1,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 1,
+            "start_timestamp": "2023-04-02T10:00:00.000Z",
+            "object_id": 1359478
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 1,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 1,
+            "start_timestamp": "2023-04-02T14:00:00.000Z",
+            "object_id": 1359479
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 2,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 2,
+            "start_timestamp": "2023-04-03T14:00:00.000Z",
+            "object_id": 1359480
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 2,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 2,
+            "start_timestamp": "2023-04-04T14:00:00.000Z",
+            "object_id": 1359481
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 2,
+            "team_2": "Punjab Kings",
+            "team_2_num": 2,
+            "start_timestamp": "2023-04-05T14:00:00.000Z",
+            "object_id": 1359482
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 2,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 2,
+            "start_timestamp": "2023-04-06T14:00:00.000Z",
+            "object_id": 1359483
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 3,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 2,
+            "start_timestamp": "2023-04-07T14:00:00.000Z",
+            "object_id": 1359484
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 3,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 3,
+            "start_timestamp": "2023-04-08T10:00:00.000Z",
+            "object_id": 1359485
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 2,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 3,
+            "start_timestamp": "2023-04-08T14:00:00.000Z",
+            "object_id": 1359486
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 3,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 3,
+            "start_timestamp": "2023-04-09T10:00:00.000Z",
+            "object_id": 1359487
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 3,
+            "team_2": "Punjab Kings",
+            "team_2_num": 3,
+            "start_timestamp": "2023-04-09T14:00:00.000Z",
+            "object_id": 1359488
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 3,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 4,
+            "start_timestamp": "2023-04-10T14:00:00.000Z",
+            "object_id": 1359489
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 4,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 3,
+            "start_timestamp": "2023-04-11T14:00:00.000Z",
+            "object_id": 1359490
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 4,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 4,
+            "start_timestamp": "2023-04-12T14:00:00.000Z",
+            "object_id": 1359491
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 4,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 4,
+            "start_timestamp": "2023-04-13T14:00:00.000Z",
+            "object_id": 1359492
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 4,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 4,
+            "start_timestamp": "2023-04-14T14:00:00.000Z",
+            "object_id": 1359493
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 4,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 5,
+            "start_timestamp": "2023-04-15T10:00:00.000Z",
+            "object_id": 1359494
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 5,
+            "team_2": "Punjab Kings",
+            "team_2_num": 5,
+            "start_timestamp": "2023-04-15T14:00:00.000Z",
+            "object_id": 1359495
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 4,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 5,
+            "start_timestamp": "2023-04-16T10:00:00.000Z",
+            "object_id": 1359496
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 5,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 5,
+            "start_timestamp": "2023-04-16T14:00:00.000Z",
+            "object_id": 1359497
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 5,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 5,
+            "start_timestamp": "2023-04-17T14:00:00.000Z",
+            "object_id": 1359498
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 5,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 5,
+            "start_timestamp": "2023-04-18T14:00:00.000Z",
+            "object_id": 1359499
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 6,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 6,
+            "start_timestamp": "2023-04-19T14:00:00.000Z",
+            "object_id": 1359500
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 6,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 6,
+            "start_timestamp": "2023-04-20T10:00:00.000Z",
+            "object_id": 1359501
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 6,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 6,
+            "start_timestamp": "2023-04-20T14:00:00.000Z",
+            "object_id": 1359502
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 6,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 6,
+            "start_timestamp": "2023-04-21T14:00:00.000Z",
+            "object_id": 1359503
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 7,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 6,
+            "start_timestamp": "2023-04-22T10:00:00.000Z",
+            "object_id": 1359504
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 6,
+            "team_2": "Punjab Kings",
+            "team_2_num": 7,
+            "start_timestamp": "2023-04-22T14:00:00.000Z",
+            "object_id": 1359505
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 7,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 7,
+            "start_timestamp": "2023-04-23T10:00:00.000Z",
+            "object_id": 1359506
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 7,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 7,
+            "start_timestamp": "2023-04-23T14:00:00.000Z",
+            "object_id": 1359507
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 7,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 7,
+            "start_timestamp": "2023-04-24T14:00:00.000Z",
+            "object_id": 1359508
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 7,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 7,
+            "start_timestamp": "2023-04-25T14:00:00.000Z",
+            "object_id": 1359509
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 8,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 8,
+            "start_timestamp": "2023-04-26T14:00:00.000Z",
+            "object_id": 1359510
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 8,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 8,
+            "start_timestamp": "2023-04-27T14:00:00.000Z",
+            "object_id": 1359511
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 8,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 8,
+            "start_timestamp": "2023-04-28T14:00:00.000Z",
+            "object_id": 1359512
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 9,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 8,
+            "start_timestamp": "2023-04-29T10:00:00.000Z",
+            "object_id": 1359513
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 8,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 8,
+            "start_timestamp": "2023-04-29T14:00:00.000Z",
+            "object_id": 1359514
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 9,
+            "team_2": "Punjab Kings",
+            "team_2_num": 9,
+            "start_timestamp": "2023-04-30T10:00:00.000Z",
+            "object_id": 1359515
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 8,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 9,
+            "start_timestamp": "2023-04-30T14:00:00.000Z",
+            "object_id": 1359516
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 9,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 9,
+            "start_timestamp": "2023-05-01T14:00:00.000Z",
+            "object_id": 1359517
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 9,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 9,
+            "start_timestamp": "2023-05-02T14:00:00.000Z",
+            "object_id": 1359518
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 10,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 9,
+            "start_timestamp": "2023-05-03T14:00:00.000Z",
+            "object_id": 1359519
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 10,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 10,
+            "start_timestamp": "2023-05-04T10:00:00.000Z",
+            "object_id": 1359520
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 9,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 10,
+            "start_timestamp": "2023-05-04T14:00:00.000Z",
+            "object_id": 1359521
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 10,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 10,
+            "start_timestamp": "2023-05-05T14:00:00.000Z",
+            "object_id": 1359522
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 11,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 10,
+            "start_timestamp": "2023-05-06T10:00:00.000Z",
+            "object_id": 1359523
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 10,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 10,
+            "start_timestamp": "2023-05-06T14:00:00.000Z",
+            "object_id": 1359524
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 11,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 11,
+            "start_timestamp": "2023-05-07T10:00:00.000Z",
+            "object_id": 1359525
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 11,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 10,
+            "start_timestamp": "2023-05-07T14:00:00.000Z",
+            "object_id": 1359526
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 11,
+            "team_2": "Punjab Kings",
+            "team_2_num": 11,
+            "start_timestamp": "2023-05-08T14:00:00.000Z",
+            "object_id": 1359527
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 11,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 11,
+            "start_timestamp": "2023-05-09T14:00:00.000Z",
+            "object_id": 1359528
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 12,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 11,
+            "start_timestamp": "2023-05-10T14:00:00.000Z",
+            "object_id": 1359529
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 12,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 12,
+            "start_timestamp": "2023-05-11T14:00:00.000Z",
+            "object_id": 1359530
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 12,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 12,
+            "start_timestamp": "2023-05-12T14:00:00.000Z",
+            "object_id": 1359531
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 11,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 12,
+            "start_timestamp": "2023-05-13T10:00:00.000Z",
+            "object_id": 1359532
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 12,
+            "team_2": "Punjab Kings",
+            "team_2_num": 12,
+            "start_timestamp": "2023-05-13T14:00:00.000Z",
+            "object_id": 1359533
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 13,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 12,
+            "start_timestamp": "2023-05-14T10:00:00.000Z",
+            "object_id": 1359534
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 13,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 13,
+            "start_timestamp": "2023-05-14T14:00:00.000Z",
+            "object_id": 1359535
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 13,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 12,
+            "start_timestamp": "2023-05-15T14:00:00.000Z",
+            "object_id": 1359536
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 13,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 13,
+            "start_timestamp": "2023-05-16T14:00:00.000Z",
+            "object_id": 1359537
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 13,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 13,
+            "start_timestamp": "2023-05-17T14:00:00.000Z",
+            "object_id": 1359538
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 13,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 13,
+            "start_timestamp": "2023-05-18T14:00:00.000Z",
+            "object_id": 1359539
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 14,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 14,
+            "start_timestamp": "2023-05-19T14:00:00.000Z",
+            "object_id": 1359540
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 14,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 14,
+            "start_timestamp": "2023-05-20T10:00:00.000Z",
+            "object_id": 1359541
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 14,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 14,
+            "start_timestamp": "2023-05-20T14:00:00.000Z",
+            "object_id": 1359542
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 14,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 14,
+            "start_timestamp": "2023-05-21T10:00:00.000Z",
+            "object_id": 1359543
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 14,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 14,
+            "start_timestamp": "2023-05-21T14:00:00.000Z",
+            "object_id": 1359544
+        }
+    ]
+}
