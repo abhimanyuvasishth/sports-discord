@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils, utils
 from sports_discord.constants import (DOC_NAME, NOT_ON_A_TEAM,
-                                      POINTS_SHEET_NAME, Position)
+                                      POINTS_SHEET_NAME, Position, SheetCols)
 from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
@@ -190,8 +190,10 @@ async def top(context):
     message_lines = ['**:fire: Top 10 Players :fire: **']
     for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=True)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
-        owner = row[3] or 'no one'
-        message_lines.append(f'{rank_emoji} - {row[0]} with {row[4]} points ({owner})')
+        owner = row[SheetCols.OWNER_COL.value] or 'no one'
+        name = row[SheetCols.NAME_COL.value]
+        points = row[SheetCols.POINTS_COL.value]
+        message_lines.append(f'{rank_emoji} - {name} with {points} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
 
@@ -205,8 +207,10 @@ async def bottom(context):
     message_lines = ['**:lemon: Bottom 10 Players :lemon:**']
     for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=False)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
-        owner = row[3] or 'no one'
-        message_lines.append(f'{rank_emoji} - {row[0]} with {row[4]} points ({owner})')
+        owner = row[SheetCols.OWNER_COL.value] or 'no one'
+        name = row[SheetCols.NAME_COL.value]
+        points = row[SheetCols.POINTS_COL.value]
+        message_lines.append(f'{rank_emoji} - {name} with {points} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
 

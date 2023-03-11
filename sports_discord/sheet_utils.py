@@ -70,7 +70,7 @@ def get_sorted_players(num_players=10, reverse=False):
         if player_row[0]:
             filtered_player_rows.append(player_row)
 
-    col = SheetCols.POINTS_COL.value - 1
+    col = SheetCols.POINTS_COL.value
     return sorted(filtered_player_rows, key=lambda x: int(x[col]), reverse=reverse)[:num_players]
 
 
