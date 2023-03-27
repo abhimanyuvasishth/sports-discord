@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils, utils
 from sports_discord.constants import (DOC_NAME, NOT_ON_A_TEAM,
-                                      POINTS_SHEET_NAME, Position, SheetCols)
+                                      POINTS_SHEET_NAME, Pool, SheetCols)
 from sports_discord.google_sheet import get_sheet
 
 load_dotenv()
@@ -130,7 +130,7 @@ async def points(context, *args):
     rank, total = sheet_utils.get_rank(points)
     rating_emoji = utils.get_rating_emoji(rank, total)
     message = [
-        f'{query_player.name} ({Position(query_player.position).name})',
+        f'{query_player.name} ({Pool(query_player.pool).name})',
         f'Total Points: {points}',
         recent_message,
         f'Rank: {rank} of {total}, overall rating: {rating_emoji}',
@@ -161,7 +161,7 @@ async def whohas(context, *args):
 
     team_name, query_player = player_owned[0]
     owner = f'Team {team_name}' if team_name else 'No one'
-    message = f'{owner} has {query_player.name} ({Position(query_player.position).name})'
+    message = f'{owner} has {query_player.name} ({Pool(query_player.pool).name})'
     await context.reply(message)
 
 
@@ -190,9 +190,9 @@ async def top(context):
     message_lines = ['**:fire: Top 10 Players :fire: **']
     for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=True)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
-        owner = row[SheetCols.OWNER_COL.value] or 'no one'
+        owner = row[SheetCols.POINTS_OWNER_COL.value] or 'no one'
         name = row[SheetCols.NAME_COL.value]
-        points = row[SheetCols.POINTS_COL.value]
+        points = row[SheetCols.POINTS_COL.value - 1]
         message_lines.append(f'{rank_emoji} - {name} with {points} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
@@ -207,9 +207,9 @@ async def bottom(context):
     message_lines = ['**:lemon: Bottom 10 Players :lemon:**']
     for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=False)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
-        owner = row[SheetCols.OWNER_COL.value] or 'no one'
+        owner = row[SheetCols.POINTS_OWNER_COL.value] or 'no one'
         name = row[SheetCols.NAME_COL.value]
-        points = row[SheetCols.POINTS_COL.value]
+        points = row[SheetCols.POINTS_COL.value - 1]
         message_lines.append(f'{rank_emoji} - {name} with {points} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
@@ -236,7 +236,7 @@ async def squad(context, *args):
 
     user_team_id, user_team_name = user_team[0]
     squad_rows = db_utils.get_squad(user_team_id)
-    squad = [f'{player.name} ({Position(player.position).name})' for player in squad_rows]
+    squad = [f'{player.name} ({Pool(player.pool).name})' for player in squad_rows]
     message = f"Team {user_team_name}'s Squad: {squad}"
     await context.reply(message)
 
@@ -256,7 +256,7 @@ async def transfer(context, *args):
     user_team = db_utils.get_user_team_by_id(role_id)
 
     if 'for' not in all_args:
-        return await context.reply('Error: Try !transfer player1 for player2')
+        return await context.reply('Error: Try !transfer player_in for player_out')
 
     player_name_in = all_args.split('for')[0].strip()
     player_name_out = all_args.split('for')[1].strip()
