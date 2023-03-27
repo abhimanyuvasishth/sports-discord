@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME, Position
+from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME, Pool
 from sports_discord.google_sheet import get_sheet
 from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
 
@@ -36,9 +36,9 @@ def create_player_configs():
         player_configs.append({
             'name': row[1].strip(),
             'team_name': row[2].strip(),
-            'pool': 1,
+            'pool': Pool[row[3]].value,
             'user_team_name': row[8].strip(),
-            'position': Position[row[5]].value
+            'position': 1
         })
     return player_configs
 
@@ -103,7 +103,7 @@ def insert_match_players(player_configs, match_configs):
 
 
 if __name__ == '__main__':
-    with open('config/fifa_world_cup_2022.json') as f:
+    with open('config/ipl_2023.json') as f:
         configs = json.loads(f.read())
 
     player_configs = create_player_configs()

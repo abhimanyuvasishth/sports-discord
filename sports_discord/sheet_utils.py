@@ -31,7 +31,7 @@ def get_team_points():
 def update_owner(player_name, team_name, index=0):
     sheet = get_sheet(DOC_NAME, BIDDING_SHEET_NAME)
     player_row = sheet.findall(player_name)[index].row
-    sheet.update_cell(player_row, SheetCols.OWNER_COL.value, team_name)
+    sheet.update_cell(player_row, SheetCols.BIDDING_OWNER_COL.value, team_name)
 
 
 def get_points(player_name):
@@ -70,7 +70,7 @@ def get_sorted_players(num_players=10, reverse=False):
         if player_row[0]:
             filtered_player_rows.append(player_row)
 
-    col = SheetCols.POINTS_COL.value
+    col = SheetCols.POINTS_COL.value - 1
     return sorted(filtered_player_rows, key=lambda x: int(x[col]), reverse=reverse)[:num_players]
 
 
