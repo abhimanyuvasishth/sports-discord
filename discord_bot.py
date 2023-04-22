@@ -6,7 +6,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils, utils
-from sports_discord.constants import (DOC_NAME, NOT_ON_A_TEAM,
+from sports_discord.constants import (CHANNEL_ID, DOC_NAME, NOT_ON_A_TEAM,
                                       POINTS_SHEET_NAME, Pool, SheetCols)
 from sports_discord.google_sheet import get_sheet
 
@@ -63,6 +63,9 @@ async def kaptaan(context, *args):
 
     For example: !kaptaan Kohli
     """
+    if context.channel.id != CHANNEL_ID:
+        return await context.reply('Please set kaptaan on the main channel for this tournament')
+
     role_id = utils.get_role_id(context.author.roles)
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
@@ -248,6 +251,9 @@ async def transfer(context, *args):
 
     For example: !transfer wantthisperson for dontwantthisperson
     """
+    if context.channel.id != CHANNEL_ID:
+        return await context.reply('Please make transfers on the main channel for this tournament')
+
     role_id = utils.get_role_id(context.author.roles)
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
