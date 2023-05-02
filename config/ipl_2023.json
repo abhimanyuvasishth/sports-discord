@@ -465,6 +465,15 @@
             "match_day": 33
         },
         {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 10,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 10,
+            "start_timestamp": "2023-05-04T10:00:00.000Z",
+            "object_id": 1359520,
+            "match_day": 34
+        },
+        {
             "team_1": "Punjab Kings",
             "team_1_num": 10,
             "team_2": "Mumbai Indians",
@@ -472,15 +481,6 @@
             "start_timestamp": "2023-05-03T14:00:00.000Z",
             "object_id": 1359519,
             "match_day": 34
-        },
-        {
-            "team_1": "Lucknow Super Giants",
-            "team_1_num": 10,
-            "team_2": "Chennai Super Kings",
-            "team_2_num": 10,
-            "start_timestamp": "2023-05-04T10:00:00.000Z",
-            "object_id": 1359520,
-            "match_day": 35
         },
         {
             "team_1": "Sunrisers Hyderabad",
