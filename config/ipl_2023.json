@@ -697,6 +697,24 @@
             "start_timestamp": "2023-05-21T14:00:00.000Z",
             "object_id": 1359544,
             "match_day": 52
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 15,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 15,
+            "start_timestamp": "2023-05-23T14:00:00.000Z",
+            "object_id": 1370350,
+            "match_day": 53
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 15,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 15,
+            "start_timestamp": "2023-05-24T14:00:00.000Z",
+            "object_id": 1370351,
+            "match_day": 54
         }
     ]
 }
