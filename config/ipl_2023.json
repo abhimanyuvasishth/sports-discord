@@ -715,6 +715,15 @@
             "start_timestamp": "2023-05-24T14:00:00.000Z",
             "object_id": 1370351,
             "match_day": 54
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 16,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 16,
+            "start_timestamp": "2023-05-26T14:00:00.000Z",
+            "object_id": 1370352,
+            "match_day": 55
         }
     ]
 }
