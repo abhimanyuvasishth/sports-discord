@@ -1,0 +1,526 @@
+{
+    "teams": [
+        {
+            "name": "Afghanistan",
+            "abbrev": "AFG"
+        },
+        {
+            "name": "Australia",
+            "abbrev": "AUS"
+        },
+        {
+            "name": "Bangladesh",
+            "abbrev": "BD"
+        },
+        {
+            "name": "India",
+            "abbrev": "IND"
+        },
+        {
+            "name": "England",
+            "abbrev": "ENG"
+        },
+        {
+            "name": "Netherlands",
+            "abbrev": "NL"
+        },
+        {
+            "name": "New Zealand",
+            "abbrev": "NZ"
+        },
+        {
+            "name": "Pakistan",
+            "abbrev": "PAK"
+        },
+        {
+            "name": "Sri Lanka",
+            "abbrev": "SL"
+        },
+        {
+            "name": "South Africa",
+            "abbrev": "SA"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "SoBo Sardarz",
+            "discord_role_id": "1030006519380590592"
+        },
+        {
+            "name": "Avi + Desai",
+            "discord_role_id": "1157196166581194843"
+        },
+        {
+            "name": "Namit",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "Vande Markram",
+            "discord_role_id": "1030006412266455113"
+        },
+        {
+            "name": "Suburb Sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "Dhawan Da Dhaba",
+            "discord_role_id": "1011749363942424676"
+        },
+        {
+            "name": "Ravi Shastri's Liver",
+            "discord_role_id": "1043225108254294128"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "England",
+            "team_1_num": 1,
+            "team_2": "New Zealand",
+            "team_2_num": 1,
+            "start_timestamp": "2023-10-05T08:30:00.000Z",
+            "object_id": 1384392,
+            "location": "Narendra Modi Stadium, Ahmedabad",
+            "match_day": 1
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 1,
+            "team_2": "Pakistan",
+            "team_2_num": 1,
+            "start_timestamp": "2023-10-06T08:30:00.000Z",
+            "object_id": 1384393,
+            "location": "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+            "match_day": 2
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 1,
+            "team_2": "Bangladesh",
+            "team_2_num": 1,
+            "start_timestamp": "2023-10-07T05:00:00.000Z",
+            "object_id": 1384394,
+            "location": "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+            "match_day": 3
+        },
+        {
+            "team_1": "South Africa",
+            "team_1_num": 1,
+            "team_2": "Sri Lanka",
+            "team_2_num": 1,
+            "start_timestamp": "2023-10-07T08:30:00.000Z",
+            "object_id": 1384395,
+            "location": "Arun Jaitley Stadium, Delhi",
+            "match_day": 3
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 1,
+            "team_2": "Australia",
+            "team_2_num": 1,
+            "start_timestamp": "2023-10-08T08:30:00.000Z",
+            "object_id": 1384396,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 4
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 2,
+            "team_2": "New Zealand",
+            "team_2_num": 2,
+            "start_timestamp": "2023-10-09T08:30:00.000Z",
+            "object_id": 1384397,
+            "location": "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+            "match_day": 5
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 2,
+            "team_2": "England",
+            "team_2_num": 2,
+            "start_timestamp": "2023-10-10T05:00:00.000Z",
+            "object_id": 1384398,
+            "location": "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+            "match_day": 6
+        },
+        {
+            "team_1": "Pakistan",
+            "team_1_num": 2,
+            "team_2": "Sri Lanka",
+            "team_2_num": 2,
+            "start_timestamp": "2023-10-10T08:30:00.000Z",
+            "object_id": 1384399,
+            "location": "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+            "match_day": 6
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 2,
+            "team_2": "Afghanistan",
+            "team_2_num": 2,
+            "start_timestamp": "2023-10-11T08:30:00.000Z",
+            "object_id": 1384400,
+            "location": "Arun Jaitley Stadium, Delhi",
+            "match_day": 7
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 2,
+            "team_2": "South Africa",
+            "team_2_num": 2,
+            "start_timestamp": "2023-10-12T08:30:00.000Z",
+            "object_id": 1384401,
+            "location": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+            "match_day": 8
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 3,
+            "team_2": "New Zealand",
+            "team_2_num": 3,
+            "start_timestamp": "2023-10-13T08:30:00.000Z",
+            "object_id": 1384402,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 9
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 3,
+            "team_2": "Pakistan",
+            "team_2_num": 3,
+            "start_timestamp": "2023-10-14T08:30:00.000Z",
+            "object_id": 1384403,
+            "location": "Narendra Modi Stadium, Ahmedabad",
+            "match_day": 10
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 3,
+            "team_2": "England",
+            "team_2_num": 3,
+            "start_timestamp": "2023-10-15T08:30:00.000Z",
+            "object_id": 1384404,
+            "location": "Arun Jaitley Stadium, Delhi",
+            "match_day": 11
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 3,
+            "team_2": "Sri Lanka",
+            "team_2_num": 3,
+            "start_timestamp": "2023-10-16T08:30:00.000Z",
+            "object_id": 1384405,
+            "location": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+            "match_day": 12
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 3,
+            "team_2": "South Africa",
+            "team_2_num": 3,
+            "start_timestamp": "2023-10-17T08:30:00.000Z",
+            "object_id": 1384406,
+            "location": "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+            "match_day": 13
+        },
+        {
+            "team_1": "New Zealand",
+            "team_1_num": 4,
+            "team_2": "Afghanistan",
+            "team_2_num": 4,
+            "start_timestamp": "2023-10-18T08:30:00.000Z",
+            "object_id": 1384407,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 14
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 4,
+            "team_2": "Bangladesh",
+            "team_2_num": 4,
+            "start_timestamp": "2023-10-19T08:30:00.000Z",
+            "object_id": 1384408,
+            "location": "Maharashtra Cricket Association Stadium, Pune",
+            "match_day": 15
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 4,
+            "team_2": "Pakistan",
+            "team_2_num": 4,
+            "start_timestamp": "2023-10-20T08:30:00.000Z",
+            "object_id": 1384409,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 16
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 4,
+            "team_2": "Sri Lanka",
+            "team_2_num": 4,
+            "start_timestamp": "2023-10-21T05:00:00.000Z",
+            "object_id": 1384410,
+            "location": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+            "match_day": 17
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 4,
+            "team_2": "South Africa",
+            "team_2_num": 4,
+            "start_timestamp": "2023-10-21T08:30:00.000Z",
+            "object_id": 1384411,
+            "location": "Wankhede Stadium, Mumbai",
+            "match_day": 17
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 5,
+            "team_2": "New Zealand",
+            "team_2_num": 5,
+            "start_timestamp": "2023-10-22T08:30:00.000Z",
+            "object_id": 1384412,
+            "location": "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+            "match_day": 18
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 5,
+            "team_2": "Pakistan",
+            "team_2_num": 5,
+            "start_timestamp": "2023-10-23T08:30:00.000Z",
+            "object_id": 1384413,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 19
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 5,
+            "team_2": "South Africa",
+            "team_2_num": 5,
+            "start_timestamp": "2023-10-24T08:30:00.000Z",
+            "object_id": 1384414,
+            "location": "Wankhede Stadium, Mumbai",
+            "match_day": 20
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 5,
+            "team_2": "Netherlands",
+            "team_2_num": 5,
+            "start_timestamp": "2023-10-25T08:30:00.000Z",
+            "object_id": 1384415,
+            "location": "Arun Jaitley Stadium, Delhi",
+            "match_day": 21
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 5,
+            "team_2": "Sri Lanka",
+            "team_2_num": 5,
+            "start_timestamp": "2023-10-26T08:30:00.000Z",
+            "object_id": 1384416,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 22
+        },
+        {
+            "team_1": "Pakistan",
+            "team_1_num": 6,
+            "team_2": "South Africa",
+            "team_2_num": 6,
+            "start_timestamp": "2023-10-27T08:30:00.000Z",
+            "object_id": 1384417,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 23
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 6,
+            "team_2": "New Zealand",
+            "team_2_num": 6,
+            "start_timestamp": "2023-10-28T05:00:00.000Z",
+            "object_id": 1384418,
+            "location": "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+            "match_day": 24
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 6,
+            "team_2": "Netherlands",
+            "team_2_num": 6,
+            "start_timestamp": "2023-10-28T08:30:00.000Z",
+            "object_id": 1384419,
+            "location": "Eden Gardens, Kolkata",
+            "match_day": 24
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 6,
+            "team_2": "England",
+            "team_2_num": 6,
+            "start_timestamp": "2023-10-29T08:30:00.000Z",
+            "object_id": 1384420,
+            "location": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+            "match_day": 25
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 6,
+            "team_2": "Sri Lanka",
+            "team_2_num": 6,
+            "start_timestamp": "2023-10-30T08:30:00.000Z",
+            "object_id": 1384421,
+            "location": "Maharashtra Cricket Association Stadium, Pune",
+            "match_day": 26
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 7,
+            "team_2": "Pakistan",
+            "team_2_num": 7,
+            "start_timestamp": "2023-10-31T08:30:00.000Z",
+            "object_id": 1384422,
+            "location": "Eden Gardens, Kolkata",
+            "match_day": 27
+        },
+        {
+            "team_1": "New Zealand",
+            "team_1_num": 7,
+            "team_2": "South Africa",
+            "team_2_num": 7,
+            "start_timestamp": "2023-11-01T08:30:00.000Z",
+            "object_id": 1384423,
+            "location": "Maharashtra Cricket Association Stadium, Pune",
+            "match_day": 28
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 7,
+            "team_2": "Sri Lanka",
+            "team_2_num": 7,
+            "start_timestamp": "2023-11-02T08:30:00.000Z",
+            "object_id": 1384424,
+            "location": "Wankhede Stadium, Mumbai",
+            "match_day": 29
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 7,
+            "team_2": "Netherlands",
+            "team_2_num": 7,
+            "start_timestamp": "2023-11-03T08:30:00.000Z",
+            "object_id": 1384425,
+            "location": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+            "match_day": 30
+        },
+        {
+            "team_1": "New Zealand",
+            "team_1_num": 8,
+            "team_2": "Pakistan",
+            "team_2_num": 8,
+            "start_timestamp": "2023-11-04T05:00:00.000Z",
+            "object_id": 1384426,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 31
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 7,
+            "team_2": "England",
+            "team_2_num": 7,
+            "start_timestamp": "2023-11-04T08:30:00.000Z",
+            "object_id": 1384427,
+            "location": "Narendra Modi Stadium, Ahmedabad",
+            "match_day": 31
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 8,
+            "team_2": "South Africa",
+            "team_2_num": 8,
+            "start_timestamp": "2023-11-05T08:30:00.000Z",
+            "object_id": 1384428,
+            "location": "Eden Gardens, Kolkata",
+            "match_day": 32
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 8,
+            "team_2": "Sri Lanka",
+            "team_2_num": 8,
+            "start_timestamp": "2023-11-06T08:30:00.000Z",
+            "object_id": 1384429,
+            "location": "Arun Jaitley Stadium, Delhi",
+            "match_day": 33
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 8,
+            "team_2": "Australia",
+            "team_2_num": 8,
+            "start_timestamp": "2023-11-07T08:30:00.000Z",
+            "object_id": 1384430,
+            "location": "Wankhede Stadium, Mumbai",
+            "match_day": 34
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 8,
+            "team_2": "Netherlands",
+            "team_2_num": 8,
+            "start_timestamp": "2023-11-08T08:30:00.000Z",
+            "object_id": 1384431,
+            "location": "Maharashtra Cricket Association Stadium, Pune",
+            "match_day": 35
+        },
+        {
+            "team_1": "New Zealand",
+            "team_1_num": 9,
+            "team_2": "Sri Lanka",
+            "team_2_num": 9,
+            "start_timestamp": "2023-11-09T08:30:00.000Z",
+            "object_id": 1384432,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 36
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 9,
+            "team_2": "South Africa",
+            "team_2_num": 9,
+            "start_timestamp": "2023-11-10T08:30:00.000Z",
+            "object_id": 1384433,
+            "location": "Narendra Modi Stadium, Ahmedabad",
+            "match_day": 37
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 9,
+            "team_2": "Bangladesh",
+            "team_2_num": 9,
+            "start_timestamp": "2023-11-11T05:00:00.000Z",
+            "object_id": 1384434,
+            "location": "Maharashtra Cricket Association Stadium, Pune",
+            "match_day": 38
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 9,
+            "team_2": "Pakistan",
+            "team_2_num": 9,
+            "start_timestamp": "2023-11-11T08:30:00.000Z",
+            "object_id": 1384435,
+            "location": "Eden Gardens, Kolkata",
+            "match_day": 38
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 9,
+            "team_2": "Netherlands",
+            "team_2_num": 9,
+            "start_timestamp": "2023-11-12T08:30:00.000Z",
+            "object_id": 1384436,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 39
+        }
+    ]
+}
