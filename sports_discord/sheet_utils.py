@@ -18,12 +18,14 @@ def get_team_points():
     for row in values[1:]:
         try:
             name, points, rank = row
+            points = int(points)
+            rank = int(rank)
         except ValueError:
             continue
         rank_order.append({
             'name': name,
-            'points': int(points),
-            'rank': int(rank),
+            'points': points,
+            'rank': rank,
         })
     return sorted(rank_order, key=lambda e: e['rank'])
 
