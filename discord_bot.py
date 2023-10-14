@@ -9,6 +9,7 @@ from sports_discord import db_utils, sheet_utils, utils
 from sports_discord.constants import (CHANNEL_ID, DOC_NAME, NOT_ON_A_TEAM,
                                       POINTS_SHEET_NAME, Pool, SheetCols)
 from sports_discord.google_sheet import get_sheet
+from sports_discord.haiku import get_haiku
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -165,6 +166,32 @@ async def whohas(context, *args):
     team_name, query_player = player_owned[0]
     owner = f'Team {team_name}' if team_name else 'No one'
     message = f'{owner} has {query_player.name} ({Pool(query_player.pool).name})'
+    await context.reply(message)
+
+
+@bot.command()
+async def haiku(context, *args):
+    """
+    Generate a haiku for a player
+
+    For example: !haiku Kohli
+    """
+    raw_player_name = ' '.join(args)
+    player_owned = db_utils.get_player_owner(raw_player_name)
+
+    if len(player_owned) == 0:
+        error_message = f"Error: Couldn't find a player with name: '{raw_player_name}'"
+        return await context.reply(f'{error_message} ')
+    if len(player_owned) > 1:
+        names = [candidate[1].name for candidate in player_owned][:10]
+        error_message = f"""
+            Error: Found multiple players with name: '{raw_player_name}' such as {names}
+        """
+        return await context.reply(error_message)
+
+    _, query_player = player_owned[0]
+    haiku = get_haiku(query_player.name, os.getenv('OPENAI_API_KEY'))
+    message = f"Here's a haiku about {query_player.name}\n{haiku.strip()}"
     await context.reply(message)
 
 
