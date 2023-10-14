@@ -4,6 +4,7 @@ flake8
 gspread
 isort
 oauth2client
+openai
 psycopg2
 pydantic
 pysqlite3
