@@ -15,14 +15,14 @@ engine = create_engine(getenv('POSTGRES_URL'))
 
 
 def insert_user_teams(user_team_configs):
-    with sessionmaker(engine, autocommit=True).begin() as session:
+    with sessionmaker(engine).begin() as session:
         session.bulk_save_objects(
             [UserTeam(**config) for config in user_team_configs]
         )
 
 
 def insert_teams(team_configs):
-    with sessionmaker(engine, autocommit=True).begin() as session:
+    with sessionmaker(engine).begin() as session:
         session.bulk_save_objects([Team(**config) for config in team_configs])
 
 
@@ -45,7 +45,7 @@ def create_player_configs():
 
 
 def insert_players(player_configs):
-    with sessionmaker(engine, autocommit=True).begin() as session:
+    with sessionmaker(engine).begin() as session:
         for config in player_configs:
             team_id = session.query(Team).filter(Team.name == config['team_name']).first().id
             user_team = session.query(UserTeam).filter(
@@ -63,7 +63,7 @@ def insert_players(player_configs):
 
 
 def insert_matches(match_configs):
-    with sessionmaker(engine, autocommit=True).begin() as session:
+    with sessionmaker(engine).begin() as session:
         for config in match_configs:
             match_1 = Match(
                 team_id=session.query(Team).filter(Team.name == config['team_1']).first().id,
@@ -83,7 +83,7 @@ def insert_matches(match_configs):
 
 
 def insert_match_players(player_configs, match_configs):
-    with sessionmaker(engine, autocommit=True).begin() as session:
+    with sessionmaker(engine).begin() as session:
         for match_config in match_configs:
             for team_key in ['team_1', 'team_2']:
                 team = session.query(Team).filter(Team.name == match_config[team_key]).first()

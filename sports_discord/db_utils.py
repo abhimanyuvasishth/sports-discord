@@ -119,7 +119,7 @@ def get_player_in(player_name: str):
 
 
 def update_player_user_team(player_id: str, user_team_id):
-    with sessionmaker(engine, autocommit=True)() as session:
+    with sessionmaker(engine)() as session:
         update_stmt = (
             update(Player).
             where(Player.id == player_id).
@@ -129,7 +129,7 @@ def update_player_user_team(player_id: str, user_team_id):
 
 
 def update_captain(match_player_id, flag):
-    with sessionmaker(engine, autocommit=True)() as session:
+    with sessionmaker(engine)() as session:
         update_stmt = (
             update(MatchPlayer).
             where(MatchPlayer.id == match_player_id).
