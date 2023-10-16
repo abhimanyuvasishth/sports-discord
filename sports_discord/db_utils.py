@@ -126,6 +126,7 @@ def update_player_user_team(player_id: str, user_team_id):
             values(user_team_id=user_team_id)
         )
         session.execute(update_stmt)
+        session.commit()
 
 
 def update_captain(match_player_id, flag):
@@ -136,3 +137,4 @@ def update_captain(match_player_id, flag):
             values(captain=flag)
         )
         session.execute(update_stmt)
+        session.commit()
