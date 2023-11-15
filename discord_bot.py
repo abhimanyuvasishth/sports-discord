@@ -104,7 +104,7 @@ async def kaptaan(context, *args):
 @bot.command()
 async def points(context, *args):
     """
-    Checks how many points a player has overall and in their most recent match
+    Checks a player's total points (kaptaan and non kaptaan) and points in their most recent game
 
     For example: !points Kohli
     """
@@ -215,9 +215,10 @@ async def team_points(context):
 @bot.command()
 async def top(context, *args):
     """
-    Displays top 10 players and their points
+    Displays top 10 players and their points, optionally add 'raw' to show non kaptaan points
 
     For example: !top
+    or for non-kaptaan points: !top raw
     """
     message_lines = ['**:fire: Top 10 Players :fire: **']
     raw = ''.join(args).lower() == 'raw'
@@ -234,9 +235,10 @@ async def top(context, *args):
 @bot.command()
 async def bottom(context, *args):
     """
-    Displays bottom 10 players and their points
+    Displays bottom 10 players and their points, optionally add 'raw' to show non kaptaan points
 
     For example: !bottom
+    or for non-kaptaan points: !bottom raw
     """
     message_lines = ['**:lemon: Bottom 10 Players :lemon:**']
     raw = ''.join(args).lower() == 'raw'
