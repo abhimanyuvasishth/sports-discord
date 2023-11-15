@@ -36,10 +36,11 @@ def update_owner(player_name, team_name, index=0):
     sheet.update_cell(player_row, SheetCols.BIDDING_OWNER_COL.value, team_name)
 
 
-def get_points(player_name):
+def get_points(player_name, kaptaan=True):
+    col = SheetCols.POINTS_COL if kaptaan else SheetCols.RAW_POINTS_COL
     sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
     player_row = sheet.find(player_name).row
-    return int(sheet.cell(player_row, SheetCols.POINTS_COL.value).value or 0)
+    return int(sheet.cell(player_row, col.value).value or 0)
 
 
 def get_points_for_match_num(player_name, match_num):

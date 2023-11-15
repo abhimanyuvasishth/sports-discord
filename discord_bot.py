@@ -130,12 +130,14 @@ async def points(context, *args):
     except TypeError:
         recent_message = f'{query_player.name} has not played any games yet'
 
-    points = sheet_utils.get_points(query_player.name)
+    points = sheet_utils.get_points(query_player.name, kaptaan=True)
+    non_kaptaan_points = sheet_utils.get_points(query_player.name, kaptaan=False)
     rank, total = sheet_utils.get_rank(points)
     rating_emoji = utils.get_rating_emoji(rank, total)
     message = [
         f'{query_player.name} ({Pool(query_player.pool).name})',
         f'Total Points: {points}',
+        f'Non Kaptaan Points: {non_kaptaan_points}',
         recent_message,
         f'Rank: {rank} of {total}, overall rating: {rating_emoji}',
         f'Owner: {team_name or "no one"}',
@@ -321,8 +323,8 @@ async def transfer(context, *args):
     # TODO: Check pool/position logistics
 
     # Get points
-    player_in_points = sheet_utils.get_points(player_in.name)
-    player_out_points = sheet_utils.get_points(player_out.name)
+    player_in_points = sheet_utils.get_points(player_in.name, kaptaan=True)
+    player_out_points = sheet_utils.get_points(player_out.name, kaptaan=True)
     adjusted_points = player_out_points - player_in_points
 
     # Update db
