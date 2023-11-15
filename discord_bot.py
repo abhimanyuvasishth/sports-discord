@@ -213,35 +213,39 @@ async def team_points(context):
 
 
 @bot.command()
-async def top(context):
+async def top(context, *args):
     """
     Displays top 10 players and their points
 
     For example: !top
     """
     message_lines = ['**:fire: Top 10 Players :fire: **']
-    for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=True)):
+    raw = ''.join(args).lower() == 'raw'
+    for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=True, raw=raw)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
         owner = row[SheetCols.POINTS_OWNER_COL.value] or 'no one'
         name = row[SheetCols.NAME_COL.value]
-        points = row[SheetCols.POINTS_COL.value - 1]
+        points_col = SheetCols.RAW_POINTS_COL if raw else SheetCols.POINTS_COL
+        points = row[points_col.value - 1]
         message_lines.append(f'{rank_emoji} - {name} with {points} points ({owner})')
     await context.reply('\n'.join(message_lines))
 
 
 @bot.command()
-async def bottom(context):
+async def bottom(context, *args):
     """
     Displays bottom 10 players and their points
 
     For example: !bottom
     """
     message_lines = ['**:lemon: Bottom 10 Players :lemon:**']
-    for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=False)):
+    raw = ''.join(args).lower() == 'raw'
+    for i, row in enumerate(sheet_utils.get_sorted_players(num_players=10, reverse=False, raw=raw)):
         rank_emoji = utils.get_emoji_from_number(i + 1)
         owner = row[SheetCols.POINTS_OWNER_COL.value] or 'no one'
         name = row[SheetCols.NAME_COL.value]
-        points = row[SheetCols.POINTS_COL.value - 1]
+        points_col = SheetCols.RAW_POINTS_COL if raw else SheetCols.POINTS_COL
+        points = row[points_col.value - 1]
         message_lines.append(f'{rank_emoji} - {name} with {points} points ({owner})')
     await context.reply('\n'.join(message_lines))
 

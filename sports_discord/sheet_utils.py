@@ -64,16 +64,16 @@ def get_rank(query_points):
 
 def get_player_rows():
     sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
-    return sheet.get('A3:E1000')
+    return sheet.get('A3:JA1000')
 
 
-def get_sorted_players(num_players=10, reverse=False):
+def get_sorted_players(num_players=10, reverse=False, raw=False):
     filtered_player_rows = []
     for player_row in get_player_rows():
         if player_row[0]:
             filtered_player_rows.append(player_row)
 
-    col = SheetCols.POINTS_COL.value - 1
+    col = (SheetCols.RAW_POINTS_COL if raw else SheetCols.POINTS_COL).value - 1
     return sorted(filtered_player_rows, key=lambda x: int(x[col]), reverse=reverse)[:num_players]
 
 
