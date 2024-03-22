@@ -1,9 +1,9 @@
 alembic
 discord==1.7.3
 flake8
+google-auth
 gspread
 isort
-oauth2client
 openai
 psycopg2
 pydantic

@@ -3,7 +3,7 @@ from functools import cache
 
 import gspread
 from dotenv import load_dotenv
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
 
 load_dotenv()
 
@@ -16,6 +16,7 @@ def get_sheet(doc_name, sheet_name):
 
 def authorize_client():
     scopes = [
+        'https://www.googleapis.com/auth/spreadsheets',
         'https://www.googleapis.com/auth/drive',
         'https://www.googleapis.com/auth/drive.file'
     ]
@@ -31,5 +32,5 @@ def authorize_client():
         "auth_provider_x509_cert_url": os.getenv('GOOGLE_SHEET_AUTH_PROVIDER_CERT_URL'),
         "client_x509_cert_url": os.getenv('GOOGLE_SHEET_CERT_URL')
     }
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(parsed_dict, scopes)
+    creds = Credentials.from_service_account_info(parsed_dict, scopes=scopes)
     return gspread.authorize(creds)

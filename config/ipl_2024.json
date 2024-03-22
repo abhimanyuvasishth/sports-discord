@@ -1,0 +1,286 @@
+{
+    "teams": [
+        {
+            "name": "Chennai Super Kings",
+            "abbrev": "CSK"
+        },
+        {
+            "name": "Delhi Capitals",
+            "abbrev": "DC"
+        },
+        {
+            "name": "Gujarat Titans",
+            "abbrev": "GT"
+        },
+        {
+            "name": "Kolkata Knight Riders",
+            "abbrev": "KKR"
+        },
+        {
+            "name": "Lucknow Super Giants",
+            "abbrev": "LSG"
+        },
+        {
+            "name": "Mumbai Indians",
+            "abbrev": "MI"
+        },
+        {
+            "name": "Punjab Kings",
+            "abbrev": "PK"
+        },
+        {
+            "name": "Rajasthan Royals",
+            "abbrev": "RR"
+        },
+        {
+            "name": "Royal Challengers Bangalore",
+            "abbrev": "RCB"
+        },
+        {
+            "name": "Sunrisers Hyderabad",
+            "abbrev": "SRH"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "SoBo Sardarz",
+            "discord_role_id": "1030006519380590592"
+        },
+        {
+            "name": "Kimweli's Krew",
+            "discord_role_id": "1157196166581194843"
+        },
+        {
+            "name": "Namit",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "Vande Markram",
+            "discord_role_id": "1030006412266455113"
+        },
+        {
+            "name": "Suburb Sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "Dhawan Da Dhaba",
+            "discord_role_id": "1011749363942424676"
+        },
+        {
+            "name": "Ravi Shastri's Liver",
+            "discord_role_id": "1043225108254294128"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 1,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 1,
+            "start_timestamp": "2024-03-22T14:30:00.000Z",
+            "object_id": 1422119,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 1
+        },
+        {
+            "team_1": "Punjab Kings",
+            "team_1_num": 1,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 1,
+            "start_timestamp": "2024-03-23T10:00:00.000Z",
+            "object_id": 1422120,
+            "location": "Maharaja Yadavindra Singh International Cricket Stadium, Mullanpur",
+            "match_day": 2
+        },
+        {
+            "team_1": "Kolkata Knight Riders",
+            "team_1_num": 1,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 1,
+            "start_timestamp": "2024-03-23T14:00:00.000Z",
+            "object_id": 1422121,
+            "location": "Eden Gardens, Kolkata",
+            "match_day": 2
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 1,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 1,
+            "start_timestamp": "2024-03-24T10:00:00.000Z",
+            "object_id": 1422122,
+            "location": "Sawai Mansingh Stadium, Jaipur",
+            "match_day": 3
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 1,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 1,
+            "start_timestamp": "2024-03-24T14:00:00.000Z",
+            "object_id": 1422123,
+            "location": "Narendra Modi Stadium, Ahmedabad",
+            "match_day": 3
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 2,
+            "team_2": "Punjab Kings",
+            "team_2_num": 2,
+            "start_timestamp": "2024-03-25T14:00:00.000Z",
+            "object_id": 1422124,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 4
+        },
+        {
+            "team_1": "Chennai Super Kings",
+            "team_1_num": 2,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 2,
+            "start_timestamp": "2024-03-26T14:00:00.000Z",
+            "object_id": 1422125,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 5
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 2,
+            "team_2": "Mumbai Indians",
+            "team_2_num": 2,
+            "start_timestamp": "2024-03-27T14:00:00.000Z",
+            "object_id": 1422126,
+            "location": "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+            "match_day": 6
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 2,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 2,
+            "start_timestamp": "2024-03-28T14:00:00.000Z",
+            "object_id": 1422127,
+            "location": "Sawai Mansingh Stadium, Jaipur",
+            "match_day": 7
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 3,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 2,
+            "start_timestamp": "2024-03-29T14:00:00.000Z",
+            "object_id": 1422128,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 8
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 2,
+            "team_2": "Punjab Kings",
+            "team_2_num": 3,
+            "start_timestamp": "2024-03-30T14:00:00.000Z",
+            "object_id": 1422129,
+            "location": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+            "match_day": 9
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 3,
+            "team_2": "Sunrisers Hyderabad",
+            "team_2_num": 3,
+            "start_timestamp": "2024-03-31T10:00:00.000Z",
+            "object_id": 1422130,
+            "location": "Narendra Modi Stadium, Ahmedabad",
+            "match_day": 10
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 3,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 3,
+            "start_timestamp": "2024-03-31T14:00:00.000Z",
+            "object_id": 1422131,
+            "location": "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",
+            "match_day": 10
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 3,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 3,
+            "start_timestamp": "2024-04-01T14:00:00.000Z",
+            "object_id": 1422132,
+            "location": "Wankhede Stadium, Mumbai",
+            "match_day": 12
+        },
+        {
+            "team_1": "Royal Challengers Bangalore",
+            "team_1_num": 4,
+            "team_2": "Lucknow Super Giants",
+            "team_2_num": 3,
+            "start_timestamp": "2024-04-02T14:00:00.000Z",
+            "object_id": 1422133,
+            "location": "M Chinnaswamy Stadium, Bengaluru",
+            "match_day": 13
+        },
+        {
+            "team_1": "Delhi Capitals",
+            "team_1_num": 4,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 3,
+            "start_timestamp": "2024-04-03T14:00:00.000Z",
+            "object_id": 1422134,
+            "location": "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",
+            "match_day": 14
+        },
+        {
+            "team_1": "Gujarat Titans",
+            "team_1_num": 4,
+            "team_2": "Punjab Kings",
+            "team_2_num": 4,
+            "start_timestamp": "2024-04-04T14:00:00.000Z",
+            "object_id": 1422135,
+            "location": "Narendra Modi Stadium, Ahmedabad",
+            "match_day": 15
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 4,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 4,
+            "start_timestamp": "2024-04-05T14:00:00.000Z",
+            "object_id": 1422136,
+            "location": "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+            "match_day": 16
+        },
+        {
+            "team_1": "Rajasthan Royals",
+            "team_1_num": 4,
+            "team_2": "Royal Challengers Bangalore",
+            "team_2_num": 5,
+            "start_timestamp": "2024-04-06T14:00:00.000Z",
+            "object_id": 1422137,
+            "location": "Sawai Mansingh Stadium, Jaipur",
+            "match_day": 17
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 4,
+            "team_2": "Delhi Capitals",
+            "team_2_num": 5,
+            "start_timestamp": "2024-04-07T10:00:00.000Z",
+            "object_id": 1422138,
+            "location": "Wankhede Stadium, Mumbai",
+            "match_day": 18
+        },
+        {
+            "team_1": "Lucknow Super Giants",
+            "team_1_num": 4,
+            "team_2": "Gujarat Titans",
+            "team_2_num": 5,
+            "start_timestamp": "2024-04-07T14:00:00.000Z",
+            "object_id": 1422139,
+            "location": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+            "match_day": 18
+        }
+    ]
+}

@@ -53,6 +53,8 @@ def get_points_for_match_num(player_name, match_num):
 def get_rank(query_points):
     all_points = []
     for player_row in get_player_rows():
+        if not player_row:
+            continue
         name = player_row[0]
         points = player_row[SheetCols.POINTS_COL.value - 1]
         if name:
@@ -70,7 +72,7 @@ def get_player_rows():
 def get_sorted_players(num_players=10, reverse=False, raw=False):
     filtered_player_rows = []
     for player_row in get_player_rows():
-        if player_row[0]:
+        if player_row and player_row[0]:
             filtered_player_rows.append(player_row)
 
     col = (SheetCols.RAW_POINTS_COL if raw else SheetCols.POINTS_COL).value - 1

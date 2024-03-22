@@ -192,7 +192,7 @@ async def haiku(context, *args):
         return await context.reply(error_message)
 
     _, query_player = player_owned[0]
-    haiku = get_haiku(query_player.name, os.getenv('OPENAI_API_KEY'))
+    haiku = get_haiku(query_player.name)
     message = f"Here's a haiku about {query_player.name}\n{haiku.strip()}"
     await context.reply(message)
 
