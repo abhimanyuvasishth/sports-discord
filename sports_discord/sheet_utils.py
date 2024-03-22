@@ -18,7 +18,7 @@ def get_team_points():
     for row in values[1:]:
         try:
             name, points, rank = row
-            points = int(points)
+            points = float(points)
             rank = int(rank)
         except ValueError:
             continue
@@ -40,14 +40,14 @@ def get_points(player_name, kaptaan=True):
     col = SheetCols.POINTS_COL if kaptaan else SheetCols.RAW_POINTS_COL
     sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
     player_row = sheet.find(player_name).row
-    return int(sheet.cell(player_row, col.value).value or 0)
+    return float(sheet.cell(player_row, col.value).value or 0)
 
 
 def get_points_for_match_num(player_name, match_num):
     sheet = get_sheet(DOC_NAME, POINTS_SHEET_NAME)
     player_row = sheet.find(player_name).row
     col = SheetCols.POINTS_COL.value + NUMBER_OF_FIELDS * match_num
-    return int(sheet.cell(player_row, col).value or 0)
+    return float(sheet.cell(player_row, col).value or 0)
 
 
 def get_rank(query_points):
@@ -58,7 +58,7 @@ def get_rank(query_points):
         name = player_row[0]
         points = player_row[SheetCols.POINTS_COL.value - 1]
         if name:
-            all_points.append(int(points))
+            all_points.append(float(points))
     rank = sorted(all_points, reverse=True).index(query_points) + 1
     total = len(all_points)
     return rank, total
@@ -76,13 +76,13 @@ def get_sorted_players(num_players=10, reverse=False, raw=False):
             filtered_player_rows.append(player_row)
 
     col = (SheetCols.RAW_POINTS_COL if raw else SheetCols.POINTS_COL).value - 1
-    return sorted(filtered_player_rows, key=lambda x: int(x[col]), reverse=reverse)[:num_players]
+    return sorted(filtered_player_rows, key=lambda x: float(x[col]), reverse=reverse)[:num_players]
 
 
 def adjust_transfer_points(team_name, adjusted_points):
     sheet = get_sheet(DOC_NAME, TEAM_POINTS_SHEET_NAME)
     team_row = sheet.find(team_name).row
     adjusted_points_col = SheetCols.ADJUSTED_POINTS_COL.value
-    existing_adjusted_points = int(sheet.cell(team_row, adjusted_points_col).value or 0)
+    existing_adjusted_points = float(sheet.cell(team_row, adjusted_points_col).value or 0)
     new_adjusted_points = existing_adjusted_points + adjusted_points
     sheet.update_cell(team_row, adjusted_points_col, new_adjusted_points)
