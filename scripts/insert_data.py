@@ -30,7 +30,7 @@ def create_player_configs():
     player_configs = []
     sheet = get_sheet(DOC_NAME, BIDDING_SHEET_NAME)
     rows = sheet.get_all_values()
-    for row in rows[21:1000]:
+    for row in rows[20:1000]:
         if not row[1]:
             continue
         print(row)
@@ -65,10 +65,7 @@ def insert_players(player_configs):
 def insert_matches(match_configs):
     with sessionmaker(engine).begin() as session:
         for config in match_configs:
-            try:
-                session.query(Team).filter(Team.name == config['team_1']).first().id
-            except AttributeError:
-                breakpoint()
+            session.query(Team).filter(Team.name == config['team_1']).first().id
             match_1 = Match(
                 team_id=session.query(Team).filter(Team.name == config['team_1']).first().id,
                 external_id=config['object_id'],
