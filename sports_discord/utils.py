@@ -25,3 +25,14 @@ def get_rating_emoji(rank, total):
         return ':grinning:'
     else:
         return ':fire:'
+
+
+def get_current_points_emoji(current_points):
+    if current_points <= 0:
+        return ':face_with_symbols_over_mouth:'
+    elif 0 < current_points <= 50:
+        return ':neutral_face:'
+    elif 50 < current_points <= 100:
+        return ':grinning:'
+    else:
+        return ':star_struck:'

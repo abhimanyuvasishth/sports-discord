@@ -42,13 +42,11 @@ def get_old_captain(role_id: str):
 
 def get_new_captain(role_id: str, player_name: str):
     with sessionmaker(engine)() as session:
-        # Subquery to find the minimum start_timestamp for each match_day
         min_start_subquery = session.query(
             Match.match_day.label('match_day'),
             func.min(Match.start_timestamp).label('min_start')
         ).group_by(Match.match_day).subquery()
 
-        # Find the first upcoming match_day where the min start_time is more than 1 hour from now
         min_start_time = datetime.now(timezone.utc) + timedelta(hours=1)
         upcoming_match_day = session.query(min_start_subquery.c.match_day) \
             .filter(min_start_subquery.c.min_start >= min_start_time) \
@@ -67,6 +65,23 @@ def get_new_captain(role_id: str, player_name: str):
             .all()
 
         return new_captain
+
+
+def get_all_kaptaans():
+    with sessionmaker(engine)() as session:
+        most_recent_match_day = session.query(func.max(Match.match_day)) \
+            .filter(Match.start_timestamp <= datetime.now(timezone.utc)) \
+            .scalar()
+
+        kaptaans = session.query(MatchPlayer.id, UserTeam.name, Match.match_num, Player.name) \
+            .join(Match) \
+            .join(Player) \
+            .join(UserTeam, isouter=True) \
+            .filter(Match.match_day == most_recent_match_day) \
+            .filter(MatchPlayer.captain) \
+            .all()
+
+        return kaptaans
 
 
 def get_player_owner(player_name: str):

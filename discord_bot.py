@@ -102,6 +102,31 @@ async def kaptaan(context, *args):
 
 
 @bot.command()
+async def kaptaan_summary(context):
+    """
+    Gets a summary of all teams' kaptaans for the match day
+
+    For example: !kaptaan_summary
+    """
+    kaptaans = db_utils.get_all_kaptaans()
+    message_lines = ['**Kaptaan Summary**']
+    kaptaan_values = []
+    for kaptaan_row in kaptaans:
+        _, team_name, match_num, player_name = kaptaan_row
+        points = sheet_utils.get_points_for_match_num(player_name, match_num)
+        points_line = f'{points} points in most recent game'
+        emoji = utils.get_current_points_emoji(points)
+        message = f'{team_name}: {player_name} ({points_line}) {emoji}'
+        kaptaan_values.append((points, message))
+
+    for i, item in enumerate(sorted(kaptaan_values, key=lambda x: x[0], reverse=True)):
+        rank_emoji = utils.get_emoji_from_number(i + 1)
+        message_lines.append(f'{rank_emoji} {item[1]}')
+
+    await context.reply('\n'.join(message_lines))
+
+
+@bot.command()
 async def points(context, *args):
     """
     Checks a player's total points (kaptaan and non kaptaan) and points in their most recent game
