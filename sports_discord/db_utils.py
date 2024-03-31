@@ -1,9 +1,9 @@
 import os
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from functools import cache
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, update
+from sqlalchemy import create_engine, func, update
 from sqlalchemy.orm import sessionmaker
 
 from sports_discord.models.match import Match
@@ -25,7 +25,7 @@ def get_user_team_by_id(role_id: str) -> list[UserTeam]:
 def get_old_captain(role_id: str):
     with sessionmaker(engine)() as session:
         match = session.query(Match) \
-            .filter(Match.start_timestamp >= datetime.utcnow()) \
+            .filter(Match.start_timestamp >= datetime.now(timezone.utc)) \
             .order_by(Match.start_timestamp).first()
 
         old_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
@@ -42,13 +42,24 @@ def get_old_captain(role_id: str):
 
 def get_new_captain(role_id: str, player_name: str):
     with sessionmaker(engine)() as session:
-        match = session.query(Match) \
-            .filter(Match.start_timestamp >= datetime.utcnow()) \
-            .order_by(Match.start_timestamp).first()
+        # Subquery to find the minimum start_timestamp for each match_day
+        min_start_subquery = session.query(
+            Match.match_day.label('match_day'),
+            func.min(Match.start_timestamp).label('min_start')
+        ).group_by(Match.match_day).subquery()
+
+        # Find the first upcoming match_day where the min start_time is more than 1 hour from now
+        min_start_time = datetime.now(timezone.utc) + timedelta(hours=1)
+        upcoming_match_day = session.query(min_start_subquery.c.match_day) \
+            .filter(min_start_subquery.c.min_start >= min_start_time) \
+            .order_by(min_start_subquery.c.min_start).first()
+
+        if upcoming_match_day is None:
+            return []
 
         new_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
             .join(Match) \
-            .filter(Match.match_day == match.match_day) \
+            .filter(Match.match_day == upcoming_match_day.match_day) \
             .join(Player) \
             .filter(Player.name.ilike(f'%{player_name}%')) \
             .join(UserTeam) \
@@ -74,7 +85,7 @@ def get_player_and_most_recent_match(player_id: int):
             .filter(Player.id == player_id) \
             .join(MatchPlayer, Player.id == MatchPlayer.player_id) \
             .join(Match, Match.id == MatchPlayer.match_id) \
-            .filter(Match.start_timestamp <= datetime.utcnow()) \
+            .filter(Match.start_timestamp <= datetime.now(timezone.utc)) \
             .order_by(Match.start_timestamp.desc()) \
             .first()
 
