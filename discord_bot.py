@@ -233,7 +233,7 @@ async def team_points(context):
     team_points = sheet_utils.get_team_points()
     for team in team_points:
         emoji = utils.get_emoji_from_number(team['rank'])
-        message_lines.append(f'{emoji} - {team["name"]} with {team["points"]} points')
+        message_lines.append(f'{emoji} {team["name"]}: {team["points"]} points')
     await context.reply('\n'.join(message_lines))
 
 
