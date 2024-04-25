@@ -6,7 +6,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils, utils
-from sports_discord.constants import (CHANNEL_ID, DOC_NAME, NOT_ON_A_TEAM,
+from sports_discord.constants import (CHANNEL_ID, DOC_NAME, NOT_ON_A_TEAM, NUMBER_OF_FIELDS,
                                       POINTS_SHEET_NAME, Pool, SheetCols)
 from sports_discord.google_sheet import get_sheet
 from sports_discord.haiku import get_haiku
@@ -254,6 +254,53 @@ async def top(context, *args):
         points_col = SheetCols.RAW_POINTS_COL if raw else SheetCols.POINTS_COL
         points = row[points_col.value - 1]
         message_lines.append(f'{rank_emoji} - {name} with {points} points ({owner})')
+    await context.reply('\n'.join(message_lines))
+
+
+@bot.command()
+async def day_points(context):
+    """
+    Displays team points for the day
+
+    For example: !day_points
+    """
+    message_lines = ['**:calendar: Today\'s Points :calendar:**']
+    player_rows = sheet_utils.get_player_rows()
+    player_mapping = {}
+    player_db_rows = db_utils.get_all_players_today()
+    for row in player_db_rows:
+        player_mapping[row[3]] = {
+            'match_num': row[0],
+            'captain': row[1],
+            'team': row[2],
+            'points': 0,
+        }
+    for row in player_rows:
+        if not row:
+            continue
+        mapping = player_mapping.get(row[0])
+        if not mapping:
+            continue
+        col = SheetCols.POINTS_COL.value + NUMBER_OF_FIELDS * mapping['match_num'] - 1
+        mapping['points'] = int(row[col])
+
+    team_players = {}
+    for name, mapping in player_mapping.items():
+        team_name = mapping['team']
+        if team_name not in team_players:
+            team_players[team_name] = [0, []]
+        team_players[team_name][0] += mapping['points']
+        if mapping['captain']:
+            name += ' (c)'
+        team_players[team_name][1].append(f"{name}: {mapping['points']}")
+
+    team_players = dict(sorted(team_players.items(), key=lambda item: item[1][0], reverse=True))
+    i = 1
+    for team_name, data in team_players.items():
+        emoji = utils.get_emoji_from_number(i)
+        message_lines.append(f"{emoji} {team_name}: {data[0]} points ({', '.join(data[1])})")
+        i += 1
+
     await context.reply('\n'.join(message_lines))
 
 

@@ -84,6 +84,22 @@ def get_all_kaptaans():
         return kaptaans
 
 
+def get_all_players_today():
+    with sessionmaker(engine)() as session:
+        most_recent_match_day = session.query(func.max(Match.match_day)) \
+            .filter(Match.start_timestamp <= datetime.now(timezone.utc)) \
+            .scalar()
+
+        players = session.query(Match.match_num, MatchPlayer.captain, UserTeam.name, Player.name) \
+            .join(Match) \
+            .join(Player) \
+            .join(UserTeam) \
+            .filter(Match.match_day == most_recent_match_day) \
+            .all()
+
+        return players
+
+
 def get_player_owner(player_name: str):
     with sessionmaker(engine)() as session:
         player_owner = session.query(UserTeam.name, Player) \
