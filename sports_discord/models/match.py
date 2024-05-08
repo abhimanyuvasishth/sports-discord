@@ -18,3 +18,5 @@ class Match(Base):
     match_day = Column(Integer, nullable=False)
     team_id = Column(Integer, ForeignKey('team.id'))
     team = relationship('Team')
+    tournament_id = Column(Integer, ForeignKey('tournament.id'))
+    tournament = relationship('Tournament')

@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 
 from alembic import context
 from sports_discord.database import Base
-from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
+from sports_discord.models import Match, MatchPlayer, Player, Team, Tournament, UserTeam
 
 load_dotenv()
 

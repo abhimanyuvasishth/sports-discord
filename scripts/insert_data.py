@@ -8,22 +8,37 @@ from sqlalchemy.orm import sessionmaker
 
 from sports_discord.constants import BIDDING_SHEET_NAME, DOC_NAME, Pool
 from sports_discord.google_sheet import get_sheet
-from sports_discord.models import Match, MatchPlayer, Player, Team, UserTeam
+from sports_discord.models import Match, MatchPlayer, Player, Team, Tournament, UserTeam
 
 load_dotenv()
 engine = create_engine(getenv('POSTGRES_URL'))
 
 
-def insert_user_teams(user_team_configs):
+def create_tournament(tournament_name):
+    with sessionmaker(engine).begin() as session:
+        tournament = Tournament(
+            name=tournament_name,
+        )
+        session.add(tournament)
+
+    with sessionmaker(engine).begin() as session:
+        return session.query(Tournament).filter(
+            Tournament.name == tournament_name
+        ).first().id
+
+
+def insert_user_teams(user_team_configs, tournament_id):
     with sessionmaker(engine).begin() as session:
         session.bulk_save_objects(
-            [UserTeam(**config) for config in user_team_configs]
+            [UserTeam(**dict(config, tournament_id=tournament_id)) for config in user_team_configs]
         )
 
 
-def insert_teams(team_configs):
+def insert_teams(team_configs, tournament_id):
     with sessionmaker(engine).begin() as session:
-        session.bulk_save_objects([Team(**config) for config in team_configs])
+        session.bulk_save_objects(
+            [Team(**dict(config, tournament_id=tournament_id)) for config in team_configs]
+        )
 
 
 def create_player_configs():
@@ -33,7 +48,7 @@ def create_player_configs():
     for row in rows[20:1000]:
         if not row[1]:
             continue
-        print(row)
+        print(row[:10])
         player_configs.append({
             'name': row[1].strip(),
             'team_name': row[2].strip(),
@@ -44,52 +59,73 @@ def create_player_configs():
     return player_configs
 
 
-def insert_players(player_configs):
+def insert_players(player_configs, tournament_id):
     with sessionmaker(engine).begin() as session:
         for config in player_configs:
-            team_id = session.query(Team).filter(Team.name == config['team_name']).first().id
-            user_team = session.query(UserTeam).filter(
-                UserTeam.name == config['user_team_name']
-            ).first()
+            team_id = session.query(Team) \
+                .filter(Team.name == config['team_name']) \
+                .filter(Team.tournament_id == tournament_id) \
+                .first() \
+                .id
+            user_team = session.query(UserTeam) \
+                .filter(UserTeam.name == config['user_team_name']) \
+                .filter(UserTeam.tournament_id == tournament_id) \
+                .first()
             user_team_id = user_team.id if user_team else None
             player = Player(
                 name=config['name'],
                 team_id=team_id,
                 user_team_id=user_team_id,
+                tournament_id=tournament_id,
                 pool=config['pool'],
                 position=config['position'],
             )
             session.add(player)
 
 
-def insert_matches(match_configs):
+def insert_matches(match_configs, tournament_id):
     with sessionmaker(engine).begin() as session:
         for config in match_configs:
-            session.query(Team).filter(Team.name == config['team_1']).first().id
+            team_1_id = session.query(Team) \
+                .filter(Team.name == config['team_1']) \
+                .filter(Team.tournament_id == tournament_id) \
+                .first() \
+                .id
+            team_2_id = session.query(Team) \
+                .filter(Team.name == config['team_2']) \
+                .filter(Team.tournament_id == tournament_id) \
+                .first() \
+                .id
             match_1 = Match(
-                team_id=session.query(Team).filter(Team.name == config['team_1']).first().id,
+                team_id=team_1_id,
                 external_id=config['object_id'],
                 match_num=config['team_1_num'],
                 start_timestamp=parse(config['start_timestamp']),
                 match_day=config['match_day'],
+                tournament_id=tournament_id
             )
             match_2 = Match(
-                team_id=session.query(Team).filter(Team.name == config['team_2']).first().id,
+                team_id=team_2_id,
                 external_id=config['object_id'],
                 match_num=config['team_2_num'],
                 start_timestamp=parse(config['start_timestamp']),
                 match_day=config['match_day'],
+                tournament_id=tournament_id
             )
             session.bulk_save_objects([match_1, match_2])
 
 
-def insert_match_players(player_configs, match_configs):
+def insert_match_players(player_configs, match_configs, tournament_id):
     with sessionmaker(engine).begin() as session:
         for match_config in match_configs:
             for team_key in ['team_1', 'team_2']:
-                team = session.query(Team).filter(Team.name == match_config[team_key]).first()
+                team = session.query(Team) \
+                    .filter(Team.name == match_config[team_key]) \
+                    .filter(Team.tournament_id == tournament_id) \
+                    .first()
                 match = session.query(Match) \
                     .filter(Match.team_id == team.id) \
+                    .filter(Match.tournament_id == tournament_id) \
                     .filter(Match.external_id == str(match_config['object_id'])) \
                     .first()
                 for player_config in player_configs:
@@ -109,9 +145,21 @@ if __name__ == '__main__':
         configs = json.loads(f.read())
 
     player_configs = create_player_configs()
-    insert_user_teams(configs['user_teams'])
-    insert_teams(configs['teams'])
 
-    insert_players(player_configs)
-    insert_matches(configs['matches'])
-    insert_match_players(player_configs, configs['matches'])
+    tournament_id = create_tournament(configs['tournament'])
+    print(f'Created tournament: {tournament_id}')
+
+    insert_user_teams(configs['user_teams'], tournament_id)
+    print(f"Inserted {len(configs['user_teams'])} User Teams")
+
+    insert_teams(configs['teams'], tournament_id)
+    print(f"Inserted {len(configs['teams'])} Teams")
+
+    insert_players(player_configs, tournament_id)
+    print(f"Inserted {len(player_configs)} Players")
+
+    insert_matches(configs['matches'], tournament_id)
+    print(f"Inserted {len(configs['matches'])} Matches")
+
+    insert_match_players(player_configs, configs['matches'], tournament_id)
+    print("Inserted Match Players")
