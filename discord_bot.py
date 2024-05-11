@@ -72,7 +72,7 @@ async def kaptaan(context, *args):
     if not role_id:
         return await context.reply(NOT_ON_A_TEAM)
 
-    player_name = emoji.demojize(' '.join(args)).strip(':')
+    player_name = emoji.demojize(' '.join(args)).replace(':', '')
     new_captain = db_utils.get_new_captain(role_id, player_name)
 
     if len(new_captain) == 0:
@@ -134,7 +134,7 @@ async def points(context, *args):
 
     For example: !points Kohli
     """
-    raw_player_name = emoji.demojize(' '.join(args)).strip(':')
+    raw_player_name = emoji.demojize(' '.join(args)).replace(':', '')
     player = db_utils.get_player_owner(raw_player_name)
 
     if len(player) == 0:
@@ -178,7 +178,7 @@ async def whohas(context, *args):
 
     For example: !whohas Kohli
     """
-    raw_player_name = emoji.demojize(' '.join(args)).strip(':')
+    raw_player_name = emoji.demojize(' '.join(args)).replace(':', '')
     player_owned = db_utils.get_player_owner(raw_player_name)
 
     if len(player_owned) == 0:
@@ -204,7 +204,7 @@ async def haiku(context, *args):
 
     For example: !haiku Kohli
     """
-    raw_player_name = emoji.demojize(' '.join(args)).strip(':')
+    raw_player_name = emoji.demojize(' '.join(args)).replace(':', '')
     player_owned = db_utils.get_player_owner(raw_player_name)
 
     if len(player_owned) == 0:
@@ -332,7 +332,7 @@ async def squad(context, *args):
 
     For example: !squad teamname
     """
-    user_team_name = emoji.demojize(' '.join(args)).strip(':')
+    user_team_name = emoji.demojize(' '.join(args)).replace(':', '')
     user_team = db_utils.get_user_team_by_name(user_team_name)
 
     if len(user_team) == 0:
