@@ -24,8 +24,8 @@ class Position(Enum):
 
 class SheetCols(Enum):
     NAME_COL = 0
-    POINTS_COL = 5
-    RAW_POINTS_COL = 261
+    POINTS_COL = 4
+    RAW_POINTS_COL = 260
     POINTS_OWNER_COL = 3
     BIDDING_OWNER_COL = 9
     ADJUSTED_POINTS_COL = 22
