@@ -6,7 +6,7 @@ POINTS_SHEET_NAME = 'Points Worksheet'
 TEAM_POINTS_SHEET_NAME = 'Team Points'
 NOT_ON_A_TEAM = 'Not yet a part of any teams for this auction/draft. Please join a team first.'
 NUMBER_OF_FIELDS = 15
-CHANNEL_ID = 1214457222004871248
+CHANNEL_ID = 1238544605994287217
 
 
 class Pool(Enum):
