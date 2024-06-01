@@ -1,0 +1,517 @@
+{
+    "tournament": "World Cup 2024",
+    "teams": [
+        {
+            "name": "Afghanistan",
+            "abbrev": "AFG"
+        },
+        {
+            "name": "Australia",
+            "abbrev": "AUS"
+        },
+        {
+            "name": "Bangladesh",
+            "abbrev": "BD"
+        },
+        {
+            "name": "Canada",
+            "abbrev": "CAN"
+        },
+        {
+            "name": "India",
+            "abbrev": "IND"
+        },
+        {
+            "name": "England",
+            "abbrev": "ENG"
+        },
+        {
+            "name": "Ireland",
+            "abbrev": "IRE"
+        },
+        {
+            "name": "Namibia",
+            "abbrev": "NAM"
+        },
+        {
+            "name": "Nepal",
+            "abbrev": "NEP"
+        },
+        {
+            "name": "Netherlands",
+            "abbrev": "NL"
+        },
+        {
+            "name": "New Zealand",
+            "abbrev": "NZ"
+        },
+        {
+            "name": "Oman",
+            "abbrev": "OMA"
+        },
+        {
+            "name": "Pakistan",
+            "abbrev": "PAK"
+        },
+        {
+            "name": "Papua New Guinea",
+            "abbrev": "PNG"
+        },
+        {
+            "name": "Scotland",
+            "abbrev": "SCO"
+        },
+        {
+            "name": "Sri Lanka",
+            "abbrev": "SL"
+        },
+        {
+            "name": "South Africa",
+            "abbrev": "SA"
+        },
+        {
+            "name": "Uganda",
+            "abbrev": "UGA"
+        },
+        {
+            "name": "United States of America",
+            "abbrev": "USA"
+        },
+        {
+            "name": "West Indies",
+            "abbrev": "WI"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "SoBo Sardarz",
+            "discord_role_id": "1030006519380590592"
+        },
+        {
+            "name": "Kimweli's Krew",
+            "discord_role_id": "1157196166581194843"
+        },
+        {
+            "name": "Namit",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "Motie Mahal",
+            "discord_role_id": "1030006412266455113"
+        },
+        {
+            "name": "Suburb Sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "Dhawan Da Dhaba",
+            "discord_role_id": "1011749363942424676"
+        },
+        {
+            "name": "Ravi Shastri's Liver",
+            "discord_role_id": "1043225108254294128"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "United States of America",
+            "team_1_num": 1,
+            "team_2": "Canada",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-01T20:30:00.000000Z",
+            "object_id": 1415701,
+            "location": "Grand Prairie Stadium",
+            "match_day": 1
+        },
+        {
+            "team_1": "West Indies",
+            "team_1_num": 1,
+            "team_2": "Papua New Guinea",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-02T10:30:00.000000Z",
+            "object_id": 1415702,
+            "location": "Providence Stadium, Guyana",
+            "match_day": 2
+        },
+        {
+            "team_1": "Namibia",
+            "team_1_num": 1,
+            "team_2": "Oman",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-02T20:30:00.000000Z",
+            "object_id": 1415703,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 2
+        },
+        {
+            "team_1": "Sri Lanka",
+            "team_1_num": 1,
+            "team_2": "South Africa",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-03T10:30:00.000000Z",
+            "object_id": 1415704,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 3
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 1,
+            "team_2": "Uganda",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-03T20:30:00.000000Z",
+            "object_id": 1415705,
+            "location": "Providence Stadium, Guyana",
+            "match_day": 3
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 1,
+            "team_2": "Scotland",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-04T10:30:00.000000Z",
+            "object_id": 1415706,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 4
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 1,
+            "team_2": "Nepal",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-04T11:30:00.000000Z",
+            "object_id": 1415707,
+            "location": "Grand Prairie Stadium",
+            "match_day": 4
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 1,
+            "team_2": "Ireland",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-05T10:30:00.000000Z",
+            "object_id": 1415708,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 5
+        },
+        {
+            "team_1": "Papua New Guinea",
+            "team_1_num": 2,
+            "team_2": "Uganda",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-05T19:30:00.000000Z",
+            "object_id": 1415709,
+            "location": "Providence Stadium, Guyana",
+            "match_day": 5
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 1,
+            "team_2": "Oman",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-05T20:30:00.000000Z",
+            "object_id": 1415710,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 5
+        },
+        {
+            "team_1": "United States of America",
+            "team_1_num": 2,
+            "team_2": "Pakistan",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-06T11:30:00.000000Z",
+            "object_id": 1415711,
+            "location": "Grand Prairie Stadium",
+            "match_day": 6
+        },
+        {
+            "team_1": "Namibia",
+            "team_1_num": 2,
+            "team_2": "Scotland",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-06T15:00:00.000000Z",
+            "object_id": 1415712,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 6
+        },
+        {
+            "team_1": "Canada",
+            "team_1_num": 2,
+            "team_2": "Ireland",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-07T10:30:00.000000Z",
+            "object_id": 1415713,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 7
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 2,
+            "team_2": "New Zealand",
+            "team_2_num": 1,
+            "start_timestamp": "2024-06-07T19:30:00.000000Z",
+            "object_id": 1415714,
+            "location": "Providence Stadium, Guyana",
+            "match_day": 7
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 1,
+            "team_2": "Sri Lanka",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-07T20:30:00.000000Z",
+            "object_id": 1415715,
+            "location": "Grand Prairie Stadium",
+            "match_day": 7
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 2,
+            "team_2": "South Africa",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-08T10:30:00.000000Z",
+            "object_id": 1415716,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 8
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 2,
+            "team_2": "England",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-08T13:00:00.000000Z",
+            "object_id": 1415717,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 8
+        },
+        {
+            "team_1": "West Indies",
+            "team_1_num": 2,
+            "team_2": "Uganda",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-08T20:30:00.000000Z",
+            "object_id": 1415718,
+            "location": "Providence Stadium, Guyana",
+            "match_day": 8
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 2,
+            "team_2": "Pakistan",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-09T10:30:00.000000Z",
+            "object_id": 1415719,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 9
+        },
+        {
+            "team_1": "Oman",
+            "team_1_num": 3,
+            "team_2": "Scotland",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-09T13:00:00.000000Z",
+            "object_id": 1415720,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 9
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 2,
+            "team_2": "South Africa",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-10T10:30:00.000000Z",
+            "object_id": 1415721,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 10
+        },
+        {
+            "team_1": "Canada",
+            "team_1_num": 3,
+            "team_2": "Pakistan",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-11T10:30:00.000000Z",
+            "object_id": 1415722,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 11
+        },
+        {
+            "team_1": "Nepal",
+            "team_1_num": 2,
+            "team_2": "Sri Lanka",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-11T19:30:00.000000Z",
+            "object_id": 1415723,
+            "location": "Central Broward Regional Park Stadium Turf Ground, Lauderhill",
+            "match_day": 11
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 3,
+            "team_2": "Namibia",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-11T20:30:00.000000Z",
+            "object_id": 1415724,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 11
+        },
+        {
+            "team_1": "United States of America",
+            "team_1_num": 3,
+            "team_2": "India",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-12T10:30:00.000000Z",
+            "object_id": 1415725,
+            "location": "Nassau County International Cricket Stadium, New York",
+            "match_day": 12
+        },
+        {
+            "team_1": "West Indies",
+            "team_1_num": 3,
+            "team_2": "New Zealand",
+            "team_2_num": 2,
+            "start_timestamp": "2024-06-12T20:30:00.000000Z",
+            "object_id": 1415726,
+            "location": "Brian Lara Stadium, Tarouba, Trinidad",
+            "match_day": 12
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 3,
+            "team_2": "Netherlands",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-13T10:30:00.000000Z",
+            "object_id": 1415727,
+            "location": "Arnos Vale Ground, Kingstown, St Vincent",
+            "match_day": 13
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 3,
+            "team_2": "Oman",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-13T15:00:00.000000Z",
+            "object_id": 1415728,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 13
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 3,
+            "team_2": "Papua New Guinea",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-13T20:30:00.000000Z",
+            "object_id": 1415729,
+            "location": "Brian Lara Stadium, Tarouba, Trinidad",
+            "match_day": 13
+        },
+        {
+            "team_1": "United States of America",
+            "team_1_num": 4,
+            "team_2": "Ireland",
+            "team_2_num": 3,
+            "start_timestamp": "2024-06-14T10:30:00.000000Z",
+            "object_id": 1415730,
+            "location": "Central Broward Regional Park Stadium Turf Ground, Lauderhill",
+            "match_day": 14
+        },
+        {
+            "team_1": "Nepal",
+            "team_1_num": 3,
+            "team_2": "South Africa",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-14T19:30:00.000000Z",
+            "object_id": 1415731,
+            "location": "Arnos Vale Ground, Kingstown, St Vincent",
+            "match_day": 14
+        },
+        {
+            "team_1": "New Zealand",
+            "team_1_num": 3,
+            "team_2": "Uganda",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-14T20:30:00.000000Z",
+            "object_id": 1415732,
+            "location": "Brian Lara Stadium, Tarouba, Trinidad",
+            "match_day": 14
+        },
+        {
+            "team_1": "Canada",
+            "team_1_num": 4,
+            "team_2": "India",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-15T10:30:00.000000Z",
+            "object_id": 1415733,
+            "location": "Central Broward Regional Park Stadium Turf Ground, Lauderhill",
+            "match_day": 15
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 4,
+            "team_2": "Namibia",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-15T13:00:00.000000Z",
+            "object_id": 1415734,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 15
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 4,
+            "team_2": "Scotland",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-15T20:30:00.000000Z",
+            "object_id": 1415735,
+            "location": "Daren Sammy National Cricket Stadium, Gros Islet, St Lucia",
+            "match_day": 15
+        },
+        {
+            "team_1": "Ireland",
+            "team_1_num": 4,
+            "team_2": "Pakistan",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-16T10:30:00.000000Z",
+            "object_id": 1415736,
+            "location": "Central Broward Regional Park Stadium Turf Ground, Lauderhill",
+            "match_day": 16
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 4,
+            "team_2": "Nepal",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-16T19:30:00.000000Z",
+            "object_id": 1415737,
+            "location": "Arnos Vale Ground, Kingstown, St Vincent",
+            "match_day": 16
+        },
+        {
+            "team_1": "Netherlands",
+            "team_1_num": 4,
+            "team_2": "Sri Lanka",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-16T20:30:00.000000Z",
+            "object_id": 1415738,
+            "location": "Daren Sammy National Cricket Stadium, Gros Islet, St Lucia",
+            "match_day": 16
+        },
+        {
+            "team_1": "New Zealand",
+            "team_1_num": 4,
+            "team_2": "Papua New Guinea",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-17T10:30:00.000000Z",
+            "object_id": 1415739,
+            "location": "Brian Lara Stadium, Tarouba, Trinidad",
+            "match_day": 17
+        },
+        {
+            "team_1": "West Indies",
+            "team_1_num": 4,
+            "team_2": "Afghanistan",
+            "team_2_num": 4,
+            "start_timestamp": "2024-06-17T20:30:00.000000Z",
+            "object_id": 1415740,
+            "location": "Daren Sammy National Cricket Stadium, Gros Islet, St Lucia",
+            "match_day": 17
+        }
+    ]
+}

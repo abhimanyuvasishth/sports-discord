@@ -1,6 +1,6 @@
 from enum import Enum
 
-DOC_NAME = 'IPL 17 Auction'
+DOC_NAME = 'World Cup 2024 Auction'
 BIDDING_SHEET_NAME = 'Bidding Page'
 POINTS_SHEET_NAME = 'Points Worksheet'
 TEAM_POINTS_SHEET_NAME = 'Team Points'

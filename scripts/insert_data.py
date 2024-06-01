@@ -52,7 +52,7 @@ def create_player_configs():
         player_configs.append({
             'name': row[1].strip(),
             'team_name': row[2].strip(),
-            'pool': Pool[row[3]].value,
+            'pool': Pool[row[6]].value,
             'user_team_name': row[8].strip(),
             'position': 1
         })
@@ -141,7 +141,7 @@ def insert_match_players(player_configs, match_configs, tournament_id):
 
 
 if __name__ == '__main__':
-    with open('config/ipl_2024.json') as f:
+    with open('config/world_cup_2024.json') as f:
         configs = json.loads(f.read())
 
     player_configs = create_player_configs()
