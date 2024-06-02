@@ -283,7 +283,7 @@ async def day_points(context):
         if not mapping:
             continue
         col = SheetCols.POINTS_COL.value + NUMBER_OF_FIELDS * mapping['match_num'] - 1
-        mapping['points'] = int(row[col])
+        mapping['points'] = float(row[col])
 
     team_players = {}
     for name, mapping in player_mapping.items():
