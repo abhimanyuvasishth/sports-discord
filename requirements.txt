@@ -13,4 +13,5 @@ pytest
 pytest-cov
 python-dateutil
 python-dotenv
+pytz
 sqlalchemy

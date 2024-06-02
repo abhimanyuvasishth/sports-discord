@@ -1,7 +1,8 @@
 import os
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from functools import cache
 
+import pytz
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, func, update
 from sqlalchemy.orm import sessionmaker
@@ -13,6 +14,7 @@ from sports_discord.models.user_team import UserTeam
 
 load_dotenv()
 engine = create_engine(os.getenv('POSTGRES_URL'))
+eastern = pytz.timezone('US/Eastern')
 
 
 @cache
@@ -25,7 +27,7 @@ def get_user_team_by_id(role_id: str) -> list[UserTeam]:
 def get_old_captain(role_id: str):
     with sessionmaker(engine)() as session:
         match = session.query(Match) \
-            .filter(Match.start_timestamp >= datetime.now(timezone.utc)) \
+            .filter(Match.start_timestamp >= datetime.now(eastern)) \
             .order_by(Match.start_timestamp).first()
 
         old_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
@@ -47,7 +49,7 @@ def get_new_captain(role_id: str, player_name: str):
             func.min(Match.start_timestamp).label('min_start')
         ).group_by(Match.match_day).subquery()
 
-        min_start_time = datetime.now(timezone.utc) + timedelta(hours=1)
+        min_start_time = datetime.now(eastern) + timedelta(hours=1)
         upcoming_match_day = session.query(min_start_subquery.c.match_day) \
             .filter(min_start_subquery.c.min_start >= min_start_time) \
             .order_by(min_start_subquery.c.min_start).first()
@@ -70,7 +72,7 @@ def get_new_captain(role_id: str, player_name: str):
 def get_all_kaptaans():
     with sessionmaker(engine)() as session:
         most_recent_match_day = session.query(func.max(Match.match_day)) \
-            .filter(Match.start_timestamp <= datetime.now(timezone.utc)) \
+            .filter(Match.start_timestamp <= datetime.now(eastern)) \
             .scalar()
 
         kaptaans = session.query(MatchPlayer.id, UserTeam.name, Match.match_num, Player.name) \
@@ -87,7 +89,7 @@ def get_all_kaptaans():
 def get_all_players_today():
     with sessionmaker(engine)() as session:
         most_recent_match_day = session.query(func.max(Match.match_day)) \
-            .filter(Match.start_timestamp <= datetime.now(timezone.utc)) \
+            .filter(Match.start_timestamp <= datetime.now(eastern)) \
             .scalar()
 
         players = session.query(Match.match_num, MatchPlayer.captain, UserTeam.name, Player.name) \
@@ -116,7 +118,7 @@ def get_player_and_most_recent_match(player_id: int):
             .filter(Player.id == player_id) \
             .join(MatchPlayer, Player.id == MatchPlayer.player_id) \
             .join(Match, Match.id == MatchPlayer.match_id) \
-            .filter(Match.start_timestamp <= datetime.now(timezone.utc)) \
+            .filter(Match.start_timestamp <= datetime.now(eastern)) \
             .order_by(Match.start_timestamp.desc()) \
             .first()
 
