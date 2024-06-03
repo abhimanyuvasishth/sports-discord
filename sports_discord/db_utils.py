@@ -26,13 +26,22 @@ def get_user_team_by_id(role_id: str) -> list[UserTeam]:
 
 def get_old_captain(role_id: str):
     with sessionmaker(engine)() as session:
-        match = session.query(Match) \
-            .filter(Match.start_timestamp >= datetime.now(eastern)) \
-            .order_by(Match.start_timestamp).first()
+        min_start_subquery = session.query(
+            Match.match_day.label('match_day'),
+            func.min(Match.start_timestamp).label('min_start')
+        ).group_by(Match.match_day).subquery()
+
+        min_start_time = datetime.now(eastern) + timedelta(hours=1)
+        upcoming_match_day = session.query(min_start_subquery.c.match_day) \
+            .filter(min_start_subquery.c.min_start >= min_start_time) \
+            .order_by(min_start_subquery.c.min_start).first()
+
+        if upcoming_match_day is None:
+            return []
 
         old_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
             .join(Match) \
-            .filter(Match.match_day == match.match_day) \
+            .filter(Match.match_day == upcoming_match_day.match_day) \
             .join(Player) \
             .join(UserTeam) \
             .filter(UserTeam.discord_role_id == str(role_id)) \
