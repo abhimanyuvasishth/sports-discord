@@ -120,13 +120,13 @@
             "team_2_num": 1,
             "start_timestamp": "2024-06-01T20:30:00.000000Z",
             "object_id": 1415701,
-            "location": "Grand Prairie Stadium",
+            "location": "Grand Prairie Stadium, Dallas",
             "match_day": 1
         },
         {
-            "team_1": "West Indies",
+            "team_1": "Papua New Guinea",
             "team_1_num": 1,
-            "team_2": "Papua New Guinea",
+            "team_2": "West Indies",
             "team_2_num": 1,
             "start_timestamp": "2024-06-02T10:30:00.000000Z",
             "object_id": 1415702,
@@ -134,9 +134,9 @@
             "match_day": 2
         },
         {
-            "team_1": "Namibia",
+            "team_1": "Oman",
             "team_1_num": 1,
-            "team_2": "Oman",
+            "team_2": "Namibia",
             "team_2_num": 1,
             "start_timestamp": "2024-06-02T20:30:00.000000Z",
             "object_id": 1415703,
@@ -164,9 +164,9 @@
             "match_day": 3
         },
         {
-            "team_1": "England",
+            "team_1": "Scotland",
             "team_1_num": 1,
-            "team_2": "Scotland",
+            "team_2": "England",
             "team_2_num": 1,
             "start_timestamp": "2024-06-04T10:30:00.000000Z",
             "object_id": 1415706,
@@ -174,19 +174,19 @@
             "match_day": 4
         },
         {
-            "team_1": "Netherlands",
+            "team_1": "Nepal",
             "team_1_num": 1,
-            "team_2": "Nepal",
+            "team_2": "Netherlands",
             "team_2_num": 1,
             "start_timestamp": "2024-06-04T11:30:00.000000Z",
             "object_id": 1415707,
-            "location": "Grand Prairie Stadium",
+            "location": "Grand Prairie Stadium, Dallas",
             "match_day": 4
         },
         {
-            "team_1": "India",
+            "team_1": "Ireland",
             "team_1_num": 1,
-            "team_2": "Ireland",
+            "team_2": "India",
             "team_2_num": 1,
             "start_timestamp": "2024-06-05T10:30:00.000000Z",
             "object_id": 1415708,
@@ -214,13 +214,13 @@
             "match_day": 5
         },
         {
-            "team_1": "United States of America",
-            "team_1_num": 2,
-            "team_2": "Pakistan",
-            "team_2_num": 1,
+            "team_1": "Pakistan",
+            "team_1_num": 1,
+            "team_2": "United States of America",
+            "team_2_num": 2,
             "start_timestamp": "2024-06-06T11:30:00.000000Z",
             "object_id": 1415711,
-            "location": "Grand Prairie Stadium",
+            "location": "Grand Prairie Stadium, Dallas",
             "match_day": 6
         },
         {
@@ -254,13 +254,13 @@
             "match_day": 7
         },
         {
-            "team_1": "Bangladesh",
-            "team_1_num": 1,
-            "team_2": "Sri Lanka",
-            "team_2_num": 2,
+            "team_1": "Sri Lanka",
+            "team_1_num": 2,
+            "team_2": "Bangladesh",
+            "team_2_num": 1,
             "start_timestamp": "2024-06-07T20:30:00.000000Z",
             "object_id": 1415715,
-            "location": "Grand Prairie Stadium",
+            "location": "Grand Prairie Stadium, Dallas",
             "match_day": 7
         },
         {
@@ -314,10 +314,10 @@
             "match_day": 9
         },
         {
-            "team_1": "Bangladesh",
-            "team_1_num": 2,
-            "team_2": "South Africa",
-            "team_2_num": 3,
+            "team_1": "South Africa",
+            "team_1_num": 3,
+            "team_2": "Bangladesh",
+            "team_2_num": 2,
             "start_timestamp": "2024-06-10T10:30:00.000000Z",
             "object_id": 1415721,
             "location": "Nassau County International Cricket Stadium, New York",
@@ -344,9 +344,9 @@
             "match_day": 11
         },
         {
-            "team_1": "Australia",
+            "team_1": "Namibia",
             "team_1_num": 3,
-            "team_2": "Namibia",
+            "team_2": "Australia",
             "team_2_num": 3,
             "start_timestamp": "2024-06-11T20:30:00.000000Z",
             "object_id": 1415724,
@@ -384,19 +384,19 @@
             "match_day": 13
         },
         {
-            "team_1": "England",
-            "team_1_num": 3,
-            "team_2": "Oman",
-            "team_2_num": 4,
+            "team_1": "Oman",
+            "team_1_num": 4,
+            "team_2": "England",
+            "team_2_num": 3,
             "start_timestamp": "2024-06-13T15:00:00.000000Z",
             "object_id": 1415728,
             "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
             "match_day": 13
         },
         {
-            "team_1": "Afghanistan",
+            "team_1": "Papua New Guinea",
             "team_1_num": 3,
-            "team_2": "Papua New Guinea",
+            "team_2": "Afghanistan",
             "team_2_num": 3,
             "start_timestamp": "2024-06-13T20:30:00.000000Z",
             "object_id": 1415729,
@@ -414,20 +414,20 @@
             "match_day": 14
         },
         {
-            "team_1": "Nepal",
-            "team_1_num": 3,
-            "team_2": "South Africa",
-            "team_2_num": 4,
+            "team_1": "South Africa",
+            "team_1_num": 4,
+            "team_2": "Nepal",
+            "team_2_num": 3,
             "start_timestamp": "2024-06-14T19:30:00.000000Z",
             "object_id": 1415731,
             "location": "Arnos Vale Ground, Kingstown, St Vincent",
             "match_day": 14
         },
         {
-            "team_1": "New Zealand",
-            "team_1_num": 3,
-            "team_2": "Uganda",
-            "team_2_num": 4,
+            "team_1": "Uganda",
+            "team_1_num": 4,
+            "team_2": "New Zealand",
+            "team_2_num": 3,
             "start_timestamp": "2024-06-14T20:30:00.000000Z",
             "object_id": 1415732,
             "location": "Brian Lara Stadium, Tarouba, Trinidad",
@@ -454,9 +454,9 @@
             "match_day": 15
         },
         {
-            "team_1": "Australia",
+            "team_1": "Scotland",
             "team_1_num": 4,
-            "team_2": "Scotland",
+            "team_2": "Australia",
             "team_2_num": 4,
             "start_timestamp": "2024-06-15T20:30:00.000000Z",
             "object_id": 1415735,
@@ -484,9 +484,9 @@
             "match_day": 16
         },
         {
-            "team_1": "Netherlands",
+            "team_1": "Sri Lanka",
             "team_1_num": 4,
-            "team_2": "Sri Lanka",
+            "team_2": "Netherlands",
             "team_2_num": 4,
             "start_timestamp": "2024-06-16T20:30:00.000000Z",
             "object_id": 1415738,
@@ -494,9 +494,9 @@
             "match_day": 16
         },
         {
-            "team_1": "New Zealand",
+            "team_1": "Papua New Guinea",
             "team_1_num": 4,
-            "team_2": "Papua New Guinea",
+            "team_2": "New Zealand",
             "team_2_num": 4,
             "start_timestamp": "2024-06-17T10:30:00.000000Z",
             "object_id": 1415739,
@@ -512,6 +512,146 @@
             "object_id": 1415740,
             "location": "Daren Sammy National Cricket Stadium, Gros Islet, St Lucia",
             "match_day": 17
+        },
+        {
+            "team_1": "South Africa",
+            "team_1_num": 5,
+            "team_2": "United States of America",
+            "team_2_num": 5,
+            "start_timestamp": "2024-06-19T10:30:00.000000Z",
+            "object_id": 1415741,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 19
+        },
+        {
+            "team_1": "West Indies",
+            "team_1_num": 5,
+            "team_2": "England",
+            "team_2_num": 5,
+            "start_timestamp": "2024-06-19T20:30:00.000000Z",
+            "object_id": 1415742,
+            "location": "Daren Sammy National Cricket Stadium, Gros Islet, St Lucia",
+            "match_day": 19
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 5,
+            "team_2": "India",
+            "team_2_num": 5,
+            "start_timestamp": "2024-06-20T10:30:00.000000Z",
+            "object_id": 1415743,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 20
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 5,
+            "team_2": "Bangladesh",
+            "team_2_num": 5,
+            "start_timestamp": "2024-06-20T20:30:00.000000Z",
+            "object_id": 1415744,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 20
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 6,
+            "team_2": "South Africa",
+            "team_2_num": 6,
+            "start_timestamp": "2024-06-21T10:30:00.000000Z",
+            "object_id": 1415745,
+            "location": "Daren Sammy National Cricket Stadium, Gros Islet, St Lucia",
+            "match_day": 21
+        },
+        {
+            "team_1": "West Indies",
+            "team_1_num": 6,
+            "team_2": "United States of America",
+            "team_2_num": 6,
+            "start_timestamp": "2024-06-21T20:30:00.000000Z",
+            "object_id": 1415746,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 21
+        },
+        {
+            "team_1": "Bangladesh",
+            "team_1_num": 6,
+            "team_2": "India",
+            "team_2_num": 6,
+            "start_timestamp": "2024-06-22T10:30:00.000000Z",
+            "object_id": 1415747,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 22
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 6,
+            "team_2": "Australia",
+            "team_2_num": 6,
+            "start_timestamp": "2024-06-22T20:30:00.000000Z",
+            "object_id": 1415748,
+            "location": "Arnos Vale Ground, Kingstown, St Vincent",
+            "match_day": 22
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 7,
+            "team_2": "United States of America",
+            "team_2_num": 7,
+            "start_timestamp": "2024-06-23T10:30:00.000000Z",
+            "object_id": 1415749,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 23
+        },
+        {
+            "team_1": "West Indies",
+            "team_1_num": 7,
+            "team_2": "South Africa",
+            "team_2_num": 7,
+            "start_timestamp": "2024-06-23T20:30:00.000000Z",
+            "object_id": 1415750,
+            "location": "Sir Vivian Richards Stadium, North Sound, Antigua",
+            "match_day": 23
+        },
+        {
+            "team_1": "Australia",
+            "team_1_num": 7,
+            "team_2": "India",
+            "team_2_num": 7,
+            "start_timestamp": "2024-06-24T10:30:00.000000Z",
+            "object_id": 1415751,
+            "location": "Daren Sammy National Cricket Stadium, Gros Islet, St Lucia",
+            "match_day": 24
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 7,
+            "team_2": "Bangladesh",
+            "team_2_num": 7,
+            "start_timestamp": "2024-06-24T20:30:00.000000Z",
+            "object_id": 1415752,
+            "location": "Arnos Vale Ground, Kingstown, St Vincent",
+            "match_day": 24
+        },
+        {
+            "team_1": "Afghanistan",
+            "team_1_num": 8,
+            "team_2": "South Africa",
+            "team_2_num": 8,
+            "start_timestamp": "2024-06-26T20:30:00.000000Z",
+            "object_id": 1415753,
+            "location": "Brian Lara Stadium, Tarouba, Trinidad",
+            "match_day": 25
+        },
+        {
+            "team_1": "England",
+            "team_1_num": 8,
+            "team_2": "India",
+            "team_2_num": 8,
+            "start_timestamp": "2024-06-27T20:30:00.000000Z",
+            "object_id": 1415754,
+            "location": "Providence Stadium, Guyana",
+            "match_day": 26
         }
     ]
 }
