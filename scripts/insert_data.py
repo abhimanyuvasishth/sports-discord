@@ -45,7 +45,7 @@ def create_player_configs():
     player_configs = []
     sheet = get_sheet(DOC_NAME, BIDDING_SHEET_NAME)
     rows = sheet.get_all_values()
-    for row in rows[20:1000]:
+    for row in rows[21:1000]:
         if not row[1]:
             continue
         print(row[:10])
@@ -141,13 +141,14 @@ def insert_match_players(player_configs, match_configs, tournament_id):
 
 
 if __name__ == '__main__':
-    with open('config/world_cup_2024.json') as f:
+    with open('config/champions_trophy_2025.json') as f:
         configs = json.loads(f.read())
 
     player_configs = create_player_configs()
 
     tournament_id = create_tournament(configs['tournament'])
     print(f'Created tournament: {tournament_id}')
+    tournament_id = 1
 
     insert_user_teams(configs['user_teams'], tournament_id)
     print(f"Inserted {len(configs['user_teams'])} User Teams")
@@ -158,8 +159,8 @@ if __name__ == '__main__':
     insert_players(player_configs, tournament_id)
     print(f"Inserted {len(player_configs)} Players")
 
-    insert_matches(configs['matches'], tournament_id)
-    print(f"Inserted {len(configs['matches'])} Matches")
+    insert_matches(configs['matches'][-1:], tournament_id)
+    print(f"Inserted {len(configs['matches'][-1:])} Matches")
 
-    insert_match_players(player_configs, configs['matches'], tournament_id)
+    insert_match_players(player_configs, configs['matches'][-1:], tournament_id)
     print("Inserted Match Players")

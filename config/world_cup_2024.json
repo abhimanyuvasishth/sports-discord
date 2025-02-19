@@ -652,6 +652,16 @@
             "object_id": 1415754,
             "location": "Providence Stadium, Guyana",
             "match_day": 26
+        },
+        {
+            "team_1": "South Africa",
+            "team_1_num": 9,
+            "team_2": "India",
+            "team_2_num": 9,
+            "start_timestamp": "2024-06-29T10:30:00.000000Z",
+            "object_id": 1415755,
+            "location": "Kensington Oval, Bridgetown, Barbados",
+            "match_day": 27
         }
     ]
 }

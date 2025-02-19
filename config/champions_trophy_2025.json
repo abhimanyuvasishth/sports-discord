@@ -1,0 +1,81 @@
+{
+    "tournament": "Champions Trophy 2025 Auction",
+    "teams": [
+        {
+            "name": "Afghanistan",
+            "abbrev": "AFG"
+        },
+        {
+            "name": "Australia",
+            "abbrev": "AUS"
+        },
+        {
+            "name": "Bangladesh",
+            "abbrev": "BD"
+        },
+        {
+            "name": "India",
+            "abbrev": "IND"
+        },
+        {
+            "name": "England",
+            "abbrev": "ENG"
+        },
+        {
+            "name": "New Zealand",
+            "abbrev": "NZ"
+        },
+        {
+            "name": "Pakistan",
+            "abbrev": "PAK"
+        },
+        {
+            "name": "South Africa",
+            "abbrev": "SA"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "SoBo Sardarz",
+            "discord_role_id": "1030006519380590592"
+        },
+        {
+            "name": "Namit",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "Inglis Tyushan",
+            "discord_role_id": "1030006412266455113"
+        },
+        {
+            "name": "Suburb Sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "Dhaba",
+            "discord_role_id": "1011749363942424676"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "Pakistan",
+            "team_1_num": 1,
+            "team_2": "New Zealand",
+            "team_2_num": 1,
+            "start_timestamp": "2025-02-19T08:00:00.000000Z",
+            "object_id": 1466414,
+            "location": "Karachi",
+            "match_day": 1
+        },
+        {
+            "team_1": "India",
+            "team_1_num": 1,
+            "team_2": "Bangladesh",
+            "team_2_num": 1,
+            "start_timestamp": "2025-02-20T08:00:00.000000Z",
+            "object_id": 1466415,
+            "location": "Dubai",
+            "match_day": 2
+        }
+    ]
+}
