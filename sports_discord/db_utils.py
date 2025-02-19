@@ -14,7 +14,6 @@ from sports_discord.models.user_team import UserTeam
 
 load_dotenv()
 engine = create_engine(os.getenv('POSTGRES_URL'))
-eastern = pytz.timezone('US/Eastern')
 
 
 @cache
@@ -26,22 +25,17 @@ def get_user_team_by_id(role_id: str) -> list[UserTeam]:
 
 def get_old_captain(role_id: str):
     with sessionmaker(engine)() as session:
-        min_start_subquery = session.query(
-            Match.match_day.label('match_day'),
-            func.min(Match.start_timestamp).label('min_start')
-        ).group_by(Match.match_day).subquery()
-
-        min_start_time = datetime.now(eastern) + timedelta(hours=1)
-        upcoming_match_day = session.query(min_start_subquery.c.match_day) \
-            .filter(min_start_subquery.c.min_start >= min_start_time) \
-            .order_by(min_start_subquery.c.min_start).first()
+        upcoming_match_day = session.query(Match.match_day) \
+            .filter(Match.start_timestamp >= datetime.now()) \
+            .order_by(Match.start_timestamp) \
+            .first()
 
         if upcoming_match_day is None:
             return []
 
         old_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
             .join(Match) \
-            .filter(Match.match_day == upcoming_match_day.match_day) \
+            .filter(Match.match_day == upcoming_match_day[0]) \
             .join(Player) \
             .join(UserTeam) \
             .filter(UserTeam.discord_role_id == str(role_id)) \
@@ -53,22 +47,17 @@ def get_old_captain(role_id: str):
 
 def get_new_captain(role_id: str, player_name: str):
     with sessionmaker(engine)() as session:
-        min_start_subquery = session.query(
-            Match.match_day.label('match_day'),
-            func.min(Match.start_timestamp).label('min_start')
-        ).group_by(Match.match_day).subquery()
-
-        min_start_time = datetime.now(eastern) + timedelta(hours=1)
-        upcoming_match_day = session.query(min_start_subquery.c.match_day) \
-            .filter(min_start_subquery.c.min_start >= min_start_time) \
-            .order_by(min_start_subquery.c.min_start).first()
+        upcoming_match_day = session.query(Match.match_day) \
+            .filter(Match.start_timestamp >= datetime.now()) \
+            .order_by(Match.start_timestamp) \
+            .first()
 
         if upcoming_match_day is None:
             return []
 
         new_captain = session.query(MatchPlayer.id, Match.match_num, Player.name) \
             .join(Match) \
-            .filter(Match.match_day == upcoming_match_day.match_day) \
+            .filter(Match.match_day == upcoming_match_day[0]) \
             .join(Player) \
             .filter(Player.name.ilike(f'%{player_name}%')) \
             .join(UserTeam) \
@@ -81,7 +70,7 @@ def get_new_captain(role_id: str, player_name: str):
 def get_all_kaptaans():
     with sessionmaker(engine)() as session:
         most_recent_match_day = session.query(func.max(Match.match_day)) \
-            .filter(Match.start_timestamp <= datetime.now(eastern)) \
+            .filter(Match.start_timestamp <= datetime.now()) \
             .scalar()
 
         kaptaans = session.query(MatchPlayer.id, UserTeam.name, Match.match_num, Player.name) \
@@ -98,7 +87,7 @@ def get_all_kaptaans():
 def get_all_players_today():
     with sessionmaker(engine)() as session:
         most_recent_match_day = session.query(func.max(Match.match_day)) \
-            .filter(Match.start_timestamp <= datetime.now(eastern)) \
+            .filter(Match.start_timestamp <= datetime.now()) \
             .scalar()
 
         players = session.query(Match.match_num, MatchPlayer.captain, UserTeam.name, Player.name) \
@@ -127,7 +116,7 @@ def get_player_and_most_recent_match(player_id: int):
             .filter(Player.id == player_id) \
             .join(MatchPlayer, Player.id == MatchPlayer.player_id) \
             .join(Match, Match.id == MatchPlayer.match_id) \
-            .filter(Match.start_timestamp <= datetime.now(eastern)) \
+            .filter(Match.start_timestamp <= datetime.now()) \
             .order_by(Match.start_timestamp.desc()) \
             .first()
 

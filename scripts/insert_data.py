@@ -159,8 +159,8 @@ if __name__ == '__main__':
     insert_players(player_configs, tournament_id)
     print(f"Inserted {len(player_configs)} Players")
 
-    insert_matches(configs['matches'][-1:], tournament_id)
-    print(f"Inserted {len(configs['matches'][-1:])} Matches")
+    insert_matches(configs['matches'], tournament_id)
+    print(f"Inserted {len(configs['matches'])} Matches")
 
-    insert_match_players(player_configs, configs['matches'][-1:], tournament_id)
+    insert_match_players(player_configs, configs['matches'], tournament_id)
     print("Inserted Match Players")
