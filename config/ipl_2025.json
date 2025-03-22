@@ -1,0 +1,107 @@
+{
+    "tournament": "IPL 2024",
+    "teams": [
+        {
+            "name": "Chennai Super Kings",
+            "abbrev": "CSK"
+        },
+        {
+            "name": "Delhi Capitals",
+            "abbrev": "DC"
+        },
+        {
+            "name": "Gujarat Titans",
+            "abbrev": "GT"
+        },
+        {
+            "name": "Kolkata Knight Riders",
+            "abbrev": "KKR"
+        },
+        {
+            "name": "Lucknow Super Giants",
+            "abbrev": "LSG"
+        },
+        {
+            "name": "Mumbai Indians",
+            "abbrev": "MI"
+        },
+        {
+            "name": "Punjab Kings",
+            "abbrev": "PBKS"
+        },
+        {
+            "name": "Rajasthan Royals",
+            "abbrev": "RR"
+        },
+        {
+            "name": "Royal Challengers Bengaluru",
+            "abbrev": "RCB"
+        },
+        {
+            "name": "Sunrisers Hyderabad",
+            "abbrev": "SRH"
+        }
+    ],
+    "user_teams": [
+        {
+            "name": "SoBo Sardarz",
+            "discord_role_id": "1030006519380590592"
+        },
+        {
+            "name": "Kimweli's Krew",
+            "discord_role_id": "1157196166581194843"
+        },
+        {
+            "name": "Namit",
+            "discord_role_id": "1011749017157378078"
+        },
+        {
+            "name": "Vande Markram",
+            "discord_role_id": "1030006412266455113"
+        },
+        {
+            "name": "Suburb Sena",
+            "discord_role_id": "1011749569274585148"
+        },
+        {
+            "name": "Dhawan Da Dhaba",
+            "discord_role_id": "1011749363942424676"
+        },
+        {
+            "name": "Ravi Shastri's Liver",
+            "discord_role_id": "1043225108254294128"
+        }
+    ],
+    "matches": [
+        {
+            "team_1": "Royal Challengers Bengaluru",
+            "team_1_num": 1,
+            "team_2": "Kolkata Knight Riders",
+            "team_2_num": 1,
+            "start_timestamp": "2025-03-22T14:00:00.000Z",
+            "object_id": 1473438,
+            "location": "Eden Gardens, Kolkata",
+            "match_day": 1
+        },
+        {
+            "team_1": "Sunrisers Hyderabad",
+            "team_1_num": 1,
+            "team_2": "Rajasthan Royals",
+            "team_2_num": 1,
+            "start_timestamp": "2025-03-23T10:00:00.000Z",
+            "object_id": 1473439,
+            "location": "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
+            "match_day": 2
+        },
+        {
+            "team_1": "Mumbai Indians",
+            "team_1_num": 1,
+            "team_2": "Chennai Super Kings",
+            "team_2_num": 1,
+            "start_timestamp": "2025-03-23T14:00:00.000Z",
+            "object_id": 1473440,
+            "location": "MA Chidambaram Stadium, Chepauk, Chennai",
+            "match_day": 2
+        }
+    ]
+}

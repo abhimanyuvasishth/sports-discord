@@ -141,7 +141,7 @@ def insert_match_players(player_configs, match_configs, tournament_id):
 
 
 if __name__ == '__main__':
-    with open('config/champions_trophy_2025.json') as f:
+    with open('config/ipl_2025.json') as f:
         configs = json.loads(f.read())
 
     player_configs = create_player_configs()

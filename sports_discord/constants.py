@@ -1,12 +1,12 @@
 from enum import Enum
 
-DOC_NAME = 'Champions Trophy 2025 Auction'
+DOC_NAME = 'IPL 18 Auction 2025'
 BIDDING_SHEET_NAME = 'Bidding Page'
 POINTS_SHEET_NAME = 'Points Worksheet'
 TEAM_POINTS_SHEET_NAME = 'Team Points'
 NOT_ON_A_TEAM = 'Not yet a part of any teams for this auction/draft. Please join a team first.'
 NUMBER_OF_FIELDS = 15
-CHANNEL_ID = 1340022095957983313
+CHANNEL_ID = 1349039519243960390
 
 
 class Pool(Enum):
