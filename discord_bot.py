@@ -309,7 +309,7 @@ async def nickname(context, *args):
 
     player = players[0]
     db_utils.set_player_nickname(player.id, nickname)
-    await context.reply(f"Nickname set for {player.name}: {nickname}")
+    await context.reply(f"Nickname set for {player.name}: {nickname_raw}")
 
 
 @bot.command()
