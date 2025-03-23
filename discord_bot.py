@@ -298,7 +298,7 @@ async def nickname(context, *args):
         return await context.reply("Missing player name or nickname")
 
     player_name = emoji.demojize(player_name_raw).replace(':', '')
-    nickname = emoji.demojize(player_name_raw)
+    nickname = emoji.demojize(nickname_raw)
 
     players = db_utils.get_player_out(player_name, role_id)
     if len(players) == 0:
