@@ -1,3 +1,4 @@
+import emoji
 from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, String, func
 from sqlalchemy.orm import relationship
 
@@ -32,4 +33,4 @@ class Player(Base):
         else:
             full_name = self.name
 
-        return f'{full_name} ({Pool(self.pool).name})'
+        return emoji.emojize(f'{full_name} ({Pool(self.pool).name})', language='alias')
