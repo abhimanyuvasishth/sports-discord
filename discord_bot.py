@@ -292,13 +292,12 @@ async def nickname(context, *args):
 
     split_index = args.index('as')
     player_name_raw = ' '.join(args[:split_index])
-    nickname_raw = ' '.join(args[split_index + 1:])
+    nickname = ' '.join(args[split_index + 1:])
 
-    if not player_name_raw or not nickname_raw:
+    if not player_name_raw or not nickname:
         return await context.reply("Missing player name or nickname")
 
     player_name = emoji.demojize(player_name_raw).replace(':', '')
-    nickname = emoji.demojize(nickname_raw).replace(':', '')
 
     players = db_utils.get_player_out(player_name, role_id)
     if len(players) == 0:
