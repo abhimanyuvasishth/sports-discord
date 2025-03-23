@@ -3,7 +3,7 @@ from datetime import datetime
 from functools import cache
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, func, update
+from sqlalchemy import create_engine, func, or_, update
 from sqlalchemy.orm import sessionmaker
 
 from sports_discord.models.match import Match
@@ -58,7 +58,12 @@ def get_new_captain(role_id: str, player_name: str):
             .join(Match) \
             .filter(Match.match_day == upcoming_match_day[0]) \
             .join(Player) \
-            .filter(Player.name.ilike(f'%{player_name}%')) \
+            .filter(
+                or_(
+                    Player.name.ilike(f'%{player_name}%'),
+                    Player.nickname.ilike(f'%{player_name}%')
+                )
+            ) \
             .join(UserTeam) \
             .filter(UserTeam.discord_role_id == str(role_id)) \
             .all()
@@ -66,21 +71,12 @@ def get_new_captain(role_id: str, player_name: str):
         return new_captain
 
 
-def get_all_kaptaans():
+def set_player_nickname(player_id: int, nickname: str):
     with sessionmaker(engine)() as session:
-        most_recent_match_day = session.query(func.max(Match.match_day)) \
-            .filter(Match.start_timestamp <= datetime.now()) \
-            .scalar()
-
-        kaptaans = session.query(MatchPlayer.id, UserTeam.name, Match.match_num, Player.name) \
-            .join(Match) \
-            .join(Player) \
-            .join(UserTeam, isouter=True) \
-            .filter(Match.match_day == most_recent_match_day) \
-            .filter(MatchPlayer.captain) \
-            .all()
-
-        return kaptaans
+        player = session.query(Player).get(player_id)
+        if player:
+            player.nickname = nickname
+            session.commit()
 
 
 def get_all_players_today():
@@ -102,7 +98,12 @@ def get_all_players_today():
 def get_player_owner(player_name: str):
     with sessionmaker(engine)() as session:
         player_owner = session.query(UserTeam.name, Player) \
-            .filter(Player.name.ilike(f'%{player_name}%')) \
+            .filter(
+                or_(
+                    Player.name.ilike(f'%{player_name}%'),
+                    Player.nickname.ilike(f'%{player_name}%')
+                )
+            ) \
             .join(UserTeam, UserTeam.id == Player.user_team_id, isouter=True) \
             .all()
 
@@ -145,7 +146,12 @@ def get_player_out(player_name: str, role_id: str):
         player = session.query(Player) \
             .join(UserTeam) \
             .filter(UserTeam.discord_role_id == str(role_id)) \
-            .filter(Player.name.ilike(f'%{player_name}%')) \
+            .filter(
+                or_(
+                    Player.name.ilike(f'%{player_name}%'),
+                    Player.nickname.ilike(f'%{player_name}%')
+                )
+            ) \
             .all()
         return player
 
@@ -153,7 +159,12 @@ def get_player_out(player_name: str, role_id: str):
 def get_player_in(player_name: str):
     with sessionmaker(engine)() as session:
         player = session.query(Player) \
-            .filter(Player.name.ilike(f'%{player_name}%')) \
+            .filter(
+                or_(
+                    Player.name.ilike(f'%{player_name}%'),
+                    Player.nickname.ilike(f'%{player_name}%')
+                )
+            ) \
             .filter(Player.user_team_id.is_(None)) \
             .all()
         return player

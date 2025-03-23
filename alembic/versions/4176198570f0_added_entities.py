@@ -61,6 +61,7 @@ def upgrade() -> None:
     op.create_table('player',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
+    sa.Column('nickname', sa.String(), nullable=True),
     sa.Column('creation_timestamp', sa.TIMESTAMP(), server_default=sa.text('now()'), nullable=False),
     sa.Column('pool', sa.Integer(), nullable=False),
     sa.Column('position', sa.Integer(), nullable=False),

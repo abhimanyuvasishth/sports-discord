@@ -7,8 +7,9 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from sports_discord import db_utils, sheet_utils, utils
-from sports_discord.constants import (CHANNEL_ID, DOC_NAME, NOT_ON_A_TEAM, NUMBER_OF_FIELDS,
-                                      POINTS_SHEET_NAME, Pool, SheetCols)
+from sports_discord.constants import (CHANNEL_ID, DOC_NAME, NOT_ON_A_TEAM,
+                                      NUMBER_OF_FIELDS, POINTS_SHEET_NAME,
+                                      SheetCols)
 from sports_discord.google_sheet import get_sheet
 from sports_discord.haiku import get_haiku
 
@@ -103,31 +104,6 @@ async def kaptaan(context, *args):
 
 
 @bot.command()
-async def kaptaan_summary(context):
-    """
-    Gets a summary of all teams' kaptaans for the match day
-
-    For example: !kaptaan_summary
-    """
-    kaptaans = db_utils.get_all_kaptaans()
-    message_lines = ['**Kaptaan Summary**']
-    kaptaan_values = []
-    for kaptaan_row in kaptaans:
-        _, team_name, match_num, player_name = kaptaan_row
-        points = sheet_utils.get_points_for_match_num(player_name, match_num)
-        points_line = f'{points} points in most recent game'
-        emoji = utils.get_current_points_emoji(points)
-        message = f'{team_name}: {player_name} ({points_line}) {emoji}'
-        kaptaan_values.append((points, message))
-
-    for i, item in enumerate(sorted(kaptaan_values, key=lambda x: x[0], reverse=True)):
-        rank_emoji = utils.get_emoji_from_number(i + 1)
-        message_lines.append(f'{rank_emoji} {item[1]}')
-
-    await context.reply('\n'.join(message_lines))
-
-
-@bot.command()
 async def points(context, *args):
     """
     Checks a player's total points (kaptaan and non kaptaan) and points in their most recent game
@@ -161,7 +137,7 @@ async def points(context, *args):
     rank, total = sheet_utils.get_rank(points)
     rating_emoji = utils.get_rating_emoji(rank, total)
     message = [
-        f'{query_player.name} ({Pool(query_player.pool).name})',
+        f'{query_player}',
         f'Total Points: {points}',
         f'Non Kaptaan Points: {non_kaptaan_points}',
         recent_message,
@@ -169,32 +145,6 @@ async def points(context, *args):
         f'Owner: {team_name or "no one"}',
     ]
     await context.reply('\n'.join(message))
-
-
-@bot.command()
-async def whohas(context, *args):
-    """
-    Checks who owns a player
-
-    For example: !whohas Kohli
-    """
-    raw_player_name = emoji.demojize(' '.join(args)).replace(':', '')
-    player_owned = db_utils.get_player_owner(raw_player_name)
-
-    if len(player_owned) == 0:
-        error_message = f"Error: Couldn't find a player with name: '{raw_player_name}'"
-        return await context.reply(f'{error_message} ')
-    if len(player_owned) > 1:
-        names = [candidate[1].name for candidate in player_owned][:10]
-        error_message = f"""
-            Error: Found multiple players with name: '{raw_player_name}' such as {names}
-        """
-        return await context.reply(error_message)
-
-    team_name, query_player = player_owned[0]
-    owner = f'Team {team_name}' if team_name else 'No one'
-    message = f'{owner} has {query_player.name} ({Pool(query_player.pool).name})'
-    await context.reply(message)
 
 
 @bot.command()
@@ -326,6 +276,43 @@ async def bottom(context, *args):
 
 
 @bot.command()
+async def nickname(context, *args):
+    """
+    Sets or updates a nickname for one of your players
+
+    For example: !nickname Kohli as the goat
+    """
+    role_id = utils.get_role_id(context.author.roles)
+    if not role_id:
+        return await context.reply(NOT_ON_A_TEAM)
+
+    args = list(args)
+    if 'as' not in args:
+        return await context.reply("Please use `as` to separate name and nickname")
+
+    split_index = args.index('as')
+    player_name_raw = ' '.join(args[:split_index])
+    nickname_raw = ' '.join(args[split_index + 1:])
+
+    if not player_name_raw or not nickname_raw:
+        return await context.reply("Missing player name or nickname")
+
+    player_name = emoji.demojize(player_name_raw).replace(':', '')
+    nickname = emoji.demojize(nickname_raw).replace(':', '')
+
+    players = db_utils.get_player_out(player_name, role_id)
+    if len(players) == 0:
+        return await context.reply(f"Couldn't find a player on your team named: '{player_name}'")
+    if len(players) > 1:
+        names = [p.name for p in players][:10]
+        return await context.reply(f"Found multiple players matching '{player_name}': {names}")
+
+    player = players[0]
+    db_utils.set_player_nickname(player.id, nickname)
+    await context.reply(f"Nickname set for {player.name}: {nickname}")
+
+
+@bot.command()
 async def squad(context, *args):
     """
     Displays the entire squad of a particular auction team
@@ -347,7 +334,7 @@ async def squad(context, *args):
 
     user_team_id, user_team_name = user_team[0]
     squad_rows = db_utils.get_squad(user_team_id)
-    squad = [f'{player.name} ({Pool(player.pool).name})' for player in squad_rows]
+    squad = [str(player) for player in squad_rows]
     message = f"Team {user_team_name}'s Squad: {squad}"
     await context.reply(message)
 
